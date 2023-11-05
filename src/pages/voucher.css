@@ -1,0 +1,40 @@
+.title {
+    display: flex;
+
+}
+.content {
+    margin: 2em;
+}
+
+h4 {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.client-info {
+}
+
+.client-container {
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-between  ;
+
+}
+
+.footer {
+    margin: 1em;
+   /* //Nếu dài quá thì sẽ xuống dòng */
+    word-wrap: break-word;
+    /* //khoảng cách giữa các dòng */
+    line-height: 1.1em;
+
+}
+.regulations {
+    border: 1px solid black;
+    padding: 1em;
+
+}
+.policy {
+    border: 1px solid black;
+    padding: 1em;
+}
