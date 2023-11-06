@@ -4,23 +4,37 @@ import * as htmlToImage from 'html-to-image';
 import './voucher.css';
 import logo from '../assets/logo.png';
 import { Button } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const Voucher = () => {
+
+    const { t } = useTranslation();
 
     //get state from InputForm 
     const [state, setState] = useState(() => {
         return window.history.state;
     });
 
-    const [value , setValue] = useState();
-    
+    const [value, setValue] = useState();
+    const [timeCheckIn, setTimeCheckIn] = useState('');
+    const [timeCheckOut, setTimeCheckOut] = useState('');
+
 
     useState(() => {
         console.log(state);
+        if (state && state.checkinCheckout) {
+            const timeCheckIn = state?.usr.checkinCheckout[0]['$d']
+            const timeCheckOut = state?.usr.checkinCheckout[1]['$d']
+            //Convert time to string format dd/mm/yyyy
+            const dateCheckIn = timeCheckIn.toLocaleDateString() + ' ' + timeCheckIn.toLocaleTimeString();
+            const dateCheckOut = timeCheckOut.toLocaleDateString() + ' ' + timeCheckOut.toLocaleTimeString();
+            setTimeCheckIn(dateCheckIn);
+            setTimeCheckOut(dateCheckOut);
+        }
         setValue(state);
     }, [state]);
 
-    
+
 
     const printDocument = () => {
         const input = document.getElementById('divToPrint');
@@ -43,8 +57,9 @@ const Voucher = () => {
             .catch((error) => {
                 console.error('oops, something went wrong!', error);
             });
-
     }
+
+
 
 
     return (
@@ -56,13 +71,8 @@ const Voucher = () => {
             }}>
                 Cậu nhấn vào nút Download để tải file về nhé  <br />
                 <Button type="primary" onClick={printDocument}>Download</Button> <br />
-                Tớ xin lỗi cậu nhiều !! 
-                Tớ không ngủ được  <br />
-                Yêu cậu.. Xin lỗi cậu
-                <br /> <br />
-                Nút back về trang trước đây nè cậu <br />
                 <Button type="primary" onClick={() => window.history.back()}>Back</Button>
-                
+
             </div>
             <div id="divToPrint" style={{
                 backgroundColor: '#f5f5f5',
@@ -87,56 +97,182 @@ const Voucher = () => {
 
                     </div>
                     <div className='staff-info'>
-                        <h4>Staff Name: <strong> PHAN HUYỀN TRANG (Ms.) Sales Manager</strong> </h4>
-                        <h4>Staff Email: <strong>  phan.huyen.trang.0308@gmail.com </strong> </h4>
-                        <h4>Staff Phone:<strong>  (+84) 977125169 </strong></h4>
+                        <span> PHAN HUYỀN TRANG (Ms.) Sales Manager </span>
+                        <span>  phan.huyen.trang.0308@gmail.com </span>
+                        <span>  (+84) 977125169</span>
                     </div>
 
 
                     <div className='client-container'>
                         <div className='client-info'>
-                            <h3>Client Information</h3>
-                            <h4>Client Name: <strong> {value?.usr.name} </strong> </h4>
-                            <h4>Client Email: <strong> {value?.usr.email} </strong> </h4>
-                            <h4>Client Phone:<strong> {value?.usr.phone} </strong></h4>
+                            <h3>{t('content.clientInfo')}</h3>
+                            <h4>{t('content.clientName')} <strong> {value?.usr.name} </strong> </h4>
+                            {value?.usr?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.usr.email} </strong> </h4>) : null}
+                            <h4>{t('content.clientPhone')}<strong> {value?.usr.phone} </strong></h4>
                         </div>
                         <div className='client-notification'>
                             <h2 style={{
                                 color: 'red',
-                                fontSize: '25px',
+                                fontSize: '20px',
                                 fontWeight: 'bold',
                                 textAlign: 'center',
-                                marginTop: '100px'
+                                // marginTop: '100px'
+                                // position: 'absolute',
+                                // top: '10px',
+                                opacity: '0.7',
+                                //nghiêng chữ 45 độ
+                                // transform: 'rotate(-45deg)',
+                                fontStyle: 'italic',
 
                             }}>
                                 {/* Đặt dịch vụ thành công */}
-                                SERVICE BOOKING SUCCESSFUL
+                                {t('table.success')}
                             </h2>
+                            {/* Vẽ table có border giữa các ô (không có header và mỗi dòng có ô title và mô tả) */}
+                            <table style={{
+                                borderCollapse: 'collapse',
+                                width: '100%',
+                                border: '1px solid black',
+                                textAlign: 'center'
+                            }}>
+                                <tbody>
+                                    <tr>
+                                        <th style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px'
+                                        }}>
+                                            {t('table.code')}
+                                        </th>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.roomType')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.roomType')}
+                                        </td>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.note')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.number')}
+                                        </td>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.roomType')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.totalPayment')}
+                                        </td>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.service3Description')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.paymentInfo')}
+                                        </td>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.service3Description')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.note')}
+                                        </td>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.service3Description')}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
 
                         </div>
                     </div>
 
                     < div className='hotel-info'>
-                        <h3>Hotel Information</h3>
-                        <h4>Hotel Name: <strong> {value?.usr.hotelName} </strong> </h4>
-                        <h4>Hotel Address: <strong> {value?.usr.hotelAddress} </strong> </h4>
+                        <h3>{t('content.hotelTitle')}</h3>
+                        <h4>{t('content.hotelName')} <strong> {value?.usr.hotelName} </strong> </h4>
+                        <h4>{t('content.hotelAddress')}  <strong> {value?.usr.hotelAddress} </strong> </h4>
+                        <h4>Check In: <strong> {timeCheckIn} </strong></h4>
+                        <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
 
                     </div>
                 </div>
                 <div className='footer'>
                     <div className='regulations'>
-                        <h3>Quy định tại khách sạn/căn hộ </h3>
-                        <h4>1. Sử dụng căn hộ đúng mục đích để ở, không sử dụng chất kích thích, bay lắc,... tại căn hộ. Nếu cố tình CA phường hoặc ban quản lý trực tiếp lên xử lý. </h4>
-                        <h4>2.  Hạn chế làm ồn sau 22h, ảnh hưởng đến mọi người xung quanh. </h4>
-                        <h4>3. Đảm bảo giữ gìn đồ đạc trong căn hộ, có bất cứ vấn đề nào báo ngay cho host.  </h4>
-                        <h4>4. Check out để thẻ tại bàn trong căn hộ, đóng cửa cẩn thận, báo host là đã check out.</h4>
+                        <h4>{t('regulations.title')}</h4>
+                        <span className={"footer-text"}>{t('regulations.content1')}</span>
+                        <span className={"footer-text"}>{t('regulations.content2')}</span>
+                        <span className={"footer-text"}>{t('regulations.content3')}</span>
+                        <span className={"footer-text"}>{t('regulations.content4')}</span>
                     </div>
                     <div className='policy'>
-                        <h3>Chính sách Bảo lưu phòng</h3>
-                        <h4>- Nếu khách Hủy phòng : Sẽ không được nhận lại số tiền đã đặt. </h4>
-                        <h4>- Khách có thể bảo lưu hoặc đổi ngày trước 48h ( 02 ngày ) kể từ ngày check in, Không áp dụng bảo lưu với đoàn từ 03p trở lên.</h4>
-                        <h4>- Đối với khách đoàn : Không hủy ngang ( cọc ít nhất 50%) </h4>
-                        <h4>- Thời gian bảo lưu 1 tháng kể từ ngày lịch check in, bảo lưu hoặc đổi ngày tối đa 01 lần.</h4>
+                        <h4>{t('policy.title')}</h4>
+                        <span className={"footer-text"}>{t('policy.content1')}</span>
+                        <span className={"footer-text"}>{t('policy.content2')}</span>
+                        <span className={"footer-text"}>{t('policy.content3')}</span>
+                        <span className={"footer-text"}>{t('policy.content4')}</span>
                     </div>
                 </div>
             </div>

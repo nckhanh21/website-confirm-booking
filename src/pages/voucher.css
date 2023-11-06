@@ -11,7 +11,12 @@ h4 {
     font-weight: 600;
 }
 
-.client-info {
+.staff-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-style: italic;
 }
 
 .client-container {
@@ -26,15 +31,25 @@ h4 {
    /* //Nếu dài quá thì sẽ xuống dòng */
     word-wrap: break-word;
     /* //khoảng cách giữa các dòng */
-    line-height: 1.1em;
+    line-height: 1.2em;
 
 }
 .regulations {
     border: 1px solid black;
-    padding: 1em;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
 
 }
 .policy {
     border: 1px solid black;
-    padding: 1em;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+}
+.footer-text {
+    font-size: .8em;
+    font-style: italic;
+    line-height: 1.5em;
+    margin: 0;
 }

@@ -1,0 +1,34 @@
+{
+    "content": {
+        "functional": "Functional",
+        "class": "Class",
+        "text": "This is text",
+        "clientInfo": "Client Info",
+        "clientName": "Name",
+        "clientPhone": "Phone",
+        "clientEmail": "Email",
+        "hotelTitle": "Hotel Infomation",
+        "hotelName": "Name",
+        "hotelAddress": "Address"
+    },
+    "regulations": {
+        "title": "Regulations at hotels/apartments",
+        "content1": "1. Use the apartment for the right purpose, do not use stimulants, drugs, etc. in the apartment. If it is intentional, the ward police or management board will handle it directly.",
+        "content2": "2. Limit making noise after 10pm, affecting people around.",
+        "content3": "3. Make sure to preserve the furniture in the apartment. If there are any problems, notify the host immediately.",
+        "content4": "4. Check out, leave your card at the table in the apartment, close the door carefully, and notify the host that you have checked out."
+    },
+    "policy": {
+        "title": "Room Reservation Policy",
+        "content1": "- If the guest cancels the room: The booking amount will not be refunded.",
+        "content2": "- Guests can reserve or change dates 48 hours (02 days) before check-in date. Reservations do not apply to groups of 3 minutes or more.",
+        "content3": "- For groups: No cancellation (at least 50% deposit)",
+        "content4": "- Reservation period is 1 month from the scheduled check-in date, reserve or change date maximum 01 time."
+    },
+    "table": {
+        "code": "Code",
+        "roomType": "Room Type",
+        "number": "Number of residents",
+        "note": "Note"
+    }
+}
