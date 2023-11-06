@@ -144,10 +144,9 @@ const Voucher = () => {
                                 <h3>{t('content.hotelTitle')}</h3>
                                 <h4>{t('content.hotelName')} <strong> {value?.usr.hotelName} </strong> </h4>
                                 <h4>{t('content.hotelAddress')}  <strong> {value?.usr.hotelAddress} </strong> </h4>
+                                <h4 >Hotline: <strong>0765.10.2222</strong></h4>
                                 <h4>Check In: <strong> {timeCheckIn} </strong></h4>
                                 <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
-                                <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
-                                <h4 style={{ fontStyle: 'italic' }}>Hotline: 0765.10.2222</h4>
                             </div>
                         </div>
                         <div className='client-notification'>
