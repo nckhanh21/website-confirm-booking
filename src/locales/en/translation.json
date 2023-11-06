@@ -33,5 +33,6 @@
         "note": "Note",
         "totalPayment": "Total Payment",
         "paymentInfo": "Payment Information"
-    }
+    },
+    "thank": "Thank you for using our service!"
 }

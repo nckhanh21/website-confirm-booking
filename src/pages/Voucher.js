@@ -122,165 +122,169 @@ const Voucher = () => {
                         <span>  (+84) 977125169</span>
                     </div>
 
+                    <div className='voucher-info'>
+                        <div>
+                            <div className='client-container'>
+                                <div className='client-info'>
+                                    <h3>{t('content.clientInfo')}</h3>
+                                    <h4>{t('content.clientName')} <strong> {value?.usr.name} </strong> </h4>
+                                    {value?.usr?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.usr.email} </strong> </h4>) : null}
+                                    <h4>{t('content.clientPhone')}<strong> {value?.usr.phone} </strong></h4>
+                                </div>
 
-                    <div className='client-container'>
-                        <div className='client-info'>
-                            <h3>{t('content.clientInfo')}</h3>
-                            <h4>{t('content.clientName')} <strong> {value?.usr.name} </strong> </h4>
-                            {value?.usr?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.usr.email} </strong> </h4>) : null}
-                            <h4>{t('content.clientPhone')}<strong> {value?.usr.phone} </strong></h4>
+                            </div>
+
+                            < div className='hotel-info'>
+                                <h3>{t('content.hotelTitle')}</h3>
+                                <h4>{t('content.hotelName')} <strong> {value?.usr.hotelName} </strong> </h4>
+                                <h4>{t('content.hotelAddress')}  <strong> {value?.usr.hotelAddress} </strong> </h4>
+                                <h4>Check In: <strong> {timeCheckIn} </strong></h4>
+                                <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
+                                <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
+                                <h4 style={{ fontStyle: 'italic' }}>Hotline: 0765.10.2222</h4>
+                            </div>
                         </div>
                         <div className='client-notification'>
-                            <h2 style={{
-                                color: 'red',
-                                fontSize: '20px',
-                                fontWeight: 'bold',
-                                textAlign: 'center',
-                                // marginTop: '100px'
-                                // position: 'absolute',
-                                // top: '10px',
-                                opacity: '0.7',
-                                //nghiêng chữ 45 độ
-                                // transform: 'rotate(-45deg)',
-                                fontStyle: 'italic',
+                        <h2 style={{
+                            color: 'red',
+                            fontSize: '20px',
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                            // marginTop: '100px'
+                            // position: 'absolute',
+                            // top: '10px',
+                            opacity: '0.7',
+                            //nghiêng chữ 45 độ
+                            // transform: 'rotate(-45deg)',
+                            fontStyle: 'italic',
 
-                            }}>
-                                {/* Đặt dịch vụ thành công */}
-                                {t('table.success')}
-                            </h2>
-                            {/* Vẽ table có border giữa các ô (không có header và mỗi dòng có ô title và mô tả) */}
-                            <table style={{
-                                borderCollapse: 'collapse',
-                                width: '100%',
-                                border: '1px solid black',
-                                textAlign: 'center'
-                            }}>
-                                <tbody>
-                                    <tr>
-                                        <th style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px'
-                                        }}>
-                                            {t('table.code')}
-                                        </th>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
-                                            color: 'red',
-                                            fontWeight: 'bold'
+                        }}>
+                            {/* Đặt dịch vụ thành công */}
+                            {t('table.success')}
+                        </h2>
+                        {/* Vẽ table có border giữa các ô (không có header và mỗi dòng có ô title và mô tả) */}
+                        <table style={{
+                            borderCollapse: 'collapse',
+                            width: '100%',
+                            border: '1px solid black',
+                            textAlign: 'center'
+                        }}>
+                            <tbody>
+                                <tr>
+                                    <th style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px'
+                                    }}>
+                                        {t('table.code')}
+                                    </th>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
+                                        color: 'red',
+                                        fontWeight: 'bold'
 
-                                        }}>
-                                            {value?.usr.code}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {value?.usr.code}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {t('table.roomType')}
-                                        </td>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {t('table.roomType')}
+                                    </td>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {value?.usr.roomType}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
-                                        }}>
-                                            {t('table.number')}
-                                        </td>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {value?.usr.roomType}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
+                                    }}>
+                                        {t('table.number')}
+                                    </td>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {value?.usr.quantity}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {value?.usr.quantity}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {t('table.totalPayment')}
-                                        </td>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {t('table.totalPayment')}
+                                    </td>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {value?.usr.totalPrice}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {value?.usr.totalPrice}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {t('table.paymentInfo')}
-                                        </td>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {t('table.paymentInfo')}
+                                    </td>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {value?.usr.paymentInfo}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
+                                    }}>
+                                        {value?.usr.paymentInfo}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
 
-                                        }}>
-                                            {t('table.note')}
-                                        </td>
-                                        <td style={{
-                                            border: '1px solid black',
-                                            width: '50%',
-                                            padding: '10px',
-                                            color: '#F99D1C',
-                                            fontStyle: 'italic',
-                                            fontSize: '14px',
-                                        }}>
-                                            {value?.usr.note}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-
-                        </div>
+                                    }}>
+                                        {t('table.note')}
+                                    </td>
+                                    <td style={{
+                                        border: '1px solid black',
+                                        width: '50%',
+                                        padding: '10px',
+                                        color: '#F99D1C',
+                                        fontStyle: 'italic',
+                                        fontSize: '14px',
+                                    }}>
+                                        {value?.usr.note}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-                    < div className='hotel-info'>
-                        <h3>{t('content.hotelTitle')}</h3>
-                        <h4>{t('content.hotelName')} <strong> {value?.usr.hotelName} </strong> </h4>
-                        <h4>{t('content.hotelAddress')}  <strong> {value?.usr.hotelAddress} </strong> </h4>
-                        <h4>Check In: <strong> {timeCheckIn} </strong></h4>
-                        <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
-
                     </div>
+                   
                 </div>
                 <div className='footer'>
                     <div className='regulations'>
@@ -296,6 +300,11 @@ const Voucher = () => {
                         <span className={"footer-text"}>{t('policy.content2')}</span>
                         <span className={"footer-text"}>{t('policy.content3')}</span>
                         <span className={"footer-text"}>{t('policy.content4')}</span>
+                    </div>
+                    <div className='thank'>
+                        <h4 style={{ color: "#3E78BC" }}>
+                            {t('thank')} <br />
+                        </h4>
                     </div>
                 </div>
             </div>
