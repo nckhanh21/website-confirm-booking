@@ -3,8 +3,9 @@ import { jsPDF } from 'jspdf';
 import * as htmlToImage from 'html-to-image';
 import './voucher.css';
 import logo from '../assets/logo.png';
-import { Button } from 'antd';
+import { Button, FloatButton } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { FileTextOutlined } from '@ant-design/icons';
 
 const Voucher = () => {
 
@@ -69,10 +70,29 @@ const Voucher = () => {
                 top: '10px',
                 right: '50px',
             }}>
-                Cậu nhấn vào nút Download để tải file về nhé  <br />
-                <Button type="primary" onClick={printDocument}>Download</Button> <br />
                 <Button type="primary" onClick={() => window.history.back()}>Back</Button>
-
+                <br />
+                <br />
+                {/* <Button type="primary" onClick={printDocument}>IN VOUCHER</Button> <br /> */}
+                <br />
+                <FloatButton
+                    icon={<FileTextOutlined />}
+                    description="EXPORT"
+                    onClick={printDocument}
+                    shape="square"
+                    style={{ right: 24 }}
+                />
+                <FloatButton
+                    description="HELP INFO"
+                    shape="square"
+                    style={{ right: 94 }}
+                />
+                <FloatButton
+                    icon={<FileTextOutlined />}
+                    description="HELP"
+                    shape="square"
+                    style={{ right: 164 }}
+                />
             </div>
             <div id="divToPrint" style={{
                 backgroundColor: '#f5f5f5',
@@ -148,9 +168,11 @@ const Voucher = () => {
                                             border: '1px solid black',
                                             width: '50%',
                                             padding: '10px',
+                                            color: 'red',
+                                            fontWeight: 'bold'
 
                                         }}>
-                                            {t('table.roomType')}
+                                            {value?.usr.code}
                                         </td>
                                     </tr>
                                     <tr>
@@ -168,7 +190,7 @@ const Voucher = () => {
                                             padding: '10px',
 
                                         }}>
-                                            {t('table.note')}
+                                            {value?.usr.roomType}
                                         </td>
                                     </tr>
                                     <tr>
@@ -176,7 +198,6 @@ const Voucher = () => {
                                             border: '1px solid black',
                                             width: '50%',
                                             padding: '10px',
-
                                         }}>
                                             {t('table.number')}
                                         </td>
@@ -186,7 +207,7 @@ const Voucher = () => {
                                             padding: '10px',
 
                                         }}>
-                                            {t('table.roomType')}
+                                            {value?.usr.quantity}
                                         </td>
                                     </tr>
                                     <tr>
@@ -204,7 +225,7 @@ const Voucher = () => {
                                             padding: '10px',
 
                                         }}>
-                                            {t('table.service3Description')}
+                                            {value?.usr.totalPrice}
                                         </td>
                                     </tr>
                                     <tr>
@@ -222,7 +243,7 @@ const Voucher = () => {
                                             padding: '10px',
 
                                         }}>
-                                            {t('table.service3Description')}
+                                            {value?.usr.paymentInfo}
                                         </td>
                                     </tr>
                                     <tr>
@@ -238,9 +259,11 @@ const Voucher = () => {
                                             border: '1px solid black',
                                             width: '50%',
                                             padding: '10px',
-
+                                            color: '#F99D1C',
+                                            fontStyle: 'italic',
+                                            fontSize: '14px',
                                         }}>
-                                            {t('table.service3Description')}
+                                            {value?.usr.note}
                                         </td>
                                     </tr>
                                 </tbody>

@@ -4,12 +4,12 @@
         "class": "Lớp",
         "text": "Đây là văn bản",
         "clientInfo": "Thông tin khách hàng",
-        "clientName": "Tên",
-        "clientPhone": "Số điện thoại",
-        "clientEmail": "Email",
-        "hotelTitle": "Thông tin khách sạn",
-        "hotelName": "Tên",
-        "hotelAddress": "Địa chỉ"
+        "clientName": "Tên:",
+        "clientPhone": "Số điện thoại:",
+        "clientEmail": "Email:",
+        "hotelTitle": "Thông tin khách sạn:",
+        "hotelName": "Tên:",
+        "hotelAddress": "Địa chỉ:"
     },
     "regulations" : {
         "title": "Quy định tại khách sạn/căn hộ ",

@@ -169,14 +169,14 @@ const InputForm = () => {
           <Input.TextArea />
         </Form.Item>
         <Form.Item
+          label="Ghi chú"
+          name="note"
+        >
+          <Input.TextArea />
+        </Form.Item>
+        <Form.Item
           label="Ngôn ngữ"
           name="language"
-          rules={[
-            {
-              required: false,
-              message: 'Please input your language!',
-            },
-          ]}
         >
           <Select onChange={changeLanguage}>
             <Select.Option value="en">English</Select.Option>

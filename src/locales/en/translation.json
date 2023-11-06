@@ -4,12 +4,12 @@
         "class": "Class",
         "text": "This is text",
         "clientInfo": "Client Info",
-        "clientName": "Name",
-        "clientPhone": "Phone",
-        "clientEmail": "Email",
-        "hotelTitle": "Hotel Infomation",
-        "hotelName": "Name",
-        "hotelAddress": "Address"
+        "clientName": "Name:",
+        "clientPhone": "Phone:",
+        "clientEmail": "Email::",
+        "hotelTitle": "Hotel Infomation:",
+        "hotelName": "Name:",
+        "hotelAddress": "Address:"
     },
     "regulations": {
         "title": "Regulations at hotels/apartments",
@@ -26,9 +26,12 @@
         "content4": "- Reservation period is 1 month from the scheduled check-in date, reserve or change date maximum 01 time."
     },
     "table": {
+        "success": "SERVICE BOOKING SUCCESSFUL",
         "code": "Code",
         "roomType": "Room Type",
         "number": "Number of residents",
-        "note": "Note"
+        "note": "Note",
+        "totalPayment": "Total Payment",
+        "paymentInfo": "Payment Information"
     }
 }
