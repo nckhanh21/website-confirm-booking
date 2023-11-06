@@ -32,7 +32,6 @@ const InputForm = () => {
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
-    i18n.changeLanguage(e.target.value);
   };
 
   const changeLanguage = (e) => {
