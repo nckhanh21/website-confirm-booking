@@ -23,7 +23,7 @@ const Voucher = () => {
 
     useState(() => {
         console.log(state);
-        if (state && state.checkinCheckout) {
+        if (state && state.usr.checkinCheckout) {
             const timeCheckIn = state?.usr.checkinCheckout[0]['$d']
             const timeCheckOut = state?.usr.checkinCheckout[1]['$d']
             //Convert time to string format dd/mm/yyyy
