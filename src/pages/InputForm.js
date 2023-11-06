@@ -22,6 +22,12 @@ const { TextArea } = Input;
 
 const InputForm = () => {
 
+  const [state, setState] = useState(() => {
+    if (!window.history.state?.usr?.usr) {
+      return {};
+    }
+    return window.history.state?.usr?.usr;
+  });
   const navigate = useNavigate();
 
   const onFinish = (value) => {
@@ -51,6 +57,9 @@ const InputForm = () => {
         style={{ maxWidth: 600 }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        //Điền sẵn dữ liệu nếu có dữ liệu truyền vào từ trang khác
+        initialValues={state}
+
       >
         <h3 style={{ textAlign: 'center' }}>Nhập thông tin booking</h3>
 
@@ -133,6 +142,8 @@ const InputForm = () => {
         >
           <RangePicker
             showTime={true}
+            format={"DD/MM/YYYY HH:mm"}
+
           />
         </Form.Item>
         <h3 style={{ textAlign: 'center' }}>Nhập thông tin phòng </h3>

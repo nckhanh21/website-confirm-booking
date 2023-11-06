@@ -6,13 +6,18 @@ import logo from '../assets/logo.png';
 import { Button, FloatButton } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { FileTextOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const Voucher = () => {
 
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     //get state from InputForm 
     const [state, setState] = useState(() => {
+        if (window.history.state === null) {
+            return null;
+        }
         return window.history.state;
     });
 
@@ -26,9 +31,10 @@ const Voucher = () => {
         if (state && state.usr.checkinCheckout) {
             const timeCheckIn = state?.usr.checkinCheckout[0]['$d']
             const timeCheckOut = state?.usr.checkinCheckout[1]['$d']
-            //Convert time to string format dd/mm/yyyy
-            const dateCheckIn = timeCheckIn.toLocaleDateString() + ' ' + timeCheckIn.toLocaleTimeString();
-            const dateCheckOut = timeCheckOut.toLocaleDateString() + ' ' + timeCheckOut.toLocaleTimeString();
+            //Convert time to string format dd/mm/yyyy hh:mm  (ex: 01/01/2021 12:00 )  (giờ và phút phải có 2 chữ số)
+            const dateCheckIn = `${timeCheckIn.getDate()}/${timeCheckIn.getMonth() + 1}/${timeCheckIn.getFullYear()} ${timeCheckIn.getHours()}:${timeCheckIn.getMinutes() < 10 ? '0' + timeCheckIn.getMinutes() : timeCheckIn.getMinutes()}`
+            const dateCheckOut = `${timeCheckOut.getDate()}/${timeCheckOut.getMonth() + 1}/${timeCheckOut.getFullYear()} ${timeCheckOut.getHours()}:${timeCheckOut.getMinutes() < 10 ? '0' + timeCheckOut.getMinutes() : timeCheckOut.getMinutes()}`
+            console.log(dateCheckIn);
             setTimeCheckIn(dateCheckIn);
             setTimeCheckOut(dateCheckOut);
         }
@@ -52,12 +58,30 @@ const Voucher = () => {
                     0,
                     width,
                     height);
-                pdf.save("download.pdf");
+                pdf.save("voucher.pdf");
 
             })
             .catch((error) => {
                 console.error('oops, something went wrong!', error);
             });
+    }
+
+    const printPng = () => {
+        const input = document.getElementById('divToPrint');
+        htmlToImage.toPng(input, { quality: 0.95 })
+            .then((dataUrl) => {
+                const link = document.createElement('a');
+                link.download = 'voucher.png';
+                link.href = dataUrl;
+                link.click();
+            })
+            .catch((error) => {
+                console.error('oops, something went wrong!', error);
+            });
+    }
+
+    const handleEdit = () => {
+        navigate("/", { state: value });
     }
 
 
@@ -75,23 +99,29 @@ const Voucher = () => {
                 <br />
                 {/* <Button type="primary" onClick={printDocument}>IN VOUCHER</Button> <br /> */}
                 <br />
+                <Button type="primary" onClick={handleEdit}>Sửa</Button>
+
                 <FloatButton
                     icon={<FileTextOutlined />}
-                    description="EXPORT"
+                    description="PDF"
                     onClick={printDocument}
                     shape="square"
-                    style={{ right: 24 }}
-                />
-                <FloatButton
-                    description="HELP INFO"
-                    shape="square"
-                    style={{ right: 94 }}
+                    style={{ right: 24, size: 'large' }}
+
                 />
                 <FloatButton
                     icon={<FileTextOutlined />}
-                    description="HELP"
+                    description="ẢNH"
+                    shape="square"
+                    style={{ right: 94 }}
+                    onClick={printPng}
+
+                />
+                <FloatButton
+                    description="EDIT"
                     shape="square"
                     style={{ right: 164 }}
+                    onClick={handleEdit}
                 />
             </div>
             <div id="divToPrint" style={{
@@ -132,7 +162,7 @@ const Voucher = () => {
                         <div>
                             <div className='client-container'>
                                 <div className='client-info'>
-                                    <h3>{t('content.clientInfo')}</h3>
+                                    <h3 className='info-title'>{t('content.clientInfo')}</h3>
                                     <h4>{t('content.clientName')} <strong> {value?.usr.name} </strong> </h4>
                                     {value?.usr?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.usr.email} </strong> </h4>) : null}
                                     <h4>{t('content.clientPhone')}<strong> {value?.usr.phone} </strong></h4>
@@ -141,7 +171,7 @@ const Voucher = () => {
                             </div>
 
                             < div className='hotel-info'>
-                                <h3>{t('content.hotelTitle')}</h3>
+                                <h3 className='info-title'>{t('content.hotelTitle')}</h3>
                                 <h4>{t('content.hotelName')} <strong> {value?.usr.hotelName} </strong> </h4>
                                 <h4>{t('content.hotelAddress')}  <strong> {value?.usr.hotelAddress} </strong> </h4>
                                 <h4 >Hotline: <strong>0765.10.2222</strong></h4>
@@ -162,7 +192,7 @@ const Voucher = () => {
                                 //nghiêng chữ 45 độ
                                 // transform: 'rotate(-45deg)',
                                 fontStyle: 'italic',
-
+                                whiteSpace: 'nowrap',
                             }}>
                                 {/* Đặt dịch vụ thành công */}
                                 {t('table.success')}
@@ -300,7 +330,7 @@ const Voucher = () => {
                         <span className={"footer-text"}>{t('regulations.content4')}</span>
                     </div>
                     <div className='policy'>
-                        <span  style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' }}>{t('policy.title')}</span>
+                        <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' }}>{t('policy.title')}</span>
                         <span className={"footer-text"}>{t('policy.content1')}</span>
                         <span className={"footer-text"}>{t('policy.content2')}</span>
                         <span className={"footer-text"}>{t('policy.content3')}</span>
@@ -314,7 +344,7 @@ const Voucher = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 }
 
