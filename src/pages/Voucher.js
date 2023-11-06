@@ -293,14 +293,14 @@ const Voucher = () => {
                 </div>
                 <div className='footer'>
                     <div className='regulations'>
-                        <h4>{t('regulations.title')}</h4>
+                        <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' }}>{t('regulations.title')}</span>
                         <span className={"footer-text"}>{t('regulations.content1')}</span>
                         <span className={"footer-text"}>{t('regulations.content2')}</span>
                         <span className={"footer-text"}>{t('regulations.content3')}</span>
                         <span className={"footer-text"}>{t('regulations.content4')}</span>
                     </div>
                     <div className='policy'>
-                        <h4>{t('policy.title')}</h4>
+                        <span  style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' }}>{t('policy.title')}</span>
                         <span className={"footer-text"}>{t('policy.content1')}</span>
                         <span className={"footer-text"}>{t('policy.content2')}</span>
                         <span className={"footer-text"}>{t('policy.content3')}</span>
