@@ -151,11 +151,11 @@ const Voucher = () => {
                         {/* mail  */}
                         <span>
                             <a href="mailto:" style={{ color: '#3E78BC' }}>
-                                trangph22housing@gmail.com
+                                sale05.22housing@gmail.com
                             </a>
                         </span>
                         {/* phone */}
-                        <span>  (+84) 977125169</span>
+                        <span>  (+84) 866809239</span>
                     </div>
 
                     <div className='voucher-info'>
@@ -174,7 +174,7 @@ const Voucher = () => {
                                 <h3 className='info-title'>{t('content.hotelTitle')}</h3>
                                 <h4>{t('content.hotelName')} <strong> {value?.usr.hotelName} </strong> </h4>
                                 <h4>{t('content.hotelAddress')}  <strong> {value?.usr.hotelAddress} </strong> </h4>
-                                <h4 >Hotline: <strong>0765.10.2222</strong></h4>
+                                <h4 >Hotline: <strong>0866809239</strong></h4>
                                 <h4>Check In: <strong> {timeCheckIn} </strong></h4>
                                 <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
                             </div>
