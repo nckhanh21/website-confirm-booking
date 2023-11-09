@@ -205,7 +205,7 @@ const Voucher = () => {
                                 textAlign: 'center'
                             }}>
                                 <tbody>
-                                    <tr>
+                                    {/* <tr>
                                         <th style={{
                                             border: '1px solid black',
                                             width: '50%',
@@ -223,7 +223,7 @@ const Voucher = () => {
                                         }}>
                                             {value?.usr.code}
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                     <tr>
                                         <td style={{
                                             border: '1px solid black',
