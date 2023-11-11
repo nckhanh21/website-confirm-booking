@@ -26,7 +26,7 @@
         "content4" : "- Thời gian bảo lưu 1 tháng kể từ ngày lịch check in, bảo lưu hoặc đổi ngày tối đa 01 lần."
     },
     "table": {
-        "success": "ĐẶT DỊCH VỤ THÀNH CÔNG",
+        "success": "ĐẶT PHÒNG THÀNH CÔNG",
         "code": "Mã phòng",
         "roomType": "Loại phòng",   
         "number": "Số lượng",

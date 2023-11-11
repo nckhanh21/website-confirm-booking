@@ -1,8 +1,11 @@
 import { PlusOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import i18n from '../translation/i18n';
+import dayjs from 'dayjs';
+import './styles/input-form.css';
 import {
+  AutoComplete,
   Button,
   Cascader,
   Checkbox,
@@ -17,23 +20,42 @@ import {
   TreeSelect,
   Upload,
 } from 'antd';
+import { hotelList, roomTypeList } from '../constants/hotel';
+import { GlobalState } from '../context/GlobalProvider';
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
+const dateFormat = 'YYYY-MM-DD HH:mm';
 const InputForm = () => {
 
-  const [state, setState] = useState(() => {
-    if (!window.history.state?.usr?.usr) {
-      return {};
-    }
-    return window.history.state?.usr?.usr;
-  });
+  const [hotelOptions, setHotelOptions] = useState([]);
+
+  const { bookingInfo, setBookingInfo } = GlobalState();
+
+  const [form] = Form.useForm();
+
+
+  useEffect(() => {
+    loadListHotel();
+  }, []);
+
+  const loadListHotel = () => {
+    const hotelOptions = hotelList.map((hotel) => ({
+      label: hotel.address + ' - ' + hotel.name,
+      value: hotel.id,
+      address: hotel.address,
+    }));
+    setHotelOptions(hotelOptions);
+  }
+
+
   const navigate = useNavigate();
 
   const onFinish = (value) => {
     //chuyển đến trang voucher và truyền dữ liệu
     console.log('Success:', value);
-    navigate("/voucher", { state: value });
+    setBookingInfo(value);
+    navigate("/voucher");
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -45,9 +67,27 @@ const InputForm = () => {
     i18n.changeLanguage(e);
   }
 
+  const filterOption = (input, option) =>
+    (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+
+
+  const onChangeHotel = (value) => {
+    console.log(value);
+    //lấy ra hotel theo id
+    const hotel = hotelList.find((hotel) => hotel.id === value);
+    // setHotel(hotel);
+    //đổi giá trị của form item hotelAddress
+    form.setFieldsValue({
+      hotelAddress: hotel.address,
+      hotelName: hotel.name,
+    });
+  }
+
+
   return (
     <div className='container' >
       <Form
+        form={form}
         className='form-container'
         name="basic"
         labelCol={{ span: 10 }}
@@ -58,7 +98,7 @@ const InputForm = () => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         //Điền sẵn dữ liệu nếu có dữ liệu truyền vào từ trang khác
-        initialValues={state}
+        initialValues={bookingInfo}
 
       >
         <h3 style={{ textAlign: 'center' }}>Nhập thông tin booking</h3>
@@ -89,7 +129,7 @@ const InputForm = () => {
           <Input />
         </Form.Item>
         {/* //Nhập email */}
-        <Form.Item
+        {/* <Form.Item
           label="Email"
           name="email"
           rules={[
@@ -100,34 +140,30 @@ const InputForm = () => {
           ]}
         >
           <Input />
-        </Form.Item>
+        </Form.Item> */}
 
 
 
         <Form.Item
           label="Tên khách sạn"
           name="hotelName"
-          rules={[
-            {
-              required: false,
-              message: 'Please input your hotel name!',
-            },
-          ]}
         >
-          <Input />
+          <Select
+            showSearch
+            placeholder="Chọn khách sạn"
+            optionFilterProp="children"
+            onChange={onChangeHotel}
+            // onSearch={onSearch}
+            filterOption={filterOption}
+            options={hotelOptions}
+          />
         </Form.Item>
         {/* Địa chỉ khách sạn */}
         <Form.Item
           label="Địa chỉ khách sạn"
           name="hotelAddress"
-          rules={[
-            {
-              required: false,
-              message: 'Please input your hotel address!',
-            },
-          ]}
         >
-          <Input />
+          <Input disabled />
         </Form.Item>
         {/* Giờ checkin và checkout */}
         <Form.Item
@@ -143,22 +179,32 @@ const InputForm = () => {
           <RangePicker
             showTime={true}
             format={"DD/MM/YYYY HH:mm"}
-
+          // Cài đặt mặc định giá trị phút và giờ 
+          // defaultValue={[
+          //   dayjs().hour(14).minute(0),
+          //   dayjs().add(1, 'day').hour(12).minute(0),
+          // ]}
           />
         </Form.Item>
         <h3 style={{ textAlign: 'center' }}>Nhập thông tin phòng </h3>
-
+        {/* 
         <Form.Item
           label="Mã phòng"
           name="code"
         >
           <Input />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
           label="Loại phòng"
           name="roomType"
         >
-          <Input />
+          <AutoComplete
+            options={roomTypeList}
+            placeholder="Chọn loại phòng"
+            filterOption={(inputValue, option) =>
+              option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+            }
+          />
         </Form.Item>
         <Form.Item
           label="Số lượng"
@@ -188,7 +234,7 @@ const InputForm = () => {
           label="Ngôn ngữ"
           name="language"
         >
-          <Select onChange={changeLanguage}>
+          <Select onChange={changeLanguage} defaultValue={'vi'}>
             <Select.Option value="en">English</Select.Option>
             <Select.Option value="vi">Vietnamese</Select.Option>
           </Select>

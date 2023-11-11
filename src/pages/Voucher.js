@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { jsPDF } from 'jspdf';
 import * as htmlToImage from 'html-to-image';
-import './voucher.css';
+import './styles/voucher.css';
 import logo from '../assets/logo.png';
 import { Button, FloatButton } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { FileTextOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { GlobalState } from '../context/GlobalProvider';
 
 const Voucher = () => {
 
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const { bookingInfo , setBookingInfo} = GlobalState();
+
+    useEffect(() => {
+        console.log("intu", bookingInfo);
+    }, []);
 
     //get state from InputForm 
-    const [state, setState] = useState(() => {
-        if (window.history.state === null) {
-            return null;
-        }
-        return window.history.state;
-    });
+    const [state, setState] = useState(bookingInfo);
 
     const [value, setValue] = useState();
     const [timeCheckIn, setTimeCheckIn] = useState('');
@@ -28,9 +29,9 @@ const Voucher = () => {
 
     useState(() => {
         console.log(state);
-        if (state && state.usr.checkinCheckout) {
-            const timeCheckIn = state?.usr.checkinCheckout[0]['$d']
-            const timeCheckOut = state?.usr.checkinCheckout[1]['$d']
+        if (state && state.checkinCheckout) {
+            const timeCheckIn = state?.checkinCheckout[0]['$d']
+            const timeCheckOut = state?.checkinCheckout[1]['$d']
             //Convert time to string format dd/mm/yyyy hh:mm  (ex: 01/01/2021 12:00 )  (giờ và phút phải có 2 chữ số)
             const dateCheckIn = `${timeCheckIn.getDate()}/${timeCheckIn.getMonth() + 1}/${timeCheckIn.getFullYear()} ${timeCheckIn.getHours()}:${timeCheckIn.getMinutes() < 10 ? '0' + timeCheckIn.getMinutes() : timeCheckIn.getMinutes()}`
             const dateCheckOut = `${timeCheckOut.getDate()}/${timeCheckOut.getMonth() + 1}/${timeCheckOut.getFullYear()} ${timeCheckOut.getHours()}:${timeCheckOut.getMinutes() < 10 ? '0' + timeCheckOut.getMinutes() : timeCheckOut.getMinutes()}`
@@ -81,10 +82,13 @@ const Voucher = () => {
     }
 
     const handleEdit = () => {
-        navigate("/", { state: value });
+        navigate("/");
     }
 
-
+    const handleBack = () => {
+        setBookingInfo({});
+        navigate("/");
+    }
 
 
     return (
@@ -94,7 +98,7 @@ const Voucher = () => {
                 top: '10px',
                 right: '50px',
             }}>
-                <Button type="primary" onClick={() => window.history.back()}>Back</Button>
+                <Button type="primary" onClick={handleBack}>Back</Button>
                 <br />
                 <br />
                 {/* <Button type="primary" onClick={printDocument}>IN VOUCHER</Button> <br /> */}
@@ -163,17 +167,17 @@ const Voucher = () => {
                             <div className='client-container'>
                                 <div className='client-info'>
                                     <h3 className='info-title'>{t('content.clientInfo')}</h3>
-                                    <h4>{t('content.clientName')} <strong> {value?.usr.name} </strong> </h4>
-                                    {value?.usr?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.usr.email} </strong> </h4>) : null}
-                                    <h4>{t('content.clientPhone')}<strong> {value?.usr.phone} </strong></h4>
+                                    <h4>{t('content.clientName')} <strong> {value?.name} </strong> </h4>
+                                    {value?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.email} </strong> </h4>) : null}
+                                    <h4>{t('content.clientPhone')}<strong> {value?.phone} </strong></h4>
                                 </div>
 
                             </div>
 
                             < div className='hotel-info'>
                                 <h3 className='info-title'>{t('content.hotelTitle')}</h3>
-                                <h4>{t('content.hotelName')} <strong> {value?.usr.hotelName} </strong> </h4>
-                                <h4>{t('content.hotelAddress')}  <strong> {value?.usr.hotelAddress} </strong> </h4>
+                                <h4>{t('content.hotelName')} <strong> {value?.hotelName} </strong> </h4>
+                                <h4>{t('content.hotelAddress')}  <strong> {value?.hotelAddress} </strong> </h4>
                                 <h4 >Hotline: <strong>0866809239</strong></h4>
                                 <h4>Check In: <strong> {timeCheckIn} </strong></h4>
                                 <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
@@ -221,7 +225,7 @@ const Voucher = () => {
                                             fontWeight: 'bold'
 
                                         }}>
-                                            {value?.usr.code}
+                                            {value?.code}
                                         </td>
                                     </tr> */}
                                     <tr>
@@ -229,7 +233,7 @@ const Voucher = () => {
                                             border: '1px solid black',
                                             width: '50%',
                                             padding: '10px',
-
+                                            fontWeight: 'bold'
                                         }}>
                                             {t('table.roomType')}
                                         </td>
@@ -237,9 +241,11 @@ const Voucher = () => {
                                             border: '1px solid black',
                                             width: '50%',
                                             padding: '10px',
+                                            color: 'red',
+                                            fontWeight: 'bold'
 
                                         }}>
-                                            {value?.usr.roomType}
+                                            {value?.roomType}
                                         </td>
                                     </tr>
                                     <tr>
@@ -247,6 +253,7 @@ const Voucher = () => {
                                             border: '1px solid black',
                                             width: '50%',
                                             padding: '10px',
+                                            
                                         }}>
                                             {t('table.number')}
                                         </td>
@@ -256,7 +263,7 @@ const Voucher = () => {
                                             padding: '10px',
 
                                         }}>
-                                            {value?.usr.quantity}
+                                            {value?.quantity}
                                         </td>
                                     </tr>
                                     <tr>
@@ -274,7 +281,7 @@ const Voucher = () => {
                                             padding: '10px',
 
                                         }}>
-                                            {value?.usr.totalPrice}
+                                            {value?.totalPrice}
                                         </td>
                                     </tr>
                                     <tr>
@@ -292,7 +299,7 @@ const Voucher = () => {
                                             padding: '10px',
 
                                         }}>
-                                            {value?.usr.paymentInfo}
+                                            {value?.paymentInfo}
                                         </td>
                                     </tr>
                                     <tr>
@@ -312,7 +319,7 @@ const Voucher = () => {
                                             fontStyle: 'italic',
                                             fontSize: '14px',
                                         }}>
-                                            {value?.usr.note}
+                                            {value?.note}
                                         </td>
                                     </tr>
                                 </tbody>
