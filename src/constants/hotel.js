@@ -98,7 +98,13 @@ export const hotelList = [
 
 export const roomTypeList = [
     {
-        value: 'Standart Superior Delux',
+        value: 'Standart',
+    },
+    {
+        value: 'Superior',
+    },
+    {
+        value: 'Delux',
     },
     {
         value: 'Junior Suite',
