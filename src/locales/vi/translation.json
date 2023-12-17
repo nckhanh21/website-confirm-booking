@@ -4,7 +4,7 @@
         "class": "Lớp",
         "text": "Đây là văn bản",
         "clientInfo": "Thông tin khách hàng",
-        "clientName": "Tên:",
+        "clientName": "Tên",
         "clientPhone": "Số điện thoại:",
         "clientEmail": "Email:",
         "hotelTitle": "Thông tin khách sạn:",
@@ -13,10 +13,14 @@
     },
     "regulations" : {
         "title": "Quy định tại khách sạn/căn hộ ",
-        "content1": "1. Sử dụng căn hộ đúng mục đích để ở, không sử dụng chất kích thích, bay lắc,... tại căn hộ. Nếu cố tình CA phường hoặc ban quản lý trực tiếp lên xử lý.",
-        "content2": "2.  Hạn chế làm ồn sau 22h, ảnh hưởng đến mọi người xung quanh.",
-        "content3": "3. Đảm bảo giữ gìn đồ đạc trong căn hộ, có bất cứ vấn đề nào báo ngay cho host. ",
-        "content4": "4. Check out để thẻ tại bàn trong căn hộ, đóng cửa cẩn thận, báo host là đã check out."
+        "content1": "✅ Vui lòng cung cấp ảnh chụp CCCD trước khi nhận phòng. Với người nước ngoài vui lòng cung cấp ảnh chụp Hộ chiếu và Thị thực/Thẻ tạm trú còn hạn.",
+        "content2": "✅ Dọn dẹp căn hộ nếu tổ chức ăn uống, lẩu, nướng... Nếu không dọn vui lòng nộp phí vệ sinh: 200.000 -> 500.000 (tuỳ mức độ).",
+        "content3": "✅ Thực hiện theo nội quy của khu Chung Cư và tuân thủ luật pháp Việt Nam, tự chịu trách nhiệm trước hành vi của mình.",
+        "content4": "❌ Không ở quá số người quy định: Studio và 1 ngủ ở tối đa 2 người lớn, 2 ngủ ở tối đa 4 người lớn, 3 ngủ ở tối đa 6 người lớn. Chúng tôi có quyền từ chối cho quý khách nhận phòng và không hoàn lại tiền nếu quý khách ở quá số người quy định.",
+        "content5": "❌ Không sử dụng và tàng chữ chất cấm dưới mọi hình thức. Không tổ chức đánh bạc tại căn hộ. Nếu quý khách vi phạm, chúng tôi sẽ không hoàn lại tiền  cọc.",
+        "content6": "❌ Không mang đồ căn hộ ra ngoài sử dụng, không kê kéo đồ ra khỏi vị trí như sofa, bàn ăn. Nếu vi phạm, chúng tôi sẽ thu phí kê lại đồ đạc tùy theo tình hình thực tế.",
+        "content7": "❌ Không dùng chăn ga, khăn tắm thay thế trong tủ dự phòng, nếu lôi ra dùng chúng tôi thu phí: 200.000 cho việc giặt là.",
+        "content8": "❌ Không làm ồn trong khoảng thời gian từ 22h đến 8h sáng hôm sau để tránh ảnh hưởng các căn hộ khác."
     },
     "policy" : {
         "title" : "Chính sách bảo lưu phòng",
@@ -26,10 +30,12 @@
         "content4" : "- Thời gian bảo lưu 1 tháng kể từ ngày lịch check in, bảo lưu hoặc đổi ngày tối đa 01 lần."
     },
     "table": {
+        "no": "STT",
         "success": "ĐẶT PHÒNG THÀNH CÔNG",
         "code": "Mã phòng",
         "roomType": "Loại phòng",   
         "number": "Số lượng",
+        "numberOfPeople": "Số người",
         "note": "Ghi chú",
         "totalPayment": "Tổng tiền",
         "paymentInfo": "Thông tin thanh toán"

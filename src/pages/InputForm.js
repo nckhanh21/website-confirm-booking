@@ -13,6 +13,7 @@ import {
   Form,
   Input,
   InputNumber,
+  Modal,
   Radio,
   Select,
   Slider,
@@ -27,6 +28,7 @@ const { TextArea } = Input;
 
 const dateFormat = 'YYYY-MM-DD HH:mm';
 const InputForm = () => {
+  const [openModalAddHotel, setOpenModalAddHotel] = useState(false);
 
   const [hotelOptions, setHotelOptions] = useState([]);
 
@@ -55,7 +57,13 @@ const InputForm = () => {
     //chuyển đến trang voucher và truyền dữ liệu
     console.log('Success:', value);
     setBookingInfo(value);
-    navigate("/voucher");
+    if (value.template === 'normal') {
+      navigate('/voucher');
+    } else if (value.template === 'chrismas') {
+      navigate('/voucher-chrismas');
+    } else if (value.template === 'chrismas2') {
+      navigate('/voucher-chrismas-2');
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -81,6 +89,11 @@ const InputForm = () => {
       hotelAddress: hotel.address,
       hotelName: hotel.name,
     });
+  }
+
+  const handleOpenModalAddHotel = () => {
+    console.log('handleOpenModalAddHotel');
+    setOpenModalAddHotel(true);
   }
 
 
@@ -157,7 +170,8 @@ const InputForm = () => {
             filterOption={filterOption}
             options={hotelOptions}
             //thêm khách sạn mới
-            suffixIcon={<PlusOutlined />}
+            suffixIcon={<PlusOutlined onClick={handleOpenModalAddHotel} />}
+          //click suffixIcon
           />
         </Form.Item>
         {/* Địa chỉ khách sạn */}
@@ -182,11 +196,11 @@ const InputForm = () => {
             showTime={true}
             format={"DD/MM/YYYY HH:mm"}
             minuteStep={15}
-          // Cài đặt mặc định giá trị phút và giờ 
-          // defaultValue={[
-          //   dayjs().hour(14).minute(0),
-          //   dayjs().add(1, 'day').hour(12).minute(0),
-          // ]}
+            // Cài đặt mặc định giá trị phút và giờ 
+            // defaultValue={[
+            //   dayjs().hour(14).minute(0),
+            //   dayjs().add(1, 'day').hour(12).minute(0),
+            // ]}
           />
         </Form.Item>
         <h3 style={{ textAlign: 'center' }}>Nhập thông tin phòng </h3>
@@ -212,6 +226,12 @@ const InputForm = () => {
         <Form.Item
           label="Số lượng"
           name="quantity"
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Số người"
+          name="numberOfPeople"
         >
           <Input />
         </Form.Item>
@@ -242,11 +262,55 @@ const InputForm = () => {
             <Select.Option value="vi">Vietnamese</Select.Option>
           </Select>
         </Form.Item>
+        <Form.Item
+          label="Template"
+          name="template"
+        >
+          <Select defaultValue={'normal'}>
+            <Select.Option value="normal">Normal</Select.Option>
+            <Select.Option value="chrismas">Chrismas</Select.Option>
+            <Select.Option value="chrismas2">Chrismas 2</Select.Option>
+          </Select>
+        </Form.Item>
 
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
+        {/* thêm khách sạn mới */}
+
       </Form>
+      <Modal title="Thêm khách sạn mới" open={openModalAddHotel}
+        footer={null}
+      >
+        <Form
+
+          name="basic"
+          labelCol={{ span: 10 }}
+          wrapperCol={{ span: 14 }}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            label="Tên khách sạn"
+            name="name"
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Địa chỉ"
+            name="address"
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            //vị trí bên phải 
+            wrapperCol={{ offset: 10, span: 14 }}
+          >
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };

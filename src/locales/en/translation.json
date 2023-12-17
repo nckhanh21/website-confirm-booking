@@ -26,10 +26,12 @@
         "content4": "- Reservation period is 1 month from the scheduled check-in date, reserve or change date maximum 01 time."
     },
     "table": {
+        "no" : "No.",
         "success": "BOOKING SUCCESSFUL",
         "code": "Code",
         "roomType": "Room Type",
         "number": "Number of residents",
+        "numberOfPeople": "Number of people",
         "note": "Note",
         "totalPayment": "Total Payment",
         "paymentInfo": "Payment Information"

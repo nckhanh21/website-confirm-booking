@@ -335,6 +335,10 @@ const Voucher = () => {
                         <span className={"footer-text"}>{t('regulations.content2')}</span>
                         <span className={"footer-text"}>{t('regulations.content3')}</span>
                         <span className={"footer-text"}>{t('regulations.content4')}</span>
+                        <span className={"footer-text"}>{t('regulations.content5')}</span>
+                        <span className={"footer-text"}>{t('regulations.content6')}</span>
+                        <span className={"footer-text"}>{t('regulations.content7')}</span>
+                        <span className={"footer-text"}>{t('regulations.content8')}</span>
                     </div>
                     <div className='policy'>
                         <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' }}>{t('policy.title')}</span>

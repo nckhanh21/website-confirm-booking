@@ -11,3 +11,9 @@
   
 }
 
+.ant-table-cell {
+  background-color: transparent !important;
+}
+.ant-table {
+  background-color: transparent !important;
+}
