@@ -75,22 +75,22 @@ export const hotelList = [
     },
     {
         id: 11,
-        name: "22Land Residence Suite",
+        name: "22Land Residence Hotel",
         address: "50 Trương Công Giai, Cầu Giấy, HN",
     },
     {
         id: 12,
-        name: "22Land Residence Suite",
+        name: "22Land Residence Hotel",
         address: "02 Nguyễn Đình Hoàn, Cầu Giấy, HN",
     },
     {
         id: 13,
-        name: "22Land Residence Suite",
+        name: "22Land Residence Hotel",
         address: "71 Hàng Bông, Hoàn Kiếm, HN",
     },
     {
         id: 14,
-        name: "22Land Residence Suite",
+        name: "22Land Residence Hotel",
         address: "52 Ngõ Huyện, Hoàn Kiếm, HN",
     },
     {
