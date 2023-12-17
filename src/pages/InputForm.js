@@ -156,6 +156,8 @@ const InputForm = () => {
             // onSearch={onSearch}
             filterOption={filterOption}
             options={hotelOptions}
+            //thêm khách sạn mới
+            suffixIcon={<PlusOutlined />}
           />
         </Form.Item>
         {/* Địa chỉ khách sạn */}
@@ -179,6 +181,7 @@ const InputForm = () => {
           <RangePicker
             showTime={true}
             format={"DD/MM/YYYY HH:mm"}
+            minuteStep={15}
           // Cài đặt mặc định giá trị phút và giờ 
           // defaultValue={[
           //   dayjs().hour(14).minute(0),
