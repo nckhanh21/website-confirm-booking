@@ -33,19 +33,19 @@ h4 {
 }
 
 .footer {
-    margin: 1em;
+    margin: 0 .2em ;
     /* //Nếu dài quá thì sẽ xuống dòng */
     word-wrap: break-word;
     /* //khoảng cách giữa các dòng */
     line-height: 1.2em;
     /* căn xuống cuối trang giấy A4 */
     position: absolute;
-    bottom: 0;
+    bottom: -10;
 
 }
 
 .regulations {
-    border: 1px solid black;
+    border: 1px solid #65D60B;
     padding: .5em;
     display: flex;
     flex-direction: column;
@@ -53,7 +53,7 @@ h4 {
 }
 
 .policy {
-    border: 1px solid black;
+    border: 1px solid #65D60B;
     padding: .5em;
     display: flex;
     flex-direction: column;
