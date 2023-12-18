@@ -95,14 +95,15 @@ export const hotelList = [
     },
     {
         id: 15,
-        name: "22Land Residence Suite",
+        name: "Lake View Hotel",
         address: "65 Trích Sài, Tây Hồ, Hà Nội",
     },
     {
         id: 16,
         name: "22Land Classic Suite",
         address: "số 35 ngõ 75, Trần Thái Tông, Cầu Giấy, Hà Nội",
-    }
+    },
+
 ]
 
 
