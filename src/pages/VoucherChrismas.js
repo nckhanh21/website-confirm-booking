@@ -97,6 +97,7 @@ const VoucherChrismas = () => {
                 position: 'absolute',
                 top: '10px',
                 right: '50px',
+                
             }}>
                 <Button type="primary" onClick={handleBack}>Back</Button>
                 <br />
@@ -129,7 +130,7 @@ const VoucherChrismas = () => {
                 />
             </div>
             <div id="divToPrint" style={{
-                backgroundColor: '#f5f5f5',
+                backgroundColor: '#D6001C',
                 width: '210mm',
                 minHeight: '297mm',
                 marginLeft: 'auto',
@@ -140,6 +141,8 @@ const VoucherChrismas = () => {
                 backgroundSize: 'contain',
                 position: 'absolute',
                 //background opacity
+                //chuyển tất cả nội dung bên trong thành chữ trắng
+                color: '#fff',
                 
             }}>
                 <div className='content'>
@@ -156,7 +159,7 @@ const VoucherChrismas = () => {
                         <span> PHAN HUYỀN TRANG (Ms.) Sales Manager </span>
                         {/* mail  */}
                         <span>
-                            <a href="mailto:" style={{ color: '#3E78BC' }}>
+                            <a href="mailto:" style={{ color: '#65D60B' }}>
                                 sale05.22housing@gmail.com
                             </a>
                         </span>
@@ -168,7 +171,7 @@ const VoucherChrismas = () => {
                         <div>
                             <div className='client-container'>
                                 <div className='client-info'>
-                                    <h3 className='info-title'>{t('content.clientInfo')}</h3>
+                                    <h3 className='info-title' style={{color: "#65D60B"}}>{t('content.clientInfo')}</h3>
                                     <h4>{t('content.clientName')} <strong> {value?.name} </strong> </h4>
                                     {value?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.email} </strong> </h4>) : null}
                                     <h4>{t('content.clientPhone')}<strong> {value?.phone} </strong></h4>
@@ -177,7 +180,7 @@ const VoucherChrismas = () => {
                             </div>
 
                             < div className='hotel-info'>
-                                <h3 className='info-title'>{t('content.hotelTitle')}</h3>
+                                <h3 className='info-title'style={{color: "#65D60B"}}>{t('content.hotelTitle')}</h3>
                                 <h4>{t('content.hotelName')} <strong> {value?.hotelName} </strong> </h4>
                                 <h4>{t('content.hotelAddress')}  <strong> {value?.hotelAddress} </strong> </h4>
                                 <h4 >Hotline: <strong>0866809239</strong></h4>
@@ -187,14 +190,13 @@ const VoucherChrismas = () => {
                         </div>
                         <div className='client-notification'>
                             <h2 style={{
-                                color: 'red',
-                                fontSize: '20px',
+                                color: '#65D60B',
+                                fontSize: '25px',
                                 fontWeight: 'bold',
                                 textAlign: 'center',
                                 // marginTop: '100px'
                                 // position: 'absolute',
                                 // top: '10px',
-                                opacity: '0.7',
                                 //nghiêng chữ 45 độ
                                 // transform: 'rotate(-45deg)',
                                 fontStyle: 'italic',
@@ -207,7 +209,8 @@ const VoucherChrismas = () => {
                             <table style={{
                                 borderCollapse: 'collapse',
                                 width: '100%',
-                                border: '1px solid black',
+                                border: '1px solid',
+                                borderColor: "#65D60B",
                                 textAlign: 'center',
                                 minWidth: '200px',
                                 height: '80%',
@@ -215,7 +218,7 @@ const VoucherChrismas = () => {
                                 <tbody>
                                     {/* <tr>
                                         <th style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px'
                                         }}>
@@ -234,7 +237,6 @@ const VoucherChrismas = () => {
                                     </tr> */}
                                     <tr>
                                         <td style={{
-                                            border: '1px solid black',
                                             width: '50%',
                                             padding: '10px',
                                             fontWeight: 'bold'
@@ -242,11 +244,12 @@ const VoucherChrismas = () => {
                                             {t('table.roomType')}
                                         </td>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
-                                            color: 'red',
-                                            fontWeight: 'bold'
+                                            color: '#65D60B',
+                                            fontWeight: 'bold',
+                                            fontSize: '20px'
 
                                         }}>
                                             {value?.roomType}
@@ -254,7 +257,7 @@ const VoucherChrismas = () => {
                                     </tr>
                                     <tr>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
                                             
@@ -262,7 +265,7 @@ const VoucherChrismas = () => {
                                             {t('table.number')}
                                         </td>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
 
@@ -272,7 +275,7 @@ const VoucherChrismas = () => {
                                     </tr>
                                     <tr>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
                                             
@@ -280,7 +283,7 @@ const VoucherChrismas = () => {
                                             {t('table.numberOfPeople')}
                                         </td>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
 
@@ -290,7 +293,7 @@ const VoucherChrismas = () => {
                                     </tr>
                                     <tr>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
 
@@ -298,7 +301,7 @@ const VoucherChrismas = () => {
                                             {t('table.totalPayment')}
                                         </td>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
 
@@ -308,7 +311,7 @@ const VoucherChrismas = () => {
                                     </tr>
                                     <tr>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
 
@@ -316,7 +319,7 @@ const VoucherChrismas = () => {
                                             {t('table.paymentInfo')}
                                         </td>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
 
@@ -326,7 +329,7 @@ const VoucherChrismas = () => {
                                     </tr>
                                     <tr>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
 
@@ -334,7 +337,7 @@ const VoucherChrismas = () => {
                                             {t('table.note')}
                                         </td>
                                         <td style={{
-                                            border: '1px solid black',
+                                            border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
                                             color: '#F99D1C',

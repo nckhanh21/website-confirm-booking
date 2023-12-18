@@ -266,7 +266,7 @@ const InputForm = () => {
           label="Template"
           name="template"
         >
-          <Select defaultValue={'normal'}>
+          <Select >
             <Select.Option value="normal">Normal</Select.Option>
             <Select.Option value="chrismas">Chrismas</Select.Option>
             <Select.Option value="chrismas2">Chrismas 2</Select.Option>
