@@ -12,11 +12,15 @@
         "hotelAddress": "Address:"
     },
     "regulations": {
-        "title": "Regulations at hotels/apartments",
-        "content1": "1. Use the apartment for the right purpose, do not use stimulants, drugs, etc. in the apartment. If it is intentional, the ward police or management board will handle it directly.",
-        "content2": "2. Limit making noise after 10pm, affecting people around.",
-        "content3": "3. Make sure to preserve the furniture in the apartment. If there are any problems, notify the host immediately.",
-        "content4": "4. Check out, leave your card at the table in the apartment, close the door carefully, and notify the host that you have checked out."
+        "title": "Hotel/Apartment Regulations",
+        "content1": "✅ Please provide a photo of your ID card before checking in. For foreigners, please provide a photo of your Passport and valid Visa/Residence Permit.",
+        "content2": "✅ Clean up the apartment after organizing meals, hot pot, barbecue, etc. If not cleaned, a hygiene fee of 200,000 VND to 500,000 VND will be charged (depending on the level of cleanliness).",
+        "content3": "✅ Follow the regulations of the Apartment Complex and adhere to the laws of Vietnam, taking responsibility for your actions.",
+        "content4": "❌ Do not exceed the specified number of occupants: Studios and 1-bedroom units accommodate a maximum of 2 adults, 2-bedroom units accommodate a maximum of 4 adults, and 3-bedroom units accommodate a maximum of 6 adults. We reserve the right to refuse check-in and will not refund if you exceed the specified number of occupants.",
+        "content5": "❌ Do not use or store prohibited substances in any form. Do not organize gambling in the apartment. If you violate these rules, we will not refund the deposit.",
+        "content6": "❌ Do not take apartment items outside for personal use. Do not rearrange furniture such as sofas and dining tables. If violated, we will charge a rearrangement fee based on the actual situation.",
+        "content7": "❌ Do not use spare blankets, sheets, and towels stored in the emergency cabinet. If used, a laundry fee of 200,000 VND will be charged.",
+        "content8": "❌ Keep quiet between 22:00 and 8:00 the next morning to avoid disturbing other apartments."
     },
     "policy": {
         "title": "Room Reservation Policy",
@@ -26,7 +30,7 @@
         "content4": "- Reservation period is 1 month from the scheduled check-in date, reserve or change date maximum 01 time."
     },
     "table": {
-        "no" : "No.",
+        "no": "No.",
         "success": "BOOKING SUCCESSFUL",
         "code": "Code",
         "roomType": "Room Type",
