@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { jsPDF } from 'jspdf';
 import * as htmlToImage from 'html-to-image';
-import './styles/voucher.css';
+import './styles/voucher-chrismas.css';
 import logo from '../assets/logo-chrismas.png';
 import { Button, FloatButton } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -373,7 +373,7 @@ const VoucherChrismas = () => {
                         <span className={"footer-text"}>{t('policy.content4')}</span>
                     </div>
                     <div className='thank'>
-                        <h4 style={{ color: "#3E78BC" }}>
+                        <h4 style={{ color: "#65D60B" }}>
                             {t('thank')} <br />
                         </h4>
                     </div>

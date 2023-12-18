@@ -3,10 +3,10 @@
         "functional": "Functional",
         "class": "Class",
         "text": "This is text",
-        "clientInfo": "Client Info",
+        "clientInfo": "Guest Info",
         "clientName": "Name:",
         "clientPhone": "Phone:",
-        "clientEmail": "Email::",
+        "clientEmail": "Email:",
         "hotelTitle": "Hotel Infomation:",
         "hotelName": "Name:",
         "hotelAddress": "Address:"
@@ -31,7 +31,7 @@
         "code": "Code",
         "roomType": "Room Type",
         "number": "Number of residents",
-        "numberOfPeople": "Number of people",
+        "numberOfPeople": "Number of guests",
         "note": "Note",
         "totalPayment": "Total Payment",
         "paymentInfo": "Payment Information"

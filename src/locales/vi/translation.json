@@ -34,8 +34,8 @@
         "success": "ĐẶT PHÒNG THÀNH CÔNG",
         "code": "Mã phòng",
         "roomType": "Loại phòng",   
-        "number": "Số lượng",
-        "numberOfPeople": "Số người",
+        "number": "Số lượng phòng",
+        "numberOfPeople": "Số lượng khách",
         "note": "Ghi chú",
         "totalPayment": "Tổng tiền",
         "paymentInfo": "Thông tin thanh toán"

@@ -1,0 +1,84 @@
+.title {
+    display: flex;
+
+}
+
+.content {
+    margin: 2em;
+}
+.client-notification {
+    min-width: 350px;
+}
+h4 {
+    font-size: 1em;
+    font-weight: 600;
+    /* Không xuống dòng */
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.staff-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    font-style: italic;
+}
+
+.client-container {
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.footer {
+    margin: 1em;
+    /* //Nếu dài quá thì sẽ xuống dòng */
+    word-wrap: break-word;
+    /* //khoảng cách giữa các dòng */
+    line-height: 1.2em;
+    /* căn xuống cuối trang giấy A4 */
+    position: absolute;
+    bottom: 0;
+
+}
+
+.regulations {
+    border: 1px solid black;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.policy {
+    border: 1px solid black;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-text {
+    font-size: .8em;
+    font-style: italic;
+    line-height: 1.5em;
+    margin: 0;
+    font-weight: 500;
+}
+
+.thank {
+    width: 100%;
+    text-align: center;
+}
+
+.voucher-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-title {
+    /* Không xuống dòng */
+    white-space: nowrap;
+    font-size: 1.3em;
+}
