@@ -13,7 +13,7 @@ const VoucherChrismas = () => {
 
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const { bookingInfo , setBookingInfo} = GlobalState();
+    const { bookingInfo, setBookingInfo } = GlobalState();
 
     useEffect(() => {
         console.log("intu", bookingInfo);
@@ -97,7 +97,7 @@ const VoucherChrismas = () => {
                 position: 'absolute',
                 top: '10px',
                 right: '50px',
-                
+
             }}>
                 <Button type="primary" onClick={handleBack}>Back</Button>
                 <br />
@@ -130,7 +130,7 @@ const VoucherChrismas = () => {
                 />
             </div>
             <div id="divToPrint" style={{
-                backgroundColor: '#D6001C',
+                backgroundColor: '#f5f5f5',
                 width: '210mm',
                 minHeight: '297mm',
                 marginLeft: 'auto',
@@ -141,9 +141,7 @@ const VoucherChrismas = () => {
                 backgroundSize: 'contain',
                 position: 'absolute',
                 //background opacity
-                //chuyển tất cả nội dung bên trong thành chữ trắng
-                color: '#fff',
-                
+
             }}>
                 <div className='content'>
                     <div className='title' >
@@ -171,7 +169,7 @@ const VoucherChrismas = () => {
                         <div>
                             <div className='client-container'>
                                 <div className='client-info'>
-                                    <h3 className='info-title' style={{color: "#65D60B"}}>{t('content.clientInfo')}</h3>
+                                    <h3 className='info-title' style={{ color: "#65D60B" }}>{t('content.clientInfo')}</h3>
                                     <h4>{t('content.clientName')} <strong> {value?.name} </strong> </h4>
                                     {value?.email ? (<h4>{t('content.clientEmail')} <strong> {value?.email} </strong> </h4>) : null}
                                     <h4>{t('content.clientPhone')}<strong> {value?.phone} </strong></h4>
@@ -180,7 +178,7 @@ const VoucherChrismas = () => {
                             </div>
 
                             < div className='hotel-info'>
-                                <h3 className='info-title'style={{color: "#65D60B"}}>{t('content.hotelTitle')}</h3>
+                                <h3 className='info-title' style={{ color: "#65D60B" }}>{t('content.hotelTitle')}</h3>
                                 <h4>{t('content.hotelName')} <strong> {value?.hotelName} </strong> </h4>
                                 <h4>{t('content.hotelAddress')}  <strong> {value?.hotelAddress} </strong> </h4>
                                 <h4 >Hotline: <strong>0866809239</strong></h4>
@@ -190,7 +188,7 @@ const VoucherChrismas = () => {
                         </div>
                         <div className='client-notification'>
                             <h2 style={{
-                                color: '#65D60B',
+                                color: '#D6001C',
                                 fontSize: '25px',
                                 fontWeight: 'bold',
                                 textAlign: 'center',
@@ -260,7 +258,7 @@ const VoucherChrismas = () => {
                                             border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
-                                            
+
                                         }}>
                                             {t('table.number')}
                                         </td>
@@ -278,7 +276,7 @@ const VoucherChrismas = () => {
                                             border: '1px solid #65D60B',
                                             width: '50%',
                                             padding: '10px',
-                                            
+
                                         }}>
                                             {t('table.numberOfPeople')}
                                         </td>
@@ -355,7 +353,7 @@ const VoucherChrismas = () => {
                 </div>
                 <div className='footer'>
                     <div className='regulations'>
-                        <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' }}>{t('regulations.title')}</span>
+                        <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' , color: "#D6001C"}}>{t('regulations.title')}</span>
                         <span className={"footer-text"}>{t('regulations.content1')}</span>
                         <span className={"footer-text"}>{t('regulations.content2')}</span>
                         <span className={"footer-text"}>{t('regulations.content3')}</span>
@@ -366,7 +364,7 @@ const VoucherChrismas = () => {
                         <span className={"footer-text"}>{t('regulations.content8')}</span>
                     </div>
                     <div className='policy'>
-                        <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em' }}>{t('policy.title')}</span>
+                        <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em', color: "#D6001C"}}>{t('policy.title')}</span>
                         <span className={"footer-text"}>{t('policy.content1')}</span>
                         <span className={"footer-text"}>{t('policy.content2')}</span>
                         <span className={"footer-text"}>{t('policy.content3')}</span>
