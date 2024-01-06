@@ -101,7 +101,7 @@ export const hotelList = [
     {
         id: 16,
         name: "22Land Classic Suite",
-        address: "số 35 ngõ 75, Trần Thái Tông, Cầu Giấy, Hà Nội",
+        address: "35 ngõ 75, Trần Thái Tông, Cầu Giấy",
     },
 
 ]

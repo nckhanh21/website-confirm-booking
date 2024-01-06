@@ -4,7 +4,7 @@
 }
 
 .content {
-    margin: 2em;
+    margin: 0em;
 }
 .client-notification {
     min-width: 350px;
@@ -26,7 +26,6 @@ h4 {
 }
 
 .client-container {
-    margin-top: 3em;
     display: flex;
     justify-content: space-between;
 
@@ -80,5 +79,5 @@ h4 {
 .info-title {
     /* Không xuống dòng */
     white-space: nowrap;
-
+    color: #3E78BC;
 }

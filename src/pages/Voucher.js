@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { FileTextOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { GlobalState } from '../context/GlobalProvider';
+import corner from '../assets/corner.png';
 
 const Voucher = () => {
 
@@ -140,6 +141,16 @@ const Voucher = () => {
                 backgroundSize: 'contain',
                 position: 'absolute'
             }}>
+                <img src={corner} alt="logo" style={{
+                    position: 'absolute',
+                    top: '-10px',
+                    right: '-5px',
+                    width: '120px',
+                    height: '120px',
+                    //Quay ngược lại trái sang phải và trên xuống dưới
+                    transform: 'rotate(180deg)',
+                }} />
+         
                 <div className='content'>
                     <div className='title' >
                         <h1 style={{
@@ -179,14 +190,15 @@ const Voucher = () => {
                                 <h4>{t('content.hotelName')} <strong> {value?.hotelName} </strong> </h4>
                                 <h4>{t('content.hotelAddress')}  <strong> {value?.hotelAddress} </strong> </h4>
                                 <h4 >Hotline: <strong>0866809239</strong></h4>
-                                <h4>Check In: <strong> {timeCheckIn} </strong></h4>
-                                <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
+                                <h4>Check in: <strong> {timeCheckIn} </strong></h4>
+                                <h4>Check out: <strong> {timeCheckOut} </strong></h4>
+                                <h4 style={{fontSize: '12px', lineHeight: "5px",  color: '#F99D1C'}}>{"(WIFI password: 22222222)"}</h4>
                             </div>
                         </div>
                         <div className='client-notification'>
                             <h2 style={{
-                                color: 'red',
-                                fontSize: '20px',
+                                color: '#FF0000',
+                                fontSize: '22px',
                                 fontWeight: 'bold',
                                 textAlign: 'center',
                                 // marginTop: '100px'
@@ -206,7 +218,9 @@ const Voucher = () => {
                                 borderCollapse: 'collapse',
                                 width: '100%',
                                 border: '1px solid black',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                minWidth: '200px',
+                                height: '80%',
                             }}>
                                 <tbody>
                                     {/* <tr>
@@ -264,6 +278,24 @@ const Voucher = () => {
 
                                         }}>
                                             {value?.quantity}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.numberOfPeople')}
+                                        </td>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {value?.numberOfPeople}
                                         </td>
                                     </tr>
                                     <tr>
