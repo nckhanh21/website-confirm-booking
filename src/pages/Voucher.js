@@ -60,7 +60,7 @@ const Voucher = () => {
                     0,
                     width,
                     height);
-                pdf.save("voucher.pdf");
+                pdf.save("confirmation-booking.pdf");
 
             })
             .catch((error) => {
@@ -73,7 +73,7 @@ const Voucher = () => {
         htmlToImage.toPng(input, { quality: 0.95 })
             .then((dataUrl) => {
                 const link = document.createElement('a');
-                link.download = 'voucher.png';
+                link.download = 'confirmation-booking.png';
                 link.href = dataUrl;
                 link.click();
             })
