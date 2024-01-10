@@ -103,6 +103,11 @@ export const hotelList = [
         name: "22Land Classic Suite",
         address: "35 ngõ 75, Trần Thái Tông, Cầu Giấy",
     },
+    {
+        id: 17,
+        name: "Vinhomes Timescity",
+        address: "458 Minh Khai, Hai Bà Trưng, Hà Nội",
+    },
 
 ]
 
