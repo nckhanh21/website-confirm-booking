@@ -117,6 +117,11 @@ export const hotelList = [
         id: 19,
         name: "Vinhomes Metropolis",
         address: "29 Liễu Giai, Ba Đình, Hà Nội"
+    },
+    {
+        id: 20,
+        name: "Lakeview Residence",
+        address: "51 Trích Sài, Tây Hồ, Hà Nội"
     }
 ]
 
