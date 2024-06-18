@@ -49,6 +49,11 @@ export const hotelList = [
         address: "9/81 Linh Lang, Ba Đình, HN",
     },
     {
+        id: 21,
+        name: "22Land Residence Suite",
+        address: "4/81 Linh Lang, Ba Đình, HN",
+    },
+    {
         id: 6,
         name: "22Land Residence Suite",
         address: "27/81 Linh Lang, Ba Đình, HN",
@@ -124,7 +129,7 @@ export const hotelList = [
         address: "51 Trích Sài, Tây Hồ, Hà Nội"
     },
     {
-        id: 21,
+        id: 22,
         name: "22Land Residence Suite",
         address: "8 Nguyễn Văn Ngọc, Ba Đình, Hà Nội"
     }
