@@ -132,7 +132,13 @@ export const hotelList = [
         id: 22,
         name: "22Land Residence Suite",
         address: "8 Nguyễn Văn Ngọc, Ba Đình, Hà Nội"
+    },
+    {
+        id: 23,
+        name: "22Land Heritage Hotel & Retreat",
+        address: "5, ngõ 82/1 Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
     }
+    
 ]
 
 
