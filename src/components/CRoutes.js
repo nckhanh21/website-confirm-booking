@@ -5,6 +5,9 @@ import Voucher from '../pages/Voucher';
 import FacebookPage from '../pages/FacebookPage';
 import VoucherChrismas from '../pages/VoucherChrismas';
 import VoucherChrismas2 from '../pages/VoucherChrismas2';
+import BookingConfirmationTest from '../pages/ConfirmTest';
+import BookingInputForm from '../pages/BookingInputForm';
+import BookingManager from '../pages/BookingManager';
 
 const CRoutes = () => {
 
@@ -15,6 +18,9 @@ const CRoutes = () => {
             <Route path="/voucher-chrismas" element={<VoucherChrismas />} />
             <Route path="/voucher-chrismas-2" element={<VoucherChrismas2 />} />
             <Route path="/facebook" element={<FacebookPage />} />
+            <Route path="/test" element={<BookingConfirmationTest />} />
+            <Route path="/input" element={<BookingManager />} />
+
         </Routes>
     );
 };

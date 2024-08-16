@@ -35,14 +35,7 @@ const FacebookPage = () => {
 
     return (
         <div className='container' >
-            <FacebookLogin
-                appId="838845850682627"
-                redirectUri='http://localhost:3000/facebook'
-                autoLoad={true}
-                fields="name,email,picture"
-                callback={responseFacebook}
-                version='18.0'
-            />
+          
         </div>
     );
 };
