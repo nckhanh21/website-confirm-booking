@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Form, Input, Button, DatePicker, AutoComplete, Select, Typography, Space } from 'antd';
-import { hotelList } from '../../constants/hotel';
+import { hotelList, roomTypeList } from '../../constants/hotel';
 
 const { Title } = Typography;
 
@@ -30,6 +30,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
       label: hotel.address + ' - ' + hotel.name,
       value: hotel.id,
       address: hotel.address,
+      benefit: hotel.benefit
     }));
     setHotelOptions(hotelOptions);
   }
@@ -44,6 +45,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
     form.setFieldsValue({
       hotelAddress: hotel.address,
       hotelName: hotel.name,
+      benefit: hotel.benefit
     });
   }
 
@@ -79,6 +81,12 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
           <Input disabled />
         </Form.Item>
         <Form.Item
+          label="dịch vụ đi kèm"
+          name="benefit"
+        >
+          <Input.TextArea />
+        </Form.Item>
+        {/* <Form.Item
           name="paymentMethod"
           label="Phương thức thanh toán"
           rules={[{ required: true, message: 'Phương thức thanh toán là bắt buộc!' }]}
@@ -87,7 +95,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
             <Select.Option value="Chuyển khoản">Chuyển khoản</Select.Option>
             <Select.Option value="Tiền mặt">Tiền mặt</Select.Option>
           </Select>
-        </Form.Item>
+        </Form.Item> */}
         <Form.List name="rooms">
           {(fields, { add, remove }) => (
             <>
@@ -96,15 +104,16 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                   <Title level={3} style={styles.roomTitle}>Phòng {key + 1}</Title>
                   <Form.Item
                     label="Tên khách hàng"
-                    name="name"
+                    name={[name, 'name']}
+                    fieldKey={[fieldKey, 'name']}
                     rules={[
                       {
-                        required: false,
+                        required: true,
                         message: 'Please input your name!',
                       },
                     ]}
                   >
-                    <Input />
+                    <Input  placeholder='Nhập tên'/>
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -114,7 +123,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     rules={[{ required: true, message: 'Loại phòng là bắt buộc!' }]}
                   >
                     <AutoComplete
-                      options={options}
+                      options={roomTypeList}
                       style={styles.input}
                       placeholder="Nhập loại phòng"
                     >

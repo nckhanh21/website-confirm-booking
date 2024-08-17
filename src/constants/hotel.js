@@ -27,116 +27,277 @@ export const hotelList = [
         id: 1,
         name: "22Land Residence Suite",
         address: "48 Phan Kế Bính, Ba Đình, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 2,
         name: "22Land Residence Suite",
         address: "20 Linh Lang, Ba Đình, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 3,
         name: "22Land Residence Suite",
         address: "39 Linh Lang, Ba Đình, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 4,
         name: "22Land Residence Suite",
         address: "6/60 Linh Lang, Ba Đình, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 5,
         name: "22Land Residence Suite",
         address: "9/81 Linh Lang, Ba Đình, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 21,
         name: "22Land Residence Suite",
         address: "4/81 Linh Lang, Ba Đình, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 6,
         name: "22Land Residence Suite",
         address: "27/81 Linh Lang, Ba Đình, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 7,
         name: "22Land Residence Suite",
         address: "69 Trần Đăng Ninh, Cầu Giấy, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 8,
         name: "22Land Residence Suite",
         address: "352 Đường Bưởi, Cầu Giấy, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 9,
         name: "Moon West Lake",
         address: "185A Trích Sài, Tây Hồ, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 10,
         name: "Coco Hotel Ha Noi",
         address: "5B Trần Duy Hưng, Cầu Giấy, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 11,
         name: "22Land Residence Hotel",
         address: "50 Trương Công Giai, Cầu Giấy, HN",
+        benefit: [
+            "Daily housekeeping service",
+            "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 12,
         name: "22Land Residence Hotel",
         address: "02 Nguyễn Đình Hoàn, Cầu Giấy, HN",
+        benefit: [
+            "Daily housekeeping service",
+            "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 13,
         name: "22Land Residence Hotel",
         address: "71 Hàng Bông, Hoàn Kiếm, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 14,
         name: "22Land Residence Hotel",
         address: "52 Ngõ Huyện, Hoàn Kiếm, HN",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 15,
         name: "Lake View Hotel",
         address: "65 Trích Sài, Tây Hồ, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 16,
         name: "22Land Classic Suite",
         address: "35 ngõ 75, Trần Thái Tông, Cầu Giấy",
+        benefit: [
+            "Daily housekeeping service",
+            "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 17,
         name: "Vinhomes Timescity",
         address: "458 Minh Khai, Hai Bà Trưng, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 18,
         name: "Vinhomes Smart City",
-        address: "Tây Mỗ, Nam Từ Liêm, Hà Nội"
+        address: "Tây Mỗ, Nam Từ Liêm, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 19,
         name: "Vinhomes Metropolis",
-        address: "29 Liễu Giai, Ba Đình, Hà Nội"
+        address: "29 Liễu Giai, Ba Đình, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 20,
         name: "Lakeview Residence",
-        address: "51 Trích Sài, Tây Hồ, Hà Nội"
+        address: "51 Trích Sài, Tây Hồ, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 22,
         name: "22Land Residence Suite",
-        address: "8 Nguyễn Văn Ngọc, Ba Đình, Hà Nội"
+        address: "8 Nguyễn Văn Ngọc, Ba Đình, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            // "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     },
     {
         id: 23,
         name: "22Land Heritage Hotel & Retreat",
-        address: "5, ngõ 82/1 Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+        address: "5, ngõ 82/1 Dịch Vọng Hậu, Cầu Giấy, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ]
     }
     
 ]
