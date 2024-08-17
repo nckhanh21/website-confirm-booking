@@ -1,10 +1,10 @@
-import { Button } from 'antd';
+import { Button, Divider } from 'antd';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import React from 'react';
 
 const BookingConfirmation = ({ details, onEdit }) => {
-    const { rooms } = details;
+    const { rooms, hotelName, hotelAddress } = details;
 
     const exportToPNG = () => {
         const element = document.getElementById('booking-content');
@@ -31,12 +31,30 @@ const BookingConfirmation = ({ details, onEdit }) => {
             <div id="booking-content" style={styles.container}>
                 <div style={styles.content}>
                     <div style={styles.headerSection}>
-                        <h2 style={styles.title}>BOOKING CONFIRMATION</h2>
                         <p style={styles.companyInfo}>
-                            22 Land Residence 50 Truong Cong Giai<br />
-                            Address: 50 Truong Cong Giai, Dich Vong Ward, Cau Giay District, Hanoi City<br />
-                            Phone: - Email: 22landresidence50@gmail.com - Web: https://22landresidence.com
+                        <div style={styles.logo}>
+                            <h1 style={{
+                                color: '#F99D1C',
+                                fontSize: '30px'
+                            }}>22</h1>
+                            <h1 style={{
+                                color: '#3E78BC',
+                                fontSize: '30px'
+
+                            }}>Housing</h1>
+                        </div>
+                            {hotelName}<br />
+                            Address: {hotelAddress}<br />
+                            Phone: 0866809239 - Email: sale05.22housing@gmail.com - Web: https://22landresidence.com
                         </p>
+                    </div>
+                    <div style={styles.headerSection}>
+
+                        <Divider variant="dashed" style={{ borderColor: '#333' }} dashed ><h2 style={styles.title}>CONFIRMATION LETTER</h2></Divider>
+                    </div>
+                    <div style={styles.section}>
+                        Dear {rooms[0].name}, <br />
+                        Thank you for choosing <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}> 22Land Residence Hotel</span>. We are pleased to confirm your reservation details as follows:
                     </div>
 
                     <div style={styles.section}>
@@ -44,35 +62,35 @@ const BookingConfirmation = ({ details, onEdit }) => {
                         <table style={styles.table}>
                             <thead>
                                 <tr>
-                                    <th>Room Type</th>
-                                    <th>Arrival Date</th>
-                                    <th>Departure Date</th>
-                                    <th>Price (per night)</th>
-                                    <th>Deposit</th>
-                                    <th>Special Requests</th>
+                                    <th style={styles.th}>Guest's Name</th>
+                                    <th style={styles.th}>Room Type</th>
+                                    <th style={styles.th}>Arrival Date</th>
+                                    <th style={styles.th}>Departure Date</th>
+                                    <th style={styles.th}>Price (per night)</th>
+                                    <th style={styles.th}>Deposit</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {rooms.map((room, index) => (
                                     <tr key={index}>
-                                        <td>{room.roomType}</td>
-                                        <td>{new Date(room.arrivalDate).toLocaleString('en-GB', {
+                                        <td style={styles.td}>{room.name}</td>
+                                        <td style={styles.td}>{room.roomType}</td>
+                                        <td style={styles.td}>{new Date(room.arrivalDate).toLocaleString('en-GB', {
                                             year: 'numeric',
                                             month: '2-digit',
                                             day: '2-digit',
                                             hour: '2-digit',
                                             minute: '2-digit',
                                         })}</td>
-                                        <td>{new Date(room.departureDate).toLocaleString('en-GB', {
+                                        <td style={styles.td}>{new Date(room.departureDate).toLocaleString('en-GB', {
                                             year: 'numeric',
                                             month: '2-digit',
                                             day: '2-digit',
                                             hour: '2-digit',
                                             minute: '2-digit',
                                         })}</td>
-                                        <td>{room.roomPrice} VND</td>
-                                        <td>{room.deposit} VND</td>
-                                        <td>{room.specialRequests || 'None'}</td>
+                                        <td style={styles.td}>{room.roomPrice} VND</td>
+                                        <td style={styles.td}>{room.deposit} VND</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -93,8 +111,8 @@ const BookingConfirmation = ({ details, onEdit }) => {
                     <div style={styles.section}>
                         <h3 style={styles.subHeader}>GUARANTEE</h3>
                         <p style={styles.text}>
-                            The room rate is guaranteed as the signed contract between the Company and the Hotel.
-                            It is recommended to guarantee the reservation by credit card, deposit by bank transfer or pre-payment as this will ensure the room is held until your arrival.
+                            The room rate is guaranteed as the signed contract between the Company and the Hotel. <br />
+                            It is recommended to guarantee the reservation by credit card, deposit by bank transfer or pre-payment as this will ensure the room is held until your arrival. <br />
                             A non-guaranteed booking will be released at 18:00 on the day of arrival.
                         </p>
                         <h3 style={styles.subHeader}>CANCELLATION, AMENDMENT, AND NO-SHOW POLICY</h3>
@@ -106,7 +124,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                             We look forward to welcoming you to 22 Land Residence Hotel.
                             For any enquiries or more information, please feel free to contact us.
                         </p>
-                        <p style={styles.text}>
+                        <p style={styles.textFoot}>
                             Thanks and Best regards,<br />
                             Huyen Trang (Ms.)<br />
                             Sales Manager
@@ -143,6 +161,10 @@ const styles = {
         color: '#333',
         backgroundColor: '#fff',
     },
+    logo: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
     headerSection: {
         textAlign: 'center',
         marginBottom: '20px',
@@ -173,7 +195,6 @@ const styles = {
         borderCollapse: 'collapse',
         marginBottom: '10px',
         border: '1px solid #ddd',
-        borderRadius: '4px',
     },
     th: {
         border: '1px solid #ddd',
@@ -183,12 +204,14 @@ const styles = {
         fontWeight: 'bold',
         backgroundColor: '#007BFF',
         color: '#fff',
+        verticalAlign: 'middle', // Align the text vertically in the middle
     },
     td: {
         border: '1px solid #ddd',
         padding: '12px',
         fontSize: '14px',
         textAlign: 'left',
+        verticalAlign: 'middle', // Align the text vertically in the middle
     },
     benefitsList: {
         listStyleType: 'disc',
@@ -198,6 +221,10 @@ const styles = {
     text: {
         fontSize: '14px',
         color: '#555',
+    },
+    textFoot: {
+        fontSize: '14px',
+        fontWeight: 'bold',
     },
     buttonContainer: {
         display: 'flex',
@@ -212,7 +239,5 @@ const styles = {
         marginLeft: '10px',
     },
 };
-
-
 
 export default BookingConfirmation;

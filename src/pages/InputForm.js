@@ -196,11 +196,11 @@ const InputForm = () => {
             showTime={true}
             format={"DD/MM/YYYY HH:mm"}
             minuteStep={15}
-            // Cài đặt mặc định giá trị phút và giờ 
-            // defaultValue={[
-            //   dayjs().hour(14).minute(0),
-            //   dayjs().add(1, 'day').hour(12).minute(0),
-            // ]}
+          // Cài đặt mặc định giá trị phút và giờ 
+          // defaultValue={[
+          //   dayjs().hour(14).minute(0),
+          //   dayjs().add(1, 'day').hour(12).minute(0),
+          // ]}
           />
         </Form.Item>
         <h3 style={{ textAlign: 'center' }}>Nhập thông tin phòng </h3>
@@ -273,9 +273,14 @@ const InputForm = () => {
           </Select>
         </Form.Item>
 
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          <Button type="primary" onClick={() => navigate("/input")}>
+            Chuyển
+          </Button>
+        </div>
         {/* thêm khách sạn mới */}
 
       </Form>
@@ -309,6 +314,8 @@ const InputForm = () => {
               Submit
             </Button>
           </Form.Item>
+          {/* //nút khác tìm khách sạn */}
+
         </Form>
       </Modal>
     </div>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button, DatePicker, AutoComplete, Select, Typography, Space } from 'antd';
+import { hotelList } from '../../constants/hotel';
 
 const { Title } = Typography;
 
@@ -10,10 +11,41 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
     { value: 'Deluxe Room' },
     { value: 'Suite Room' },
   ]);
+  const [hotelOptions, setHotelOptions] = React.useState([]);
+
+
+  useEffect(() => {
+    loadListHotel();
+  }, []);
 
   const handleFinish = (values) => {
     onSubmit(values);
   };
+
+  const filterOption = (input, option) =>
+    (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+
+  const loadListHotel = () => {
+    const hotelOptions = hotelList.map((hotel) => ({
+      label: hotel.address + ' - ' + hotel.name,
+      value: hotel.id,
+      address: hotel.address,
+    }));
+    setHotelOptions(hotelOptions);
+  }
+
+
+  const onChangeHotel = (value) => {
+    console.log(value);
+    //lấy ra hotel theo id
+    const hotel = hotelList.find((hotel) => hotel.id === value);
+    // setHotel(hotel);
+    //đổi giá trị của form item hotelAddress
+    form.setFieldsValue({
+      hotelAddress: hotel.address,
+      hotelName: hotel.name,
+    });
+  }
 
   return (
     <div style={styles.container}>
@@ -25,12 +57,55 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
         layout="vertical"
         style={styles.form}
       >
+        <Form.Item
+          label="Tên khách sạn"
+          name="hotelName"
+          rules={[{ required: true, message: 'Tên khách sạn bắt buộc!' }]}
+        >
+          <Select
+            showSearch
+            placeholder="Chọn khách sạn"
+            optionFilterProp="children"
+            onChange={onChangeHotel}
+            // onSearch={onSearch}
+            filterOption={filterOption}
+            options={hotelOptions}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Địa chỉ khách sạn"
+          name="hotelAddress"
+        >
+          <Input disabled />
+        </Form.Item>
+        <Form.Item
+          name="paymentMethod"
+          label="Phương thức thanh toán"
+          rules={[{ required: true, message: 'Phương thức thanh toán là bắt buộc!' }]}
+        >
+          <Select placeholder="Chọn phương thức thanh toán" style={styles.input}>
+            <Select.Option value="Chuyển khoản">Chuyển khoản</Select.Option>
+            <Select.Option value="Tiền mặt">Tiền mặt</Select.Option>
+          </Select>
+        </Form.Item>
         <Form.List name="rooms">
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, fieldKey, ...restField }) => (
                 <div key={key} style={styles.roomSection}>
                   <Title level={3} style={styles.roomTitle}>Phòng {key + 1}</Title>
+                  <Form.Item
+                    label="Tên khách hàng"
+                    name="name"
+                    rules={[
+                      {
+                        required: false,
+                        message: 'Please input your name!',
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
                   <Form.Item
                     {...restField}
                     name={[name, 'roomType']}
@@ -96,29 +171,6 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                   >
                     <Input type="number" placeholder="Nhập tiền cọc" />
                   </Form.Item>
-
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'paymentMethod']}
-                    fieldKey={[fieldKey, 'paymentMethod']}
-                    label="Phương thức thanh toán"
-                    rules={[{ required: true, message: 'Phương thức thanh toán là bắt buộc!' }]}
-                  >
-                    <Select placeholder="Chọn phương thức thanh toán">
-                      <Select.Option value="Chuyển khoản">Chuyển khoản</Select.Option>
-                      <Select.Option value="Tiền mặt">Tiền mặt</Select.Option>
-                    </Select>
-                  </Form.Item>
-
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'specialRequests']}
-                    fieldKey={[fieldKey, 'specialRequests']}
-                    label="Yêu cầu đặc biệt"
-                  >
-                    <Input.TextArea rows={4} placeholder="Nhập yêu cầu đặc biệt" />
-                  </Form.Item>
-
                   <Button type="danger" onClick={() => remove(name)} style={styles.removeButton}>
                     Xóa phòng
                   </Button>
@@ -132,6 +184,8 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
             </>
           )}
         </Form.List>
+
+
 
         <Form.Item>
           <Space>

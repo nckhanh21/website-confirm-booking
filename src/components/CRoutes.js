@@ -6,8 +6,7 @@ import FacebookPage from '../pages/FacebookPage';
 import VoucherChrismas from '../pages/VoucherChrismas';
 import VoucherChrismas2 from '../pages/VoucherChrismas2';
 import BookingConfirmationTest from '../pages/ConfirmTest';
-import BookingInputForm from '../pages/BookingInputForm';
-import BookingManager from '../pages/BookingManager';
+import BookingManager from '../pages/MultipleConfirm/BookingManager';
 
 const CRoutes = () => {
 
