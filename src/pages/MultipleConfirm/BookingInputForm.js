@@ -85,16 +85,24 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
         <Form.Item
           label="dịch vụ đi kèm"
           name="benefit"
-          style={{display: 'none'}}
+          style={{ display: 'none' }}
         >
           <Input.TextArea />
         </Form.Item>
         <Form.Item
           label="logo"
           name="logo"
-          style={{display: 'none'}}
+          style={{ display: 'none' }}
         >
           <Input />
+        </Form.Item>
+        <Form.Item
+          name={'deposit'}
+          fieldKey={'deposit'}
+          label="Tiền cọc"
+        // rules={[{ required: false, message: 'Tiền cọc là bắt buộc!' }]}
+        >
+          <Input placeholder="Nhập tiền cọc" />
         </Form.Item>
         {/* <Form.Item
           name="paymentMethod"
@@ -123,7 +131,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                       },
                     ]}
                   >
-                    <Input  placeholder='Nhập tên'/>
+                    <Input placeholder='Nhập tên' />
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -176,25 +184,25 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     name={[name, 'roomPrice']}
                     fieldKey={[fieldKey, 'roomPrice']}
                     label="Giá phòng (1 đêm)"
-                    // rules={[{ required: false, message: 'Giá phòng là bắt buộc!' }]}
+                  // rules={[{ required: false, message: 'Giá phòng là bắt buộc!' }]}
                   >
                     <Input placeholder="Nhập giá phòng" />
                   </Form.Item>
 
                   <Form.Item
                     {...restField}
-                    name={[name, 'deposit']}
-                    fieldKey={[fieldKey, 'deposit']}
-                    label="Tiền cọc"
-                    // rules={[{ required: false, message: 'Tiền cọc là bắt buộc!' }]}
+                    name={[name, 'amount']}
+                    fieldKey={[fieldKey, 'amount']}
+                    label="Thành tiền"
                   >
-                    <Input placeholder="Nhập tiền cọc" />
+                    <Input placeholder="Nhập tiền" />
                   </Form.Item>
                   <Button type="danger" onClick={() => remove(name)} style={styles.removeButton}>
                     Xóa phòng
                   </Button>
                 </div>
               ))}
+
               <Form.Item>
                 <Button type="dashed" onClick={() => add()} style={styles.addButton}>
                   Thêm phòng

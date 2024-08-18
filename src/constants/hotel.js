@@ -189,7 +189,6 @@ export const hotelList = [
             "Buffet breakfast free",
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
-            "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
         ],
         logo: "22Land",
     },

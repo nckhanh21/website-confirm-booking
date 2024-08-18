@@ -5,8 +5,28 @@ import React from 'react';
 import corner from '../../assets/corner.png';
 import logoimg from '../../assets/logo.webp';
 import logo22land from '../../assets/22land.png';
+import signature from '../../assets/signature.png';
 const BookingConfirmation = ({ details, onEdit }) => {
-    const { rooms, hotelName, hotelAddress, benefit, logo } = details;
+    const { rooms, hotelName, hotelAddress, benefit, logo, deposit } = details;
+
+    const [totalAmount, setTotalAmount] = React.useState(0);
+    const [totalDeposit, setTotalDeposit] = React.useState(0);
+    const [totalRemaining, setTotalRemaining] = React.useState(0);
+
+    React.useEffect(() => {
+        let total = 0;
+        rooms.forEach((room) => {
+            total += Number(room.amount);
+        });
+        const numDeposit = Number(deposit);
+        // Định dạng totalAmount theo dạng 1,xxx,xxx.00
+        const formattedTotal = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedDeposit = numDeposit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedRemaining = (total - numDeposit).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        setTotalAmount(formattedTotal);
+        setTotalDeposit(formattedDeposit);
+        setTotalRemaining(formattedRemaining);
+    }, [rooms]);
 
     const exportToPNG = () => {
         const element = document.getElementById('booking-content');
@@ -46,7 +66,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                             {
                                 logo == "22Housing" ?
                                     <img style={styles.logoImage} src={logoimg} alt="logo" /> :
-                                    <img style={styles.logoImage} src={logo22land} alt="logo" />
+                                    <img style={styles.logoImage22Land} src={logo22land} alt="logo" />
                             }
                         </div>
                         {/* {hotelName}<br /> */}
@@ -75,7 +95,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                                 <th style={styles.th}>Arrival Date</th>
                                 <th style={styles.th}>Departure Date</th>
                                 <th style={styles.th}>Price (per night)</th>
-                                <th style={styles.th}>Deposit</th>
+                                <th style={styles.th}>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,7 +118,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                                         minute: '2-digit',
                                     })}</td>
                                     <td style={styles.td}>{room.roomPrice} VND</td>
-                                    <td style={styles.td}>{room.deposit} VND</td>
+                                    <td style={styles.td}>{room.amount} VND</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -117,6 +137,64 @@ const BookingConfirmation = ({ details, onEdit }) => {
                             <li key={index}>{item}</li>
                         ))}
                     </ul>
+                </div>
+                <div style={styles.paymentSection}>
+                    <div style={styles.paymentDetails}>
+                        <div style={styles.netRate}>
+                            <strong>Total Amount</strong>
+                            <div style={styles.rateAmount}>VND {totalAmount}</div>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Diposited</span>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px',  }}>VND {totalDeposit}</div>
+                            </div>
+                            {/* Còn lại  */}
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Remaining</span>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px',}}>VND {totalRemaining}</div>
+                            </div>
+                        </div>
+                        <div style={styles.signature}>
+                            <img src={signature} alt="Authorized Signature" style={styles.signatureImage} />
+                            <div style={styles.signatureText}>Phan Huyen Trang</div>
+                        </div>
+                        <div style={styles.bookedBy}>
+                            <strong>Booked and Payable by</strong>
+                            <div>
+                                22 Land Real Estate Investment Consualtancy.
+                                <br />
+                                No 20 Linh Lang Street, Cong Vi Ward, Ba Dinh District, Hanoi
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div style={styles.cardDetails}>
+                        <table style={styles.cardTable}>
+                            <thead>
+                                <tr>
+                                    <th style={styles.cardTh}>Card Type</th>
+                                    <th style={styles.cardTh}>Card Number</th>
+                                    <th style={styles.cardTh}>CVV-code</th>
+                                    <th style={styles.cardTh}>Expiry Date</th>
+                                    <th style={styles.cardTh}>Card Holder Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style={styles.cardTd}>-</td>
+                                    <td style={styles.cardTd}>-</td>
+                                    <td style={styles.cardTd}>-</td>
+                                    <td style={styles.cardTd}>-</td>
+                                    <td style={styles.cardTd}>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> */}
+                    <div style={styles.upcInfo}>
+                        {/* We look forward to welcoming you to {hotelName}. */}
+                        For any enquiries or more information, please feel free to contact us. (+84) 866 809 239.
+                    </div>
+                    <div style={styles.acknowledgement}>
+                        This booking is acknowledged by {hotelName}.
+                    </div>
                 </div>
 
                 <div style={styles.section}>
@@ -139,16 +217,15 @@ const BookingConfirmation = ({ details, onEdit }) => {
                     <li>Retention is not applicable for groups booking 3 rooms or more.</li>
                     3. For group bookings: No last-minute cancellations (a minimum 50% deposit is required). <br />
                     4. The retention period is 1 month from the scheduled check-in date, and the retention or date change can be made only once.
-                    <p style={{ ...styles.text, fontStyle: 'italic' }}>
-                        We look forward to welcoming you to {hotelName}.
-                        For any enquiries or more information, please feel free to contact us.
-                    </p>
-                    <p style={styles.textFoot}>
-                        Thanks and Best regards,<br />
-                        Huyen Trang (Ms.)<br />
-                        Sales Manager
-                    </p>
+                    <div style={styles.footer}>
+                        <p style={styles.textFoot}>
+                            Thanks and Best regards,<br />
+                            Huyen Trang (Ms.)<br />
+                            Sales Manager
+                        </p>
+                    </div>
                 </div>
+
             </div>
 
             <div style={styles.buttonContainer}>
@@ -186,9 +263,14 @@ const styles = {
     address: {
         fontSize: '14px',
         color: '#555',
-        
+
     },
     logoImage: {
+        width: '100px',
+        height: 'auto',
+        marginBottom: '10px',
+    },
+    logoImage22Land: {
         width: '150px',
         height: 'auto',
         marginBottom: '10px',
@@ -249,9 +331,17 @@ const styles = {
         fontSize: '14px',
         color: '#555',
     },
+    footer: {
+        width: '100%',
+        //content is in the right
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
     textFoot: {
+        width: '200px',
         fontSize: '14px',
         fontWeight: 'bold',
+        textAlign: 'center',
     },
     buttonContainer: {
         display: 'flex',
@@ -264,6 +354,73 @@ const styles = {
     },
     exportButton: {
         marginLeft: '10px',
+    },
+    paymentSection: {
+        marginTop: '20px',
+        marginBottom: '20px',
+        border: '1px solid #333',
+        padding: '10px',
+        backgroundColor: '#f9f9f9',
+    },
+    paymentDetails: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    netRate: {
+        flex: 1,
+        padding: '10px',
+        borderRight: '1px solid #333',
+    },
+    rateAmount: {
+        marginTop: '10px',
+        fontSize: '20px',
+        fontWeight: 'bold',
+    },
+    signature: {
+        flex: 1,
+        padding: '10px',
+        textAlign: 'center',
+        borderRight: '1px solid #333',
+    },
+    signatureText: {
+        fontSize: '14px',
+        color: '#555',
+        fontFamily : 'Arial, sans-serif',
+        fontWeight : 'bold',
+    },
+    signatureImage: {
+        width: '100px',
+        height: 'auto',
+    },
+    bookedBy: {
+        flex: 1,
+        padding: '10px',
+    },
+    cardDetails: {
+        marginTop: '20px',
+    },
+    cardTable: {
+        width: '100%',
+        borderCollapse: 'collapse',
+    },
+    cardTh: {
+        border: '1px solid #333',
+        padding: '8px',
+        textAlign: 'left',
+        backgroundColor: '#e0e0e0',
+    },
+    cardTd: {
+        border: '1px solid #333',
+        padding: '8px',
+        textAlign: 'left',
+    },
+    upcInfo: {
+        marginTop: '20px',
+        fontStyle: 'italic',
+    },
+    acknowledgement: {
+        marginTop: '10px',
+        fontWeight: 'bold',
     },
 };
 
