@@ -33,7 +33,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 2,
@@ -45,7 +46,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 3,
@@ -57,7 +59,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 4,
@@ -69,7 +72,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 5,
@@ -81,7 +85,9 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
+
     },
     {
         id: 21,
@@ -93,7 +99,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 6,
@@ -105,7 +112,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 7,
@@ -117,7 +125,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 8,
@@ -129,7 +138,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 9,
@@ -141,7 +151,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 10,
@@ -153,11 +164,12 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     },
     {
         id: 11,
-        name: "22Land Residence Hotel",
+        name: "22Land Residence",
         address: "50 Trương Công Giai, Cầu Giấy, HN",
         benefit: [
             "Daily housekeeping service",
@@ -165,11 +177,12 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     },
     {
         id: 12,
-        name: "22Land Residence Hotel",
+        name: "22Land Residence",
         address: "02 Nguyễn Đình Hoàn, Cầu Giấy, HN",
         benefit: [
             "Daily housekeeping service",
@@ -177,11 +190,12 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     },
     {
         id: 13,
-        name: "22Land Residence Hotel",
+        name: "22Land Residence",
         address: "71 Hàng Bông, Hoàn Kiếm, HN",
         benefit: [
             "Daily housekeeping service",
@@ -189,11 +203,12 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     },
     {
         id: 14,
-        name: "22Land Residence Hotel",
+        name: "22Land Residence",
         address: "52 Ngõ Huyện, Hoàn Kiếm, HN",
         benefit: [
             "Daily housekeeping service",
@@ -201,11 +216,12 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     },
     {
         id: 15,
-        name: "Lake View Hotel",
+        name: "Lake View",
         address: "65 Trích Sài, Tây Hồ, Hà Nội",
         benefit: [
             "Daily housekeeping service",
@@ -213,7 +229,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 16,
@@ -225,7 +242,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     },
     {
         id: 17,
@@ -237,7 +255,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 18,
@@ -249,7 +268,9 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
+
     },
     {
         id: 19,
@@ -261,7 +282,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 20,
@@ -273,7 +295,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     },
     {
         id: 22,
@@ -285,7 +308,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Housing",
     },
     {
         id: 23,
@@ -297,7 +321,8 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
-        ]
+        ],
+        logo: "22Land",
     }
     
 ]

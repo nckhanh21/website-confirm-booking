@@ -3,9 +3,10 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import React from 'react';
 import corner from '../../assets/corner.png';
-
+import logoimg from '../../assets/logo.webp';
+import logo22land from '../../assets/22land.png';
 const BookingConfirmation = ({ details, onEdit }) => {
-    const { rooms, hotelName, hotelAddress, benefit } = details;
+    const { rooms, hotelName, hotelAddress, benefit, logo } = details;
 
     const exportToPNG = () => {
         const element = document.getElementById('booking-content');
@@ -30,7 +31,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
     return (
         <>
             <div id="booking-content" style={styles.container}>
-            <img src={corner} alt="logo" style={{
+                <img src={corner} alt="logo" style={{
                     position: 'absolute',
                     top: '10px',
                     right: '260px',
@@ -42,18 +43,16 @@ const BookingConfirmation = ({ details, onEdit }) => {
                 <div style={styles.headerSection}>
                     <p style={styles.companyInfo}>
                         <div style={styles.logo}>
-                            <h1 style={{
-                                color: '#F99D1C',
-                                fontSize: '30px'
-                            }}>22</h1>
-                            <h1 style={{
-                                color: '#3E78BC',
-                                fontSize: '30px'
-
-                            }}>Housing</h1>
+                            {
+                                logo == "22Housing" ?
+                                    <img style={styles.logoImage} src={logoimg} alt="logo" /> :
+                                    <img style={styles.logoImage} src={logo22land} alt="logo" />
+                            }
                         </div>
-                        {hotelName}<br />
-                        Address: {hotelAddress}<br />
+                        {/* {hotelName}<br /> */}
+                        <div style={styles.address}>
+                            Address: {hotelAddress}<br />
+                        </div>
                         Phone: 0866809239 - Email: sale05.22housing@gmail.com - Web: https://22landresidence.com
                     </p>
                 </div>
@@ -63,7 +62,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                 </div>
                 <div style={styles.section}>
                     Dear {rooms[0].name}, <br />
-                    Thank you for choosing <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}> 22Land Residence Hotel</span>. We are pleased to confirm your reservation details as follows:
+                    Thank you for choosing <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}> {hotelName}</span>. We are pleased to confirm your reservation details as follows:
                 </div>
 
                 <div style={styles.section}>
@@ -133,15 +132,15 @@ const BookingConfirmation = ({ details, onEdit }) => {
                         Within 24 hours prior to arrival date or No-show: Charged 1st night of all rooms reserved.
                     </p> */}
                     <h3 style={styles.subHeader}>ROOM RETENTION POLICY</h3>
-                    1. Non-refundable - no cancellations <br/>
-                    2. Retention policy applies: 
+                    1. Non-refundable - no cancellations <br />
+                    2. Retention policy applies:
                     <li>For 1-room bookings, the retention is valid if made at least 24 hours before check-in.</li>
                     <li>For 2-room bookings or more, the retention is valid if made at least 72 hours before check-in.</li>
                     <li>Retention is not applicable for groups booking 3 rooms or more.</li>
-                    3. For group bookings: No last-minute cancellations (a minimum 50% deposit is required). <br/>
+                    3. For group bookings: No last-minute cancellations (a minimum 50% deposit is required). <br />
                     4. The retention period is 1 month from the scheduled check-in date, and the retention or date change can be made only once.
-                    <p style={{...styles.text, fontStyle: 'italic'}}>
-                        We look forward to welcoming you to 22 Land Residence Hotel.
+                    <p style={{ ...styles.text, fontStyle: 'italic' }}>
+                        We look forward to welcoming you to {hotelName}.
                         For any enquiries or more information, please feel free to contact us.
                     </p>
                     <p style={styles.textFoot}>
@@ -184,6 +183,16 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
     },
+    address: {
+        fontSize: '14px',
+        color: '#555',
+        
+    },
+    logoImage: {
+        width: '150px',
+        height: 'auto',
+        marginBottom: '10px',
+    },
     headerSection: {
         textAlign: 'center',
     },
@@ -206,7 +215,7 @@ const styles = {
         fontWeight: 'bold',
         textTransform: 'uppercase',
         margin: '0 0 10px 0',
-        color: '#007BFF',
+        color: '#333',
     },
     table: {
         width: '100%',
@@ -220,7 +229,7 @@ const styles = {
         fontSize: '14px',
         textAlign: 'left',
         fontWeight: 'bold',
-        backgroundColor: '#007BFF',
+        backgroundColor: '#555555',
         color: '#fff',
         verticalAlign: 'middle', // Align the text vertically in the middle
     },

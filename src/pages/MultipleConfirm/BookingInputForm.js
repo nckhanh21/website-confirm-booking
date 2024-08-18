@@ -30,7 +30,8 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
       label: hotel.address + ' - ' + hotel.name,
       value: hotel.id,
       address: hotel.address,
-      benefit: hotel.benefit
+      benefit: hotel.benefit,
+      logo: hotel.logo
     }));
     setHotelOptions(hotelOptions);
   }
@@ -45,7 +46,8 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
     form.setFieldsValue({
       hotelAddress: hotel.address,
       hotelName: hotel.name,
-      benefit: hotel.benefit
+      benefit: hotel.benefit,
+      logo: hotel.logo
     });
   }
 
@@ -83,8 +85,16 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
         <Form.Item
           label="dịch vụ đi kèm"
           name="benefit"
+          style={{display: 'none'}}
         >
           <Input.TextArea />
+        </Form.Item>
+        <Form.Item
+          label="logo"
+          name="logo"
+          style={{display: 'none'}}
+        >
+          <Input />
         </Form.Item>
         {/* <Form.Item
           name="paymentMethod"
@@ -108,7 +118,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     fieldKey={[fieldKey, 'name']}
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input your name!',
                       },
                     ]}
@@ -120,7 +130,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     name={[name, 'roomType']}
                     fieldKey={[fieldKey, 'roomType']}
                     label="Loại phòng"
-                    rules={[{ required: true, message: 'Loại phòng là bắt buộc!' }]}
+                    rules={[{ required: false, message: 'Loại phòng là bắt buộc!' }]}
                   >
                     <AutoComplete
                       options={roomTypeList}
@@ -136,7 +146,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     name={[name, 'arrivalDate']}
                     fieldKey={[fieldKey, 'arrivalDate']}
                     label="Ngày đến"
-                    rules={[{ required: true, message: 'Ngày đến là bắt buộc!' }]}
+                    rules={[{ required: false, message: 'Ngày đến là bắt buộc!' }]}
                   >
                     <DatePicker
                       showTime
@@ -151,7 +161,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     name={[name, 'departureDate']}
                     fieldKey={[fieldKey, 'departureDate']}
                     label="Ngày đi"
-                    rules={[{ required: true, message: 'Ngày đi là bắt buộc!' }]}
+                    rules={[{ required: false, message: 'Ngày đi là bắt buộc!' }]}
                   >
                     <DatePicker
                       showTime
@@ -166,9 +176,9 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     name={[name, 'roomPrice']}
                     fieldKey={[fieldKey, 'roomPrice']}
                     label="Giá phòng (1 đêm)"
-                    rules={[{ required: true, message: 'Giá phòng là bắt buộc!' }]}
+                    // rules={[{ required: false, message: 'Giá phòng là bắt buộc!' }]}
                   >
-                    <Input type="number" placeholder="Nhập giá phòng" />
+                    <Input placeholder="Nhập giá phòng" />
                   </Form.Item>
 
                   <Form.Item
@@ -176,9 +186,9 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     name={[name, 'deposit']}
                     fieldKey={[fieldKey, 'deposit']}
                     label="Tiền cọc"
-                    rules={[{ required: true, message: 'Tiền cọc là bắt buộc!' }]}
+                    // rules={[{ required: false, message: 'Tiền cọc là bắt buộc!' }]}
                   >
-                    <Input type="number" placeholder="Nhập tiền cọc" />
+                    <Input placeholder="Nhập tiền cọc" />
                   </Form.Item>
                   <Button type="danger" onClick={() => remove(name)} style={styles.removeButton}>
                     Xóa phòng
