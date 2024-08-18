@@ -25,7 +25,7 @@
 export const hotelList = [
     {
         id: 1,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "48 Phan Kế Bính, Ba Đình, HN",
         benefit: [
             "Daily housekeeping service",
@@ -38,7 +38,7 @@ export const hotelList = [
     },
     {
         id: 2,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "20 Linh Lang, Ba Đình, HN",
         benefit: [
             "Daily housekeeping service",
@@ -51,7 +51,7 @@ export const hotelList = [
     },
     {
         id: 3,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "39 Linh Lang, Ba Đình, HN",
         benefit: [
             "Daily housekeeping service",
@@ -64,7 +64,7 @@ export const hotelList = [
     },
     {
         id: 4,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "6/60 Linh Lang, Ba Đình, HN",
         benefit: [
             "Daily housekeeping service",
@@ -77,7 +77,7 @@ export const hotelList = [
     },
     {
         id: 5,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "9/81 Linh Lang, Ba Đình, HN",
         benefit: [
             "Daily housekeeping service",
@@ -91,7 +91,7 @@ export const hotelList = [
     },
     {
         id: 21,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "4/81 Linh Lang, Ba Đình, HN",
         benefit: [
             "Daily housekeeping service",
@@ -104,7 +104,7 @@ export const hotelList = [
     },
     {
         id: 6,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "27/81 Linh Lang, Ba Đình, HN",
         benefit: [
             "Daily housekeeping service",
@@ -117,7 +117,7 @@ export const hotelList = [
     },
     {
         id: 7,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "69 Trần Đăng Ninh, Cầu Giấy, HN",
         benefit: [
             "Daily housekeeping service",
@@ -130,7 +130,7 @@ export const hotelList = [
     },
     {
         id: 8,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "352 Đường Bưởi, Cầu Giấy, HN",
         benefit: [
             "Daily housekeeping service",
@@ -169,7 +169,7 @@ export const hotelList = [
     },
     {
         id: 11,
-        name: "22Land Residence",
+        name: "22Land Residence Hotel",
         address: "50 Trương Công Giai, Cầu Giấy, HN",
         benefit: [
             "Daily housekeeping service",
@@ -182,7 +182,7 @@ export const hotelList = [
     },
     {
         id: 12,
-        name: "22Land Residence",
+        name: "22Land Residence Hotel",
         address: "02 Nguyễn Đình Hoàn, Cầu Giấy, HN",
         benefit: [
             "Daily housekeeping service",
@@ -194,7 +194,7 @@ export const hotelList = [
     },
     {
         id: 13,
-        name: "22Land Residence",
+        name: "22Land Residence Hotel",
         address: "71 Hàng Bông, Hoàn Kiếm, HN",
         benefit: [
             "Daily housekeeping service",
@@ -207,7 +207,7 @@ export const hotelList = [
     },
     {
         id: 14,
-        name: "22Land Residence",
+        name: "22Land Residence Hotel",
         address: "52 Ngõ Huyện, Hoàn Kiếm, HN",
         benefit: [
             "Daily housekeeping service",
@@ -220,7 +220,7 @@ export const hotelList = [
     },
     {
         id: 15,
-        name: "Lake View",
+        name: "Lake View Hotel",
         address: "65 Trích Sài, Tây Hồ, Hà Nội",
         benefit: [
             "Daily housekeeping service",
@@ -246,7 +246,7 @@ export const hotelList = [
     },
     {
         id: 17,
-        name: "Vinhomes Timescity",
+        name: "22 Housing - Vinhomes Timescity",
         address: "458 Minh Khai, Hai Bà Trưng, Hà Nội",
         benefit: [
             "Daily housekeeping service",
@@ -259,7 +259,7 @@ export const hotelList = [
     },
     {
         id: 18,
-        name: "Vinhomes Smart City",
+        name: "22 Housing - Vinhomes Smart City",
         address: "Tây Mỗ, Nam Từ Liêm, Hà Nội",
         benefit: [
             "Daily housekeeping service",
@@ -273,7 +273,7 @@ export const hotelList = [
     },
     {
         id: 19,
-        name: "Vinhomes Metropolis",
+        name: "22 Housing - Vinhomes Metropolis",
         address: "29 Liễu Giai, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
@@ -286,7 +286,7 @@ export const hotelList = [
     },
     {
         id: 20,
-        name: "Lakeview Residence",
+        name: "Lake View Residence",
         address: "51 Trích Sài, Tây Hồ, Hà Nội",
         benefit: [
             "Daily housekeeping service",
@@ -299,7 +299,7 @@ export const hotelList = [
     },
     {
         id: 22,
-        name: "22Land Residence Suite",
+        name: "22 Housing",
         address: "8 Nguyễn Văn Ngọc, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
