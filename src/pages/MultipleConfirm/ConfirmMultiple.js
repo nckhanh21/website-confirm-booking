@@ -136,12 +136,12 @@ const BookingConfirmation = ({ details, onEdit }) => {
                             <div style={styles.rateAmount}>VND {totalAmount}</div>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Diposited</span>
-                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px',  }}>VND {totalDeposit}</div>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalDeposit}</div>
                             </div>
                             {/* Còn lại  */}
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Remaining</span>
-                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px',}}>VND {totalRemaining}</div>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalRemaining}</div>
                             </div>
                         </div>
                         <div style={styles.signature}>
@@ -203,9 +203,12 @@ const BookingConfirmation = ({ details, onEdit }) => {
                     <h3 style={styles.subHeader}>ROOM RETENTION POLICY</h3>
                     1. Non-refundable - no cancellations <br />
                     2. Retention policy applies:
-                    <li>For 1-room bookings, the retention is valid if made at least 24 hours before check-in.</li>
-                    <li>For 2-room bookings or more, the retention is valid if made at least 72 hours before check-in.</li>
-                    <li>Retention is not applicable for groups booking 3 rooms or more.</li>
+                    <ul style={{ margin: 0 }} >
+
+                        <li>For 1-room bookings, the retention is valid if made at least 24 hours before check-in.</li>
+                        <li>For 2-room bookings or more, the retention is valid if made at least 72 hours before check-in.</li>
+                        <li>Retention is not applicable for groups booking 3 rooms or more.</li>
+                    </ul>
                     3. For group bookings: No last-minute cancellations (a minimum 50% deposit is required). <br />
                     4. The retention period is 1 month from the scheduled check-in date, and the retention or date change can be made only once.
                     <div style={styles.footer}>
@@ -254,7 +257,7 @@ const styles = {
     address: {
         fontSize: '14px',
         color: '#555',
-
+        fontWeight: 'bold',
     },
     logoImage: {
         width: '100px',
@@ -376,8 +379,8 @@ const styles = {
     signatureText: {
         fontSize: '14px',
         color: '#555',
-        fontFamily : 'Arial, sans-serif',
-        fontWeight : 'bold',
+        fontFamily: 'Arial, sans-serif',
+        fontWeight: 'bold',
     },
     signatureImage: {
         width: '100px',
