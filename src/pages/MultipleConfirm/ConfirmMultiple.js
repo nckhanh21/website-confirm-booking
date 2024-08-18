@@ -51,15 +51,6 @@ const BookingConfirmation = ({ details, onEdit }) => {
     return (
         <>
             <div id="booking-content" style={styles.container}>
-                <img src={corner} alt="logo" style={{
-                    position: 'absolute',
-                    top: '10px',
-                    right: '260px',
-                    width: '120px',
-                    height: '120px',
-                    //Quay ngược lại trái sang phải và trên xuống dưới
-                    transform: 'rotate(180deg)',
-                }} />
                 <div style={styles.headerSection}>
                     <p style={styles.companyInfo}>
                         <div style={styles.logo}>
