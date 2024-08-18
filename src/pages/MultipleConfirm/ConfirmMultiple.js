@@ -30,7 +30,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
 
     const exportToPNG = () => {
         const element = document.getElementById('booking-content');
-        html2canvas(element).then((canvas) => {
+        html2canvas(element, { quality: 0.95 }).then((canvas) => {
             const link = document.createElement('a');
             link.download = 'booking-confirmation.png';
             link.href = canvas.toDataURL('image/png');
