@@ -64,7 +64,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                         <div style={styles.address}>
                             Address: {hotelAddress}<br />
                         </div>
-                        Phone: 0866809239 - Email: sale05.22housing@gmail.com - Web: https://22landresidence.com
+                        Phone: 0866809239 - Email: sale05.22housing@gmail.com - Web: https://22landresidence.com, https://22housing.com
                     </p>
                 </div>
                 <div style={styles.headerSection}>
