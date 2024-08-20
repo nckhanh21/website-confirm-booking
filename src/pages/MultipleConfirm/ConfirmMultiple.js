@@ -312,6 +312,7 @@ const styles = {
     td: {
         border: '1px solid #ddd',
         padding: '12px',
+        fontWeight: 'bold',
         fontSize: '14px',
         textAlign: 'left',
         verticalAlign: 'middle', // Align the text vertically in the middle
