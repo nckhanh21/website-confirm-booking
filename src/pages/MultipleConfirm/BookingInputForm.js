@@ -108,7 +108,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
           label="Tiền cọc"
         // rules={[{ required: false, message: 'Tiền cọc là bắt buộc!' }]}
         >
-          <Input type='number' placeholder="Nhập tiền cọc" />
+          <Input type='number' placeholder="Nhập tiền cọc" onWheel={(e) => e.target.blur()} />
         </Form.Item>
         {/* <Form.Item
           name="paymentMethod"
@@ -167,6 +167,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                       format="YYYY-MM-DD HH:mm"
                       style={styles.input}
                       placeholder="Chọn ngày và giờ đến"
+                      minuteStep={15}
                     />
                   </Form.Item>
 
@@ -182,6 +183,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                       format="YYYY-MM-DD HH:mm"
                       style={styles.input}
                       placeholder="Chọn ngày và giờ đi"
+                      minuteStep={15}
                     />
                   </Form.Item>
 
@@ -192,7 +194,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     label="Giá phòng (1 đêm)"
                   // rules={[{ required: false, message: 'Giá phòng là bắt buộc!' }]}
                   >
-                    <Input type='number' placeholder="Nhập giá phòng" />
+                    <Input type='number' placeholder="Nhập giá phòng"  onWheel={(e) => e.target.blur()}/>
                   </Form.Item>
 
                   <Form.Item
@@ -201,7 +203,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                     fieldKey={[fieldKey, 'amount']}
                     label="Thành tiền"
                   >
-                    <Input type='number' placeholder="Nhập tiền" />
+                    <Input type='number' placeholder="Nhập tiền"  onWheel={(e) => e.target.blur()}/>
                   </Form.Item>
                   <Button type="danger" onClick={() => remove(name)} style={styles.removeButton}>
                     Xóa phòng
