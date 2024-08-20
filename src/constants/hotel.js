@@ -26,7 +26,7 @@ export const hotelList = [
     {
         id: 1,
         name: "22 Housing",
-        address: "48 Phan Kế Bính, Ba Đình, HN",
+        address: "48 Phan Kế Bính, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -39,7 +39,7 @@ export const hotelList = [
     {
         id: 2,
         name: "22 Housing",
-        address: "20 Linh Lang, Ba Đình, HN",
+        address: "20 Linh Lang, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -52,7 +52,7 @@ export const hotelList = [
     {
         id: 3,
         name: "22 Housing",
-        address: "39 Linh Lang, Ba Đình, HN",
+        address: "39 Linh Lang, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -65,7 +65,7 @@ export const hotelList = [
     {
         id: 4,
         name: "22 Housing",
-        address: "6/60 Linh Lang, Ba Đình, HN",
+        address: "6/60 Linh Lang, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -78,7 +78,7 @@ export const hotelList = [
     {
         id: 5,
         name: "22 Housing",
-        address: "9/81 Linh Lang, Ba Đình, HN",
+        address: "9/81 Linh Lang, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -92,7 +92,7 @@ export const hotelList = [
     {
         id: 21,
         name: "22 Housing",
-        address: "4/81 Linh Lang, Ba Đình, HN",
+        address: "4/81 Linh Lang, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -105,7 +105,7 @@ export const hotelList = [
     {
         id: 6,
         name: "22 Housing",
-        address: "27/81 Linh Lang, Ba Đình, HN",
+        address: "27/81 Linh Lang, Ba Đình, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -118,7 +118,7 @@ export const hotelList = [
     {
         id: 7,
         name: "22 Housing",
-        address: "69 Trần Đăng Ninh, Cầu Giấy, HN",
+        address: "69 Trần Đăng Ninh, Cầu Giấy, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -131,7 +131,7 @@ export const hotelList = [
     {
         id: 8,
         name: "22 Housing",
-        address: "352 Đường Bưởi, Cầu Giấy, HN",
+        address: "352 Đường Bưởi, Cầu Giấy, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -144,7 +144,7 @@ export const hotelList = [
     {
         id: 9,
         name: "Moon West Lake",
-        address: "185A Trích Sài, Tây Hồ, HN",
+        address: "185A Trích Sài, Tây Hồ, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -157,7 +157,7 @@ export const hotelList = [
     {
         id: 10,
         name: "Coco Hotel Ha Noi",
-        address: "5B Trần Duy Hưng, Cầu Giấy, HN",
+        address: "5B Trần Duy Hưng, Cầu Giấy, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -170,7 +170,7 @@ export const hotelList = [
     {
         id: 11,
         name: "22Land Residence Hotel",
-        address: "50 Trương Công Giai, Cầu Giấy, HN",
+        address: "50 Trương Công Giai, Cầu Giấy, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             "Buffet breakfast free",
@@ -183,7 +183,7 @@ export const hotelList = [
     {
         id: 12,
         name: "22Land Residence Hotel",
-        address: "02 Nguyễn Đình Hoàn, Cầu Giấy, HN",
+        address: "02 Nguyễn Đình Hoàn, Cầu Giấy, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             "Buffet breakfast free",
@@ -195,7 +195,7 @@ export const hotelList = [
     {
         id: 13,
         name: "22Land Residence Hotel",
-        address: "71 Hàng Bông, Hoàn Kiếm, HN",
+        address: "71 Hàng Bông, Hoàn Kiếm, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
@@ -208,7 +208,7 @@ export const hotelList = [
     {
         id: 14,
         name: "22Land Residence Hotel",
-        address: "52 Ngõ Huyện, Hoàn Kiếm, HN",
+        address: "52 Ngõ Huyện, Hoàn Kiếm, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             // "Buffet breakfast free",
