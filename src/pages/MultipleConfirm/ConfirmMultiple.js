@@ -108,8 +108,8 @@ const BookingConfirmation = ({ details, onEdit }) => {
                                         hour: '2-digit',
                                         minute: '2-digit',
                                     })}</td>
-                                    <td style={styles.td}>{room.roomPrice} VND</td>
-                                    <td style={styles.td}>{room.amount} VND</td>
+                                    <td style={styles.td}>{Number(room.roomPrice).toLocaleString()} VND</td>
+                                    <td style={styles.td}>{Number(room.amount).toLocaleString()} VND</td>
                                 </tr>
                             ))}
                         </tbody>
