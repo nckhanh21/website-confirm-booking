@@ -62,6 +62,12 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
         style={styles.form}
       >
         <Form.Item
+          label="Tên booker"
+          name="bookerName"
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
           label="Tên khách sạn"
           name="hotelName"
           rules={[{ required: true, message: 'Tên khách sạn bắt buộc!' }]}

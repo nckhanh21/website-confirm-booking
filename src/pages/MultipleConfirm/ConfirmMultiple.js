@@ -7,7 +7,7 @@ import logoimg from '../../assets/logo.webp';
 import logo22land from '../../assets/22land.png';
 import signature from '../../assets/signature.png';
 const BookingConfirmation = ({ details, onEdit }) => {
-    const { rooms, hotelName, hotelAddress, benefit, logo, deposit } = details;
+    const { rooms, hotelName, hotelAddress, benefit, logo, deposit, bookerName } = details;
 
     const [totalAmount, setTotalAmount] = React.useState(0);
     const [totalDeposit, setTotalDeposit] = React.useState(0);
@@ -72,7 +72,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                     <Divider variant="dashed" style={{ borderColor: '#333' }} dashed ><h2 style={styles.title}>CONFIRMATION LETTER</h2></Divider>
                 </div>
                 <div style={styles.section}>
-                    Dear {rooms[0].name}, <br />
+                    Dear {bookerName? bookerName : rooms[0].name}, <br />
                     Thank you for choosing <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}> {hotelName}</span>. We are pleased to confirm your reservation details as follows:
                 </div>
 
