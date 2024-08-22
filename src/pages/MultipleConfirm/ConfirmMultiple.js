@@ -92,7 +92,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                         <tbody>
                             {rooms.map((room, index) => (
                                 <tr key={index}>
-                                    <td style={styles.td}>{room.name}</td>
+                                    <td style={{ ...styles.td, whiteSpace: 'pre-wrap' }}>{room.name}</td>
                                     <td style={styles.td}>{room.roomType}</td>
                                     <td style={styles.td}>{new Date(room.arrivalDate).toLocaleString('en-GB', {
                                         year: 'numeric',
