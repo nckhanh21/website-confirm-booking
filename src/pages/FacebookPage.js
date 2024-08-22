@@ -31,11 +31,17 @@ const FacebookPage = () => {
 
     const responseFacebook = (response) => {
         console.log(response);
-    }
-
+        // Lưu token và thông tin user vào state hoặc context
+        //
+      };
     return (
         <div className='container' >
-          
+            {/* <FacebookLogin
+                appId="3691521414463822"
+                autoLoad={true}
+                fields="name,email,picture"
+                callback={responseFacebook}
+            /> */}
         </div>
     );
 };

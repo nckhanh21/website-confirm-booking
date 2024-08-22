@@ -137,7 +137,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                       },
                     ]}
                   >
-                    <Input placeholder='Nhập tên' />
+                    <Input.TextArea placeholder='Nhập tên' />
                   </Form.Item>
                   <Form.Item
                     {...restField}
