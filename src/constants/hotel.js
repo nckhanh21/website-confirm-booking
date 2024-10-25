@@ -5,6 +5,9 @@
 + 39 Linh Lang, Ba Đình, HN
 + 6/60 Linh Lang, Ba Đình, HN
 + 9/81 Linh Lang, Ba Đình, HN
+
+
+
 + 27/81 Linh Lang, Ba Đình, HN
 + 69 Trần Đăng Ninh, Cầu Giấy, HN
 + 352 Đường Bưởi, Cầu Giấy, HN
@@ -198,7 +201,7 @@ export const hotelList = [
         address: "71 Hàng Bông, Hoàn Kiếm, Hà Nội",
         benefit: [
             "Daily housekeeping service",
-            // "Buffet breakfast free",
+            "Buffet breakfast free",
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
