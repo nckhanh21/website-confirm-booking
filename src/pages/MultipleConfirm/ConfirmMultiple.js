@@ -135,7 +135,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
                             <strong>Total Amount</strong>
                             <div style={styles.rateAmount}>VND {totalAmount}</div>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Diposited</span>
+                                <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Deposited</span>
                                 <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalDeposit}</div>
                             </div>
                             {/* Còn lại  */}
