@@ -325,6 +325,19 @@ export const hotelList = [
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
         ],
         logo: "22Land",
+    },
+    {
+        id: 24,
+        name: "22Land Cosmos Hotel & Apartment",
+        address: "35, ngõ 99 Xuân La, Tây Hồ, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Free gym use service",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ],
+        logo: "22Land",
     }
     
 ]
