@@ -338,6 +338,17 @@ export const hotelList = [
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
         ],
         logo: "22Land",
+    },
+    {
+        id: 25,
+        name: "22Land Sun Residences",
+        address: "63 Kim Mã Thượng, Ba Đình, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+        ],
+        logo: "22Land",
     }
     
 ]
