@@ -349,6 +349,17 @@ export const hotelList = [
             "Complimentary Wi-Fi",
         ],
         logo: "22Land",
+    },
+    {
+        id: 26,
+        name: "22Land Legend Residences",
+        address: "15 Duy Tân, Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+        ],
+        logo: "22Land",
     }
     
 ]
