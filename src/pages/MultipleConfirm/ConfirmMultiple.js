@@ -133,15 +133,15 @@ const BookingConfirmation = ({ details, onEdit }) => {
                     <div style={styles.paymentDetails}>
                         <div style={styles.netRate}>
                             <strong>Total Amount</strong>
-                            <div style={styles.rateAmount}>VND {totalAmount}</div>
+                            <div style={styles.rateAmount}>VND {totalAmount ? totalAmount: 0}</div>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Deposited</span>
-                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalDeposit}</div>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalDeposit ? totalDeposit : 0}</div>
                             </div>
                             {/* Còn lại  */}
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Remaining</span>
-                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalRemaining}</div>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalRemaining ? totalRemaining : 0 }</div>
                             </div>
                         </div>
                         <div style={styles.signature}>
