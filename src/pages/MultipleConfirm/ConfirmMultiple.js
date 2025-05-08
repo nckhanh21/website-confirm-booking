@@ -181,14 +181,15 @@ const BookingConfirmation = ({ details, onEdit }) => {
                                     <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalAdditionalServices}</div>
                                 </div>
                             )}
+                            <div style={styles.rateAmount}>VND {totalAmount ? totalAmount: 0}</div>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Diposited</span>
-                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalDeposit}</div>
+                                <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Deposited</span>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalDeposit ? totalDeposit : 0}</div>
                             </div>
                             {/* Còn lại  */}
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Remaining</span>
-                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalRemaining}</div>
+                                <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalRemaining ? totalRemaining : 0 }</div>
                             </div>
                         </div>
                         <div style={styles.signature}>

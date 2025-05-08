@@ -5,6 +5,9 @@
 + 39 Linh Lang, Ba Đình, HN
 + 6/60 Linh Lang, Ba Đình, HN
 + 9/81 Linh Lang, Ba Đình, HN
+
+
+
 + 27/81 Linh Lang, Ba Đình, HN
 + 69 Trần Đăng Ninh, Cầu Giấy, HN
 + 352 Đường Bưởi, Cầu Giấy, HN
@@ -198,7 +201,7 @@ export const hotelList = [
         address: "71 Hàng Bông, Hoàn Kiếm, Hà Nội",
         benefit: [
             "Daily housekeeping service",
-            // "Buffet breakfast free",
+            "Buffet breakfast free",
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
@@ -320,6 +323,41 @@ export const hotelList = [
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ],
+        logo: "22Land",
+    },
+    {
+        id: 24,
+        name: "22Land Cosmos Hotel & Apartment",
+        address: "35, ngõ 99 Xuân La, Tây Hồ, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Free gym use service",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
+        ],
+        logo: "22Land",
+    },
+    {
+        id: 25,
+        name: "22Land Sun Residences",
+        address: "63 Kim Mã Thượng, Ba Đình, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+        ],
+        logo: "22Land",
+    },
+    {
+        id: 26,
+        name: "22Land Legend Residences",
+        address: "15 Duy Tân, Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
         ],
         logo: "22Land",
     }

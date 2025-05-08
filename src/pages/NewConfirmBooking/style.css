@@ -89,6 +89,30 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Class mới để đảm bảo confirmation không responsive */
+.non-responsive-confirmation {
+  width: 100% !important;
+  min-width: 980px !important;
+}
+
+.non-responsive-confirmation .ant-row,
+.non-responsive-confirmation .ant-col {
+  flex: 0 0 auto !important;
+}
+
+.non-responsive-confirmation .ant-table {
+  font-size: 14px !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.non-responsive-confirmation .ant-descriptions,
+.non-responsive-confirmation .ant-descriptions-item-label,
+.non-responsive-confirmation .ant-descriptions-item-content {
+  font-size: 14px !important;
+  padding: 12px 8px !important;
+}
+
 .confirmation-title {
   color: #1a3b6e;
   text-align: center;
@@ -118,8 +142,8 @@
     font-size: 16px;
   }
 
-  .confirmation-container .ant-table-thead > tr > th,
-  .confirmation-container .ant-table-tbody > tr > td {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-table-thead > tr > th,
+  .confirmation-container:not(.non-responsive-confirmation) .ant-table-tbody > tr > td {
     padding: 12px 8px;
   }
 }
@@ -156,25 +180,25 @@
     margin-bottom: 16px;
   }
 
-  .confirmation-title {
+  .confirmation-container:not(.non-responsive-confirmation) .confirmation-title {
     font-size: 22px;
   }
 
-  .confirmation-section-title {
+  .confirmation-container:not(.non-responsive-confirmation) .confirmation-section-title {
     font-size: 18px;
   }
 
-  .confirmation-container .ant-card-body {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-card-body {
     padding: 16px 12px;
   }
 
   /* Fix Table display on tablet */
-  .confirmation-container .ant-table {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-table {
     font-size: 13px;
   }
 
-  .confirmation-container .ant-descriptions-item-label,
-  .confirmation-container .ant-descriptions-item-content {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-descriptions-item-label,
+  .confirmation-container:not(.non-responsive-confirmation) .ant-descriptions-item-content {
     padding: 12px 8px;
   }
 }
@@ -264,43 +288,43 @@
   }
 
   /* Mobile Confirmation styles */
-  .confirmation-container .ant-card-body {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-card-body {
     padding: 10px 8px;
   }
 
-  .confirmation-title {
+  .confirmation-container:not(.non-responsive-confirmation) .confirmation-title {
     font-size: 18px;
   }
 
-  .confirmation-section-title {
+  .confirmation-container:not(.non-responsive-confirmation) .confirmation-section-title {
     font-size: 16px;
   }
 
-  .confirmation-container .ant-descriptions-header {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-descriptions-header {
     margin-bottom: 8px;
   }
 
-  .confirmation-container .ant-table {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-table {
     font-size: 12px;
   }
 
-  .confirmation-container .ant-table-thead > tr > th,
-  .confirmation-container .ant-table-tbody > tr > td {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-table-thead > tr > th,
+  .confirmation-container:not(.non-responsive-confirmation) .ant-table-tbody > tr > td {
     padding: 8px 4px;
     white-space: normal;
     word-break: break-word;
   }
 
-  .confirmation-container .ant-table-cell {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-table-cell {
     font-size: 12px;
   }
 
-  .confirmation-container .ant-descriptions-bordered .ant-descriptions-item-label, 
-  .confirmation-container .ant-descriptions-bordered .ant-descriptions-item-content {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-descriptions-bordered .ant-descriptions-item-label, 
+  .confirmation-container:not(.non-responsive-confirmation) .ant-descriptions-bordered .ant-descriptions-item-content {
     padding: 8px 6px;
   }
 
-  .confirmation-container .ant-typography {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-typography {
     font-size: 13px;
   }
 
@@ -309,7 +333,7 @@
     margin: 4px;
   }
 
-  .confirmation-container .ant-row {
+  .confirmation-container:not(.non-responsive-confirmation) .ant-row {
     margin-bottom: 12px !important;
   }
 
