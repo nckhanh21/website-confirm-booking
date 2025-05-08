@@ -415,41 +415,57 @@ const BookingConfirmation = ({ details, onEdit }) => {
             </div>
           </div>
           <div className="payment-container">
-            <Row justify="space-between" gutter={[30, 0]}>
-              <Col span={12}>
-                <div className="total-amount-card">
-                  <div className="total-amount-title">Total Amount</div>
-                  <div className="total-amount-value">VND {totalAmount}</div>
-                  <div className="amount-details">
-                    <div className="amount-row">
-                      <span className="amount-label">Deposited</span>
-                      <span className="deposit-value">VND {totalDeposit}</span>
-                    </div>
-                    <div className="amount-row">
-                      <span className="amount-label">Remaining</span>
-                      <span className="remaining-value">VND {totalRemaining}</span>
+            <div className="payment-summary-wrapper">
+              <Row gutter={[0, 16]}>
+                {/* Phần Total Amount */}
+                <Col xs={24} md={7} className="payment-section-left">
+                  <div className="total-amount-card payment-summary-card-equal">
+                    <div className="total-amount-title">Total Amount</div>
+                    <div className="total-amount-value">VND {totalAmount}</div>
+                    <div className="amount-details">
+                      <div className="amount-row">
+                        <span className="amount-label">Deposited</span>
+                        <span className="deposit-value">VND {totalDeposit}</span>
+                      </div>
+                      <div className="amount-row">
+                        <span className="amount-label">Remaining</span>
+                        <span className="remaining-value">VND {totalRemaining}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Col>
-              <Col span={7} className="text-center">
-                <div className="signature-container">
-                  <img src={signature} alt="Authorized Signature" className="signature-image" />
-                  <div className="signature-name">Phan Huyen Trang</div>
-                </div>
-              </Col>
-              
-              <Col span={7}>
-                <div className="payable-card">
-                  <div className="payable-title">Booked and Payable by</div>
-                  <div className="company-info">
-                    22 Land Real Estate Investment Consultancy
-                    <br />
-                    No 20 Linh Lang Street, Cong Vi Ward, Ba Dinh District, Hanoi
+                </Col>
+                
+                {/* Cột divider 1 */}
+                <Col xs={0} md={1} className="payment-separator-col">
+                  <div className="payment-separator"></div>
+                </Col>
+                
+                {/* Phần Chữ ký */}
+                <Col xs={24} md={7} className="payment-section-center">
+                  <div className="signature-container payment-summary-card-equal text-center">
+                    <img src={signature} alt="Authorized Signature" className="signature-image" />
+                    <div className="signature-name">Phan Huyen Trang</div>
                   </div>
-                </div>
-              </Col>
-            </Row>
+                </Col>
+                
+                {/* Cột divider 2 */}
+                <Col xs={0} md={1} className="payment-separator-col">
+                  <div className="payment-separator"></div>
+                </Col>
+                
+                {/* Phần Booked and Payable */}
+                <Col xs={24} md={7} className="payment-section-right">
+                  <div className="payable-card payment-summary-card-equal">
+                    <div className="payable-title">Booked and Payable by</div>
+                    <div className="company-info">
+                      22 Land Real Estate Investment Consultancy
+                      <br />
+                      No 20 Linh Lang Street, Cong Vi Ward, Ba Dinh District, Hanoi
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
           </div>
         </div>
 
