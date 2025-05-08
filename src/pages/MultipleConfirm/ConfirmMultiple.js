@@ -7,26 +7,44 @@ import logoimg from '../../assets/logo.webp';
 import logo22land from '../../assets/22land.png';
 import signature from '../../assets/signature.png';
 const BookingConfirmation = ({ details, onEdit }) => {
-    const { rooms, hotelName, hotelAddress, benefit, logo, deposit, bookerName } = details;
+    const { rooms, hotelName, hotelAddress, benefit, logo, deposit, bookerName, additionalServices = [] } = details;
 
     const [totalAmount, setTotalAmount] = React.useState(0);
     const [totalDeposit, setTotalDeposit] = React.useState(0);
     const [totalRemaining, setTotalRemaining] = React.useState(0);
+    const [totalAdditionalServices, setTotalAdditionalServices] = React.useState(0);
 
     React.useEffect(() => {
         let total = 0;
+        let additionalServicesTotal = 0;
+        
+        // Tính tổng tiền phòng
         rooms.forEach((room) => {
             total += Number(room.amount);
         });
+        
+        // Tính tổng tiền dịch vụ bổ sung
+        if (additionalServices && additionalServices.length > 0) {
+            additionalServices.forEach((service) => {
+                additionalServicesTotal += Number(service.servicePrice);
+            });
+        }
+        
+        // Tổng số tiền bao gồm cả dịch vụ
+        const grandTotal = total + additionalServicesTotal;
         const numDeposit = Number(deposit);
-        // Định dạng totalAmount theo dạng 1,xxx,xxx.00
-        const formattedTotal = total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        
+        // Định dạng số tiền
+        const formattedTotal = grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         const formattedDeposit = numDeposit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        const formattedRemaining = (total - numDeposit).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedRemaining = (grandTotal - numDeposit).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedAdditionalServices = additionalServicesTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        
         setTotalAmount(formattedTotal);
         setTotalDeposit(formattedDeposit);
         setTotalRemaining(formattedRemaining);
-    }, [rooms]);
+        setTotalAdditionalServices(formattedAdditionalServices);
+    }, [rooms, additionalServices, deposit]);
 
     const exportToPNG = () => {
         const element = document.getElementById('booking-content');
@@ -116,6 +134,29 @@ const BookingConfirmation = ({ details, onEdit }) => {
                     </table>
                 </div>
 
+                {/* Phần Dịch vụ bổ sung */}
+                {additionalServices && additionalServices.length > 0 && (
+                    <div style={styles.section}>
+                        <h3 style={styles.subHeader}>ADDITIONAL SERVICES</h3>
+                        <table style={styles.table}>
+                            <thead>
+                                <tr>
+                                    <th style={styles.th}>Service Name</th>
+                                    <th style={styles.th}>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {additionalServices.map((service, index) => (
+                                    <tr key={index}>
+                                        <td style={styles.td}>{service.serviceName}</td>
+                                        <td style={styles.td}>{Number(service.servicePrice).toLocaleString()} VND</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+
                 <div style={styles.section}>
                     <h3 style={styles.subHeader}>BENEFITS INCLUDED</h3>
                     <ul style={styles.benefitsList}>
@@ -134,6 +175,12 @@ const BookingConfirmation = ({ details, onEdit }) => {
                         <div style={styles.netRate}>
                             <strong>Total Amount</strong>
                             <div style={styles.rateAmount}>VND {totalAmount}</div>
+                            {additionalServices && additionalServices.length > 0 && (
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Additional Services</span>
+                                    <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalAdditionalServices}</div>
+                                </div>
+                            )}
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <span style={{ fontSize: '12px', fontWeight: 'bold' }}>Diposited</span>
                                 <div style={{ fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', }}>VND {totalDeposit}</div>

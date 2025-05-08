@@ -1,72 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { jsPDF } from 'jspdf';
 import * as htmlToImage from 'html-to-image';
-import './styles/voucher.css';
-import logo from '../assets/logo-chrismas.png';
-import { Button, FloatButton, Table, Tag } from 'antd';
+import '../styles/voucher.css';
+import logo from '../../assets/logo.png';
+import { Button, FloatButton } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { FileTextOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { GlobalState } from '../context/GlobalProvider';
+import { GlobalState } from '../../context/GlobalProvider';
+import corner from '../../assets/corner.png';
 
-const VoucherChrismas2 = () => {
+const Voucher = () => {
 
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const { bookingInfo, setBookingInfo } = GlobalState();
+    const { bookingInfo , setBookingInfo} = GlobalState();
 
-
-    const columns = [
-        {
-            title: t('table.no'),
-            dataIndex: 'key',
-            key: 'key',
-        },
-        {
-            title: t('content.clientName'),
-            dataIndex: 'name',
-            key: 'name',
-            render: (text) => <a>{text}</a>,
-        },
-        {
-            title: t('table.number'),
-            dataIndex: 'quantity',
-            key: 'quantity',
-        },
-        {
-            title: t('table.numberOfPeople'),
-            dataIndex: 'numberOfPeople',
-            key: 'numberOfPeople',
-        },
-        {
-            title: 'Check In',
-            dataIndex: 'checkIn',
-            key: 'checkIn',
-        },
-        {
-            title: 'Check Out',
-            dataIndex: 'checkOut',
-            key: 'checkOut',
-        },
-        {
-            title: t('table.totalPayment'),
-            dataIndex: 'totalPrice',
-            key: 'totalPrice',
-        },
-        {
-            title: t('table.paymentInfo'),
-            dataIndex: 'paymentInfo',
-            key: 'paymentInfo',
-        },
-        {
-            title: t('table.note'),
-            dataIndex: 'note',
-            key: 'note',
-        },
-    ];
-
-
-
+    useEffect(() => {
+        console.log("intu", bookingInfo);
+    }, []);
 
     //get state from InputForm 
     const [state, setState] = useState(bookingInfo);
@@ -74,29 +26,7 @@ const VoucherChrismas2 = () => {
     const [value, setValue] = useState();
     const [timeCheckIn, setTimeCheckIn] = useState('');
     const [timeCheckOut, setTimeCheckOut] = useState('');
-    const [data, setData] = useState([]);
 
-    useEffect(() => {
-        console.log("intu", bookingInfo);
-        console.log("intu", value);
-        console.log("intu", timeCheckIn);
-        console.log("intu", timeCheckOut);
-        if (value) {
-            setData([
-                {
-                    key: 1,
-                    name: value.name,
-                    quantity: value.quantity,
-                    numberOfPeople: value.numberOfPeople,
-                    checkIn: timeCheckIn,
-                    checkOut: timeCheckOut,
-                    totalPrice: value.totalPrice,
-                    paymentInfo: value.paymentInfo,
-                    note: value.note,
-                }
-            ])
-        }
-    }, [value, timeCheckIn, timeCheckOut]);
 
     useState(() => {
         console.log(state);
@@ -130,7 +60,7 @@ const VoucherChrismas2 = () => {
                     0,
                     width,
                     height);
-                pdf.save("voucher.pdf");
+                pdf.save("confirmation-booking.pdf");
 
             })
             .catch((error) => {
@@ -143,7 +73,7 @@ const VoucherChrismas2 = () => {
         htmlToImage.toPng(input, { quality: 0.95 })
             .then((dataUrl) => {
                 const link = document.createElement('a');
-                link.download = 'voucher.png';
+                link.download = 'confirmation-booking.png';
                 link.href = dataUrl;
                 link.click();
             })
@@ -209,10 +139,18 @@ const VoucherChrismas2 = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 backgroundSize: 'contain',
-                position: 'absolute',
-                //background opacity
-
+                position: 'absolute'
             }}>
+                <img src={corner} alt="logo" style={{
+                    position: 'absolute',
+                    top: '-10px',
+                    right: '-5px',
+                    width: '120px',
+                    height: '120px',
+                    //Quay ngược lại trái sang phải và trên xuống dưới
+                    transform: 'rotate(180deg)',
+                }} />
+         
                 <div className='content'>
                     <div className='title' >
                         <h1 style={{
@@ -223,46 +161,20 @@ const VoucherChrismas2 = () => {
                         }}>Housing</h1>
 
                     </div>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                    }}>
-                        <div className='staff-info'>
-
-                            <span> PHAN HUYỀN TRANG (Ms.) Sales Manager </span>
-                            {/* mail  */}
-                            <span>
-                                <a href="mailto:" style={{ color: '#3E78BC' }}>
-                                    sale05.22housing@gmail.com
-                                </a>
-                            </span>
-                            {/* phone */}
-                            <span>  (+84) 866809239</span>
-                        </div>
-                        <div className='staff-info' >
-
-                            <span style={{ textAlign: 'center', fontWeight: '600', marginBottom: '.5em', fontSize: "1.2em" }}> {value?.hotelName}  </span>
-                            {/* mail  */}
-                            <span>
-                                <strong>{t('content.hotelAddress')} </strong>
-                                {value?.hotelAddress}
-                            </span>
-                            {/* phone */}
-                            <span>
-                                <a href="tel:" style={{ color: '#3E78BC' }}>
-                                    Tel: (+84) 866809239
-                                </a>
-                            </span>
-                        </div>
+                    <div className='staff-info'>
+                        <span> PHAN HUYỀN TRANG (Ms.) Sales Manager </span>
+                        {/* mail  */}
+                        <span>
+                            <a href="mailto:" style={{ color: '#3E78BC' }}>
+                                sale05.22housing@gmail.com
+                            </a>
+                        </span>
+                        {/* phone */}
+                        <span>  (+84) 866809239</span>
                     </div>
 
                     <div className='voucher-info'>
-                        <Table style={{
-                            width: '100%',
-                            textAlign: 'center',
-                        }} columns={columns} dataSource={data} pagination={false} />
-
-                        {/* <div>
+                        <div>
                             <div className='client-container'>
                                 <div className='client-info'>
                                     <h3 className='info-title'>{t('content.clientInfo')}</h3>
@@ -278,30 +190,58 @@ const VoucherChrismas2 = () => {
                                 <h4>{t('content.hotelName')} <strong> {value?.hotelName} </strong> </h4>
                                 <h4>{t('content.hotelAddress')}  <strong> {value?.hotelAddress} </strong> </h4>
                                 <h4 >Hotline: <strong>0866809239</strong></h4>
-                                <h4>Check In: <strong> {timeCheckIn} </strong></h4>
-                                <h4>Check Out: <strong> {timeCheckOut} </strong></h4>
+                                <h4>Check in: <strong> {timeCheckIn} </strong></h4>
+                                <h4>Check out: <strong> {timeCheckOut} </strong></h4>
+                                <h4 style={{fontSize: '12px', lineHeight: "5px",  color: '#F99D1C'}}>{"(WIFI password: 22222222)"}</h4>
                             </div>
-                        </div> */}
-                        {/* <div className='client-notification'>
+                        </div>
+                        <div className='client-notification'>
                             <h2 style={{
-                                color: 'red',
-                                fontSize: '20px',
+                                color: '#FF0000',
+                                fontSize: '22px',
                                 fontWeight: 'bold',
                                 textAlign: 'center',
+                                // marginTop: '100px'
+                                // position: 'absolute',
+                                // top: '10px',
                                 opacity: '0.7',
+                                //nghiêng chữ 45 độ
+                                // transform: 'rotate(-45deg)',
                                 fontStyle: 'italic',
                                 whiteSpace: 'nowrap',
                             }}>
+                                {/* Đặt dịch vụ thành công */}
                                 {t('table.success')}
                             </h2>
+                            {/* Vẽ table có border giữa các ô (không có header và mỗi dòng có ô title và mô tả) */}
                             <table style={{
                                 borderCollapse: 'collapse',
                                 width: '100%',
                                 border: '1px solid black',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                minWidth: '200px',
+                                height: '80%',
                             }}>
                                 <tbody>
-                                   
+                                    {/* <tr>
+                                        <th style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px'
+                                        }}>
+                                            {t('table.code')}
+                                        </th>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+                                            color: 'red',
+                                            fontWeight: 'bold'
+
+                                        }}>
+                                            {value?.code}
+                                        </td>
+                                    </tr> */}
                                     <tr>
                                         <td style={{
                                             border: '1px solid black',
@@ -338,6 +278,24 @@ const VoucherChrismas2 = () => {
 
                                         }}>
                                             {value?.quantity}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {t('table.numberOfPeople')}
+                                        </td>
+                                        <td style={{
+                                            border: '1px solid black',
+                                            width: '50%',
+                                            padding: '10px',
+
+                                        }}>
+                                            {value?.numberOfPeople}
                                         </td>
                                     </tr>
                                     <tr>
@@ -398,21 +356,9 @@ const VoucherChrismas2 = () => {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div> */}
+                        </div>
                     </div>
-                    <div className='staff-info'>
-                    <span>
-                       <strong> Dịch vụ kèm theo <br /></strong>
-                    </span>
-                    <span>
-                        - Daily breakfast at Restaurant on 01st floor form 06.00am <br />
-                        - Daily housekeeping service; <br />
-                        - Daily complimentary 02 bottles of mineral water, tea & coffee in room; <br />
-                        - Complimentary Wi-Fi;<br />
-                        - Complimentary access to hotel facilities: Jacuzzi on 01st floor<br /> 
-                    </span>
-                    </div>
-                    
+
                 </div>
                 <div className='footer'>
                     <div className='regulations'>
@@ -446,4 +392,4 @@ const VoucherChrismas2 = () => {
 }
 
 
-export default VoucherChrismas2;
+export default Voucher;

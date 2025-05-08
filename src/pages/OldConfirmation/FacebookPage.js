@@ -1,9 +1,9 @@
 import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import i18n from '../translation/i18n';
+import i18n from '../../translation/i18n';
 import dayjs from 'dayjs';
-import './styles/input-form.css';
+import '../styles/input-form.css';
 import {
     DatePicker,
     Form,
@@ -17,8 +17,8 @@ import {
     Upload,
 } from 'antd';
 import FacebookLogin from 'react-facebook-login';
-import { hotelList, roomTypeList } from '../constants/hotel';
-import { GlobalState } from '../context/GlobalProvider';
+import { hotelList, roomTypeList } from '../../constants/hotel';
+import { GlobalState } from '../../context/GlobalProvider';
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;

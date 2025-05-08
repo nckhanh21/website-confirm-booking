@@ -137,7 +137,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                       },
                     ]}
                   >
-                    <Input.TextArea placeholder='Nhập tên' />
+                    <Input.TextArea placeholder='Nhập tên' />
                   </Form.Item>
                   <Form.Item
                     {...restField}
@@ -220,7 +220,47 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
           )}
         </Form.List>
 
+        {/* Phần dịch vụ bổ sung */}
+        <Title level={3} style={styles.sectionTitle}>Dịch vụ bổ sung</Title>
+        <Form.List name="additionalServices">
+          {(fields, { add, remove }) => (
+            <>
+              {fields.map(({ key, name, fieldKey, ...restField }) => (
+                <div key={key} style={styles.serviceSection}>
+                  <Form.Item
+                    {...restField}
+                    name={[name, 'serviceName']}
+                    fieldKey={[fieldKey, 'serviceName']}
+                    label="Tên dịch vụ"
+                    rules={[{ required: true, message: 'Vui lòng nhập tên dịch vụ!' }]}
+                  >
+                    <Input placeholder="Ví dụ: Decor, Airport pick up, ..." />
+                  </Form.Item>
+                  
+                  <Form.Item
+                    {...restField}
+                    name={[name, 'servicePrice']}
+                    fieldKey={[fieldKey, 'servicePrice']}
+                    label="Giá dịch vụ"
+                    rules={[{ required: true, message: 'Vui lòng nhập giá dịch vụ!' }]}
+                  >
+                    <Input type='number' placeholder="Nhập giá dịch vụ" onWheel={(e) => e.target.blur()} />
+                  </Form.Item>
+                  
+                  <Button type="danger" onClick={() => remove(name)} style={styles.removeButton}>
+                    Xóa dịch vụ
+                  </Button>
+                </div>
+              ))}
 
+              <Form.Item>
+                <Button type="dashed" onClick={() => add()} style={styles.addButton}>
+                  Thêm dịch vụ
+                </Button>
+              </Form.Item>
+            </>
+          )}
+        </Form.List>
 
         <Form.Item>
           <Space>
@@ -250,31 +290,43 @@ const styles = {
     marginBottom: '20px',
   },
   form: {
-    display: 'flex',
-    flexDirection: 'column',
+    marginTop: '20px',
   },
   input: {
     width: '100%',
   },
-  submitButton: {
-    width: '100%',
-  },
   roomSection: {
     marginBottom: '20px',
-    padding: '10px',
+    padding: '15px',
     border: '1px solid #ddd',
-    borderRadius: '8px',
-    backgroundColor: '#f9f9f9',
+    borderRadius: '5px',
+    backgroundColor: '#f5f5f5',
+  },
+  serviceSection: {
+    marginBottom: '15px',
+    padding: '15px',
+    border: '1px solid #e0e0e0',
+    borderRadius: '5px',
+    backgroundColor: '#f8f8f8',
   },
   roomTitle: {
-    marginBottom: '10px',
+    borderBottom: '1px solid #ddd',
+    paddingBottom: '10px',
+    marginBottom: '15px',
+  },
+  sectionTitle: {
+    marginTop: '20px',
+    marginBottom: '15px',
+  },
+  addButton: {
+    width: '100%',
+    marginBottom: '20px',
   },
   removeButton: {
     marginTop: '10px',
   },
-  addButton: {
+  submitButton: {
     width: '100%',
-    marginTop: '10px',
   },
 };
 

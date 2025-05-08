@@ -1,12 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import InputForm from '../pages/InputForm';
-import Voucher from '../pages/Voucher';
-import FacebookPage from '../pages/FacebookPage';
-import VoucherChrismas from '../pages/VoucherChrismas';
-import VoucherChrismas2 from '../pages/VoucherChrismas2';
-import BookingConfirmationTest from '../pages/ConfirmTest';
+import InputForm from '../pages/OldConfirmation/InputForm';
+import Voucher from '../pages/OldConfirmation/Voucher';
+import FacebookPage from '../pages/OldConfirmation/FacebookPage';
+import VoucherChrismas from '../pages/OldConfirmation/VoucherChrismas';
+import VoucherChrismas2 from '../pages/OldConfirmation/VoucherChrismas2';
+import BookingConfirmationTest from '../pages/OldConfirmation/ConfirmTest';
 import BookingManager from '../pages/MultipleConfirm/BookingManager';
+import BookingManager2 from '../pages/NewConfirmBooking/BookingManager';
 
 const CRoutes = () => {
 
@@ -19,7 +20,7 @@ const CRoutes = () => {
             <Route path="/facebook" element={<FacebookPage />} />
             <Route path="/test" element={<BookingConfirmationTest />} />
             <Route path="/input" element={<BookingManager />} />
-
+            <Route path="/new-input" element={<BookingManager2 />} />
         </Routes>
     );
 };

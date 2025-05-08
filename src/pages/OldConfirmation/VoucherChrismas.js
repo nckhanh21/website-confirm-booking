@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { jsPDF } from 'jspdf';
 import * as htmlToImage from 'html-to-image';
-import './styles/voucher-chrismas.css';
-import logo from '../assets/logo-chrismas.png';
+import '../styles/voucher-chrismas.css';
+import logo from '../../assets/logo-chrismas.png';
 import { Button, FloatButton } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { FileTextOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { GlobalState } from '../context/GlobalProvider';
+import { GlobalState } from '../../context/GlobalProvider';
 
 const VoucherChrismas = () => {
 
