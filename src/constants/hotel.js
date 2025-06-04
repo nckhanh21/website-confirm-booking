@@ -150,12 +150,12 @@ export const hotelList = [
         address: "185A Trích Sài, Tây Hồ, Hà Nội",
         benefit: [
             "Daily housekeeping service",
-            // "Buffet breakfast free",
+            "Buffet breakfast free",
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
             // "Complimentary access to hotel facilities: Jacuzzi on 01st floor"
         ],
-        logo: "22Housing",
+        logo: "22Land",
     },
     {
         id: 10,
