@@ -360,6 +360,18 @@ export const hotelList = [
             "Complimentary Wi-Fi",
         ],
         logo: "22Land",
+    },
+    {
+        id: 27,
+        name: "22Land Cloud Hotel",
+        address: "150 Nguyễn Thái Học, Ba Đình, Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+        ],
+        logo: "22Land",
     }
     
 ]
