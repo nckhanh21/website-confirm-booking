@@ -382,7 +382,7 @@ export const hotelList = [
             "Buffet breakfast free",
             "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
             "Complimentary Wi-Fi",
-            "VAT"
+            "VAT (8%)"
         ],
         logo: "22Land",
     }
