@@ -372,6 +372,19 @@ export const hotelList = [
             "Complimentary Wi-Fi",
         ],
         logo: "22Land",
+    },
+    {
+        id: 28,
+        name: "Reyna Luxury Hotel",
+        address: "34 Miếu Đầm, Mễ Trì, Nam Từ Liên Hà Nội",
+        benefit: [
+            "Daily housekeeping service",
+            "Buffet breakfast free",
+            "Daily complimentary 02 bottles of mineral water, tea & coffee in room",
+            "Complimentary Wi-Fi",
+            "VAT"
+        ],
+        logo: "22Land",
     }
     
 ]
