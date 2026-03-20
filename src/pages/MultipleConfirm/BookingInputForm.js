@@ -1,17 +1,93 @@
-import React, { useEffect } from 'react';
-import { Form, Input, Button, DatePicker, AutoComplete, Select, Typography, Space } from 'antd';
+import React, { useEffect, useMemo } from 'react';
+import { Form, Input, Button, DatePicker, AutoComplete, Select, Typography, Space, InputNumber, Row, Col } from 'antd';
+import dayjs from 'dayjs';
 import { hotelList, roomTypeList } from '../../constants/hotel';
+import './BookingInputForm.css';
 
 const { Title } = Typography;
+const DATE_FORMAT = 'YYYY-MM-DD HH:mm';
+
+const getDefaultArrivalDate = () => dayjs().hour(14).minute(0).second(0).millisecond(0);
+const getDefaultDepartureDate = () => dayjs().hour(12).minute(0).second(0).millisecond(0);
+
+const getDefaultRoom = () => ({
+  arrivalDate: getDefaultArrivalDate(),
+  departureDate: getDefaultDepartureDate(),
+});
+
+const currencyFormatter = (value) => {
+  if (value === null || value === undefined || value === '') {
+    return '';
+  }
+
+  return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+const currencyParser = (value) => {
+  if (!value) {
+    return '';
+  }
+
+  return value.replace(/\$\s?|(,*)/g, '');
+};
+
+const getNights = (arrivalDate, departureDate) => {
+  if (!arrivalDate || !departureDate) {
+    return 0;
+  }
+
+  const arrival = dayjs(arrivalDate);
+  const departure = dayjs(departureDate);
+
+  if (!arrival.isValid() || !departure.isValid() || !departure.isAfter(arrival)) {
+    return 0;
+  }
+
+  const diffHours = departure.diff(arrival, 'hour', true);
+  return Math.max(1, Math.floor(diffHours / 24));
+};
+
+const calculateAmount = (room) => {
+  const roomPrice = Number(room?.roomPrice) || 0;
+  if (!roomPrice) {
+    return undefined;
+  }
+
+  const nights = getNights(room?.arrivalDate, room?.departureDate);
+  if (!nights) {
+    return undefined;
+  }
+
+  return roomPrice * nights;
+};
 
 const BookingInputForm = ({ onSubmit, initialValues }) => {
   const [form] = Form.useForm();
-  const [options] = React.useState([
-    { value: 'Superior Room' },
-    { value: 'Deluxe Room' },
-    { value: 'Suite Room' },
-  ]);
   const [hotelOptions, setHotelOptions] = React.useState([]);
+
+  const normalizedInitialValues = useMemo(() => {
+    if (!initialValues) {
+      return {
+        rooms: [getDefaultRoom()],
+      };
+    }
+
+    return {
+      ...initialValues,
+      deposit: initialValues.deposit ? Number(initialValues.deposit) : undefined,
+      rooms: (initialValues.rooms && initialValues.rooms.length ? initialValues.rooms : [getDefaultRoom()]).map((room) => ({
+        ...room,
+        roomPrice: room?.roomPrice ? Number(room.roomPrice) : undefined,
+        amount: room?.amount ? Number(room.amount) : undefined,
+        arrivalDate: room?.arrivalDate ? dayjs(room.arrivalDate) : getDefaultArrivalDate(),
+        departureDate: room?.departureDate ? dayjs(room.departureDate) : getDefaultDepartureDate(),
+      })),
+      additionalServices: (initialValues.additionalServices || []).map((service) => ({
+        ...service,
+        servicePrice: service?.servicePrice ? Number(service.servicePrice) : undefined,
+      })),
+    };
+  }, [initialValues]);
 
 
   useEffect(() => {
@@ -19,30 +95,46 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
   }, []);
 
   const handleFinish = (values) => {
-    onSubmit(values);
+    const payload = {
+      ...values,
+      deposit: values.deposit ? Number(values.deposit) : 0,
+      rooms: (values.rooms || []).map((room) => ({
+        ...room,
+        roomPrice: room?.roomPrice ? Number(room.roomPrice) : 0,
+        amount: room?.amount ? Number(room.amount) : 0,
+        arrivalDate: room?.arrivalDate?.toISOString ? room.arrivalDate.toISOString() : room?.arrivalDate,
+        departureDate: room?.departureDate?.toISOString ? room.departureDate.toISOString() : room?.departureDate,
+      })),
+      additionalServices: (values.additionalServices || []).map((service) => ({
+        ...service,
+        servicePrice: service?.servicePrice ? Number(service.servicePrice) : 0,
+      })),
+    };
+
+    onSubmit(payload);
   };
 
   const filterOption = (input, option) =>
     (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
   const loadListHotel = () => {
-    const hotelOptions = hotelList.map((hotel) => ({
+    const mappedHotelOptions = hotelList.map((hotel) => ({
       label: hotel.address + ' - ' + hotel.name,
       value: hotel.id,
       address: hotel.address,
       benefit: hotel.benefit,
       logo: hotel.logo
     }));
-    setHotelOptions(hotelOptions);
+    setHotelOptions(mappedHotelOptions);
   }
 
 
   const onChangeHotel = (value) => {
-    console.log(value);
-    //lấy ra hotel theo id
     const hotel = hotelList.find((hotel) => hotel.id === value);
-    // setHotel(hotel);
-    //đổi giá trị của form item hotelAddress
+    if (!hotel) {
+      return;
+    }
+
     form.setFieldsValue({
       hotelAddress: hotel.address,
       hotelName: hotel.name,
@@ -51,43 +143,138 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
     });
   }
 
+  const handleValuesChange = (changedValues, allValues) => {
+    if (!changedValues.rooms) {
+      return;
+    }
+
+    const changedRoomIndexes = [];
+    changedValues.rooms.forEach((changedRoom, index) => {
+      if (!changedRoom) {
+        return;
+      }
+
+      if (
+        Object.prototype.hasOwnProperty.call(changedRoom, 'roomPrice') ||
+        Object.prototype.hasOwnProperty.call(changedRoom, 'arrivalDate') ||
+        Object.prototype.hasOwnProperty.call(changedRoom, 'departureDate')
+      ) {
+        changedRoomIndexes.push(index);
+      }
+    });
+
+    if (!changedRoomIndexes.length) {
+      return;
+    }
+
+    const currentRooms = allValues.rooms || [];
+    let changed = false;
+
+    const nextRooms = currentRooms.map((room, index) => {
+      if (!changedRoomIndexes.includes(index)) {
+        return room;
+      }
+
+      const autoAmount = calculateAmount(room);
+      const currentAmount = room?.amount;
+
+      if ((autoAmount || 0) !== (Number(currentAmount) || 0) && autoAmount !== undefined) {
+        changed = true;
+        return {
+          ...room,
+          amount: autoAmount,
+        };
+      }
+
+      return room;
+    });
+
+    if (changed) {
+      form.setFieldsValue({ rooms: nextRooms });
+    }
+  };
+
+  const handleAddRoom = (add) => {
+    const rooms = form.getFieldValue('rooms') || [];
+    const latestRoom = rooms[rooms.length - 1] || getDefaultRoom();
+
+    add({
+      roomType: latestRoom.roomType,
+      arrivalDate: latestRoom.arrivalDate || getDefaultArrivalDate(),
+      departureDate: latestRoom.departureDate || getDefaultDepartureDate(),
+      roomPrice: latestRoom.roomPrice,
+      amount: latestRoom.amount,
+    });
+  };
+
   return (
-    <div style={styles.container}>
+    <div className="booking-form-page">
+      <div className="booking-form-card">
       <Title level={2} style={styles.title}>Nhập Thông Tin Đặt Phòng</Title>
       <Form
         form={form}
         onFinish={handleFinish}
-        initialValues={initialValues}
+        initialValues={normalizedInitialValues}
+        onValuesChange={handleValuesChange}
         layout="vertical"
         style={styles.form}
+        className="booking-form"
       >
-        <Form.Item
-          label="Tên booker"
-          name="bookerName"
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Tên khách sạn"
-          name="hotelName"
-          rules={[{ required: true, message: 'Tên khách sạn bắt buộc!' }]}
-        >
-          <Select
-            showSearch
-            placeholder="Chọn khách sạn"
-            optionFilterProp="children"
-            onChange={onChangeHotel}
-            // onSearch={onSearch}
-            filterOption={filterOption}
-            options={hotelOptions}
-          />
-        </Form.Item>
-        <Form.Item
-          label="Địa chỉ khách sạn"
-          name="hotelAddress"
-        >
-          <Input disabled />
-        </Form.Item>
+        <Row gutter={[16, 0]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Tên booker"
+              name="bookerName"
+            >
+              <Input placeholder="Nhập tên người đặt" autoFocus />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} md={12}>
+            <Form.Item
+              label="Tên khách sạn"
+              name="hotelName"
+              rules={[{ required: true, message: 'Tên khách sạn bắt buộc!' }]}
+            >
+              <Select
+                showSearch
+                placeholder="Chọn khách sạn"
+                optionFilterProp="label"
+                onChange={onChangeHotel}
+                filterOption={filterOption}
+                options={hotelOptions}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} md={16}>
+            <Form.Item
+              label="Địa chỉ khách sạn"
+              name="hotelAddress"
+            >
+              <Input disabled />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} md={8}>
+            <Form.Item
+              name={'deposit'}
+              fieldKey={'deposit'}
+              label="Tiền cọc"
+            >
+              <InputNumber
+                style={styles.input}
+                min={0}
+                controls={false}
+                placeholder="Nhập tiền cọc"
+                formatter={currencyFormatter}
+                parser={currencyParser}
+                addonAfter="VND"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+
         <Form.Item
           label="dịch vụ đi kèm"
           name="benefit"
@@ -102,29 +289,12 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          name={'deposit'}
-          fieldKey={'deposit'}
-          label="Tiền cọc"
-        // rules={[{ required: false, message: 'Tiền cọc là bắt buộc!' }]}
-        >
-          <Input type='number' placeholder="Nhập tiền cọc" onWheel={(e) => e.target.blur()} />
-        </Form.Item>
-        {/* <Form.Item
-          name="paymentMethod"
-          label="Phương thức thanh toán"
-          rules={[{ required: true, message: 'Phương thức thanh toán là bắt buộc!' }]}
-        >
-          <Select placeholder="Chọn phương thức thanh toán" style={styles.input}>
-            <Select.Option value="Chuyển khoản">Chuyển khoản</Select.Option>
-            <Select.Option value="Tiền mặt">Tiền mặt</Select.Option>
-          </Select>
-        </Form.Item> */}
+
         <Form.List name="rooms">
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, fieldKey, ...restField }) => (
-                <div key={key} style={styles.roomSection}>
+                <div key={key} className="booking-room-section">
                   <Title level={3} style={styles.roomTitle}>Phòng {key + 1}</Title>
                   <Form.Item
                     label="Tên khách hàng"
@@ -137,82 +307,127 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                       },
                     ]}
                   >
-                    <Input.TextArea placeholder='Nhập tên' />
+                    <Input.TextArea placeholder='Nhập tên' autoSize={{ minRows: 1, maxRows: 3 }} />
                   </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'roomType']}
-                    fieldKey={[fieldKey, 'roomType']}
-                    label="Loại phòng"
-                    rules={[{ required: false, message: 'Loại phòng là bắt buộc!' }]}
-                  >
-                    <AutoComplete
-                      options={roomTypeList}
-                      style={styles.input}
-                      placeholder="Nhập loại phòng"
-                    >
-                      <Input.Search />
-                    </AutoComplete>
+                  <Row gutter={[16, 0]}>
+                    <Col xs={24} md={12} lg={8}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'roomType']}
+                        fieldKey={[fieldKey, 'roomType']}
+                        label="Loại phòng"
+                        rules={[{ required: false, message: 'Loại phòng là bắt buộc!' }]}
+                      >
+                        <AutoComplete
+                          options={roomTypeList}
+                          style={styles.input}
+                          placeholder="Nhập loại phòng"
+                        >
+                          <Input />
+                        </AutoComplete>
+                      </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={12} lg={8}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'arrivalDate']}
+                        fieldKey={[fieldKey, 'arrivalDate']}
+                        label="Ngày đến"
+                        rules={[{ required: false, message: 'Ngày đến là bắt buộc!' }]}
+                      >
+                        <DatePicker
+                          showTime
+                          format={DATE_FORMAT}
+                          style={styles.input}
+                          placeholder="Chọn ngày và giờ đến"
+                          minuteStep={15}
+                        />
+                      </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={12} lg={8}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'departureDate']}
+                        fieldKey={[fieldKey, 'departureDate']}
+                        label="Ngày đi"
+                        rules={[{ required: false, message: 'Ngày đi là bắt buộc!' }]}
+                      >
+                        <DatePicker
+                          showTime
+                          format={DATE_FORMAT}
+                          style={styles.input}
+                          placeholder="Chọn ngày và giờ đi"
+                          minuteStep={15}
+                        />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+
+                  <Form.Item shouldUpdate noStyle>
+                    {() => {
+                      const arrivalDate = form.getFieldValue(['rooms', name, 'arrivalDate']);
+                      const departureDate = form.getFieldValue(['rooms', name, 'departureDate']);
+                      const nights = getNights(arrivalDate, departureDate);
+
+                      return (
+                        <div className="nights-info" style={styles.nightsInfo}>
+                          Số đêm: <strong>{nights || 0}</strong>
+                        </div>
+                      );
+                    }}
                   </Form.Item>
 
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'arrivalDate']}
-                    fieldKey={[fieldKey, 'arrivalDate']}
-                    label="Ngày đến"
-                    rules={[{ required: false, message: 'Ngày đến là bắt buộc!' }]}
-                  >
-                    <DatePicker
-                      showTime
-                      format="YYYY-MM-DD HH:mm"
-                      style={styles.input}
-                      placeholder="Chọn ngày và giờ đến"
-                      minuteStep={15}
-                    />
-                  </Form.Item>
+                  <Row gutter={[16, 0]}>
+                    <Col xs={24} md={12}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'roomPrice']}
+                        fieldKey={[fieldKey, 'roomPrice']}
+                        label="Giá phòng (1 đêm)"
+                      >
+                        <InputNumber
+                          style={styles.input}
+                          min={0}
+                          controls={false}
+                          placeholder="Nhập giá phòng"
+                          formatter={currencyFormatter}
+                          parser={currencyParser}
+                          addonAfter="VND"
+                        />
+                      </Form.Item>
+                    </Col>
 
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'departureDate']}
-                    fieldKey={[fieldKey, 'departureDate']}
-                    label="Ngày đi"
-                    rules={[{ required: false, message: 'Ngày đi là bắt buộc!' }]}
-                  >
-                    <DatePicker
-                      showTime
-                      format="YYYY-MM-DD HH:mm"
-                      style={styles.input}
-                      placeholder="Chọn ngày và giờ đi"
-                      minuteStep={15}
-                    />
-                  </Form.Item>
+                    <Col xs={24} md={12}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'amount']}
+                        fieldKey={[fieldKey, 'amount']}
+                        label="Thành tiền"
+                        extra="Tự tính theo số đêm x giá phòng (có thể sửa nếu cần)."
+                      >
+                        <InputNumber
+                          style={styles.input}
+                          min={0}
+                          controls={false}
+                          placeholder="Nhập tiền"
+                          formatter={currencyFormatter}
+                          parser={currencyParser}
+                          addonAfter="VND"
+                        />
+                      </Form.Item>
+                    </Col>
+                  </Row>
 
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'roomPrice']}
-                    fieldKey={[fieldKey, 'roomPrice']}
-                    label="Giá phòng (1 đêm)"
-                  // rules={[{ required: false, message: 'Giá phòng là bắt buộc!' }]}
-                  >
-                    <Input type='number' placeholder="Nhập giá phòng"  onWheel={(e) => e.target.blur()}/>
-                  </Form.Item>
-
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'amount']}
-                    fieldKey={[fieldKey, 'amount']}
-                    label="Thành tiền"
-                  >
-                    <Input type='number' placeholder="Nhập tiền"  onWheel={(e) => e.target.blur()}/>
-                  </Form.Item>
-                  <Button type="danger" onClick={() => remove(name)} style={styles.removeButton}>
+                  <Button type="danger" onClick={() => remove(name)} style={styles.removeButton} className="booking-remove-btn">
                     Xóa phòng
                   </Button>
                 </div>
               ))}
 
               <Form.Item>
-                <Button type="dashed" onClick={() => add()} style={styles.addButton}>
+                <Button type="dashed" onClick={() => handleAddRoom(add)} style={styles.addButton} className="booking-add-btn">
                   Thêm phòng
                 </Button>
               </Form.Item>
@@ -226,35 +441,49 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, fieldKey, ...restField }) => (
-                <div key={key} style={styles.serviceSection}>
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'serviceName']}
-                    fieldKey={[fieldKey, 'serviceName']}
-                    label="Tên dịch vụ"
-                    rules={[{ required: true, message: 'Vui lòng nhập tên dịch vụ!' }]}
-                  >
-                    <Input placeholder="Ví dụ: Decor, Airport pick up, ..." />
-                  </Form.Item>
-                  
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'servicePrice']}
-                    fieldKey={[fieldKey, 'servicePrice']}
-                    label="Giá dịch vụ"
-                    rules={[{ required: true, message: 'Vui lòng nhập giá dịch vụ!' }]}
-                  >
-                    <Input type='number' placeholder="Nhập giá dịch vụ" onWheel={(e) => e.target.blur()} />
-                  </Form.Item>
-                  
-                  <Button type="danger" onClick={() => remove(name)} style={styles.removeButton}>
+                <div key={key} className="booking-service-section">
+                  <Row gutter={[16, 0]}>
+                    <Col xs={24} md={16}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'serviceName']}
+                        fieldKey={[fieldKey, 'serviceName']}
+                        label="Tên dịch vụ"
+                        rules={[{ required: true, message: 'Vui lòng nhập tên dịch vụ!' }]}
+                      >
+                        <Input placeholder="Ví dụ: Decor, Airport pick up, ..." />
+                      </Form.Item>
+                    </Col>
+
+                    <Col xs={24} md={8}>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'servicePrice']}
+                        fieldKey={[fieldKey, 'servicePrice']}
+                        label="Giá dịch vụ"
+                        rules={[{ required: true, message: 'Vui lòng nhập giá dịch vụ!' }]}
+                      >
+                        <InputNumber
+                          style={styles.input}
+                          min={0}
+                          controls={false}
+                          placeholder="Nhập giá dịch vụ"
+                          formatter={currencyFormatter}
+                          parser={currencyParser}
+                          addonAfter="VND"
+                        />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+
+                  <Button type="danger" onClick={() => remove(name)} style={styles.removeButton} className="booking-remove-btn">
                     Xóa dịch vụ
                   </Button>
                 </div>
               ))}
 
               <Form.Item>
-                <Button type="dashed" onClick={() => add()} style={styles.addButton}>
+                <Button type="dashed" onClick={() => add()} style={styles.addButton} className="booking-add-btn">
                   Thêm dịch vụ
                 </Button>
               </Form.Item>
@@ -263,67 +492,48 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
         </Form.List>
 
         <Form.Item>
-          <Space>
+          <Space className="booking-submit-wrap">
             <Button type="primary" htmlType="submit" style={styles.submitButton}>
               Xác nhận
             </Button>
           </Space>
         </Form.Item>
       </Form>
+      </div>
     </div>
   );
 };
 
 const styles = {
-  container: {
-    width: '500px',
-    margin: '20px auto',
-    padding: '20px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    fontFamily: 'Arial, sans-serif',
-    fontSize: '14px',
-    backgroundColor: '#f9f9f9',
-  },
   title: {
     textAlign: 'center',
-    marginBottom: '20px',
+    marginBottom: '24px',
   },
   form: {
-    marginTop: '20px',
+    marginTop: '0px',
   },
   input: {
     width: '100%',
   },
-  roomSection: {
-    marginBottom: '20px',
-    padding: '15px',
-    border: '1px solid #ddd',
-    borderRadius: '5px',
-    backgroundColor: '#f5f5f5',
-  },
-  serviceSection: {
-    marginBottom: '15px',
-    padding: '15px',
-    border: '1px solid #e0e0e0',
-    borderRadius: '5px',
-    backgroundColor: '#f8f8f8',
-  },
   roomTitle: {
-    borderBottom: '1px solid #ddd',
-    paddingBottom: '10px',
-    marginBottom: '15px',
+    marginBottom: '16px',
+  },
+  nightsInfo: {
+    marginTop: '-2px',
+    marginBottom: '12px',
+    color: '#555',
+    fontSize: '13px',
   },
   sectionTitle: {
-    marginTop: '20px',
-    marginBottom: '15px',
+    marginTop: '24px',
+    marginBottom: '12px',
   },
   addButton: {
     width: '100%',
-    marginBottom: '20px',
+    marginBottom: '14px',
   },
   removeButton: {
-    marginTop: '10px',
+    marginTop: '8px',
   },
   submitButton: {
     width: '100%',

@@ -1,0 +1,101 @@
+.booking-form-page {
+  width: 100%;
+  padding: 20px 14px 28px;
+  box-sizing: border-box;
+}
+
+.booking-form-card {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 22px 20px;
+  border: 1px solid #e3e8ef;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.booking-form .ant-form-item {
+  margin-bottom: 14px;
+}
+
+.booking-room-section,
+.booking-service-section {
+  margin-bottom: 14px;
+  padding: 14px 14px 12px;
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  background: #fafcff;
+}
+
+.booking-room-section .ant-typography,
+.booking-service-section .ant-typography {
+  margin-top: 0;
+}
+
+.nights-info {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f0f7ff;
+}
+
+.booking-add-btn,
+.booking-remove-btn {
+  height: 38px;
+  border-radius: 8px;
+}
+
+.booking-submit-wrap {
+  width: 100%;
+}
+
+.booking-submit-wrap .ant-btn {
+  width: 100%;
+  height: 42px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.booking-form .ant-input,
+.booking-form .ant-select-selector,
+.booking-form .ant-input-number,
+.booking-form .ant-picker {
+  border-radius: 8px !important;
+}
+
+.booking-form .ant-input-number,
+.booking-form .ant-picker {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .booking-form-page {
+    padding: 16px 12px 24px;
+  }
+
+  .booking-form-card {
+    padding: 18px 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .booking-form-page {
+    padding: 10px 8px 20px;
+  }
+
+  .booking-form-card {
+    padding: 14px 10px;
+    border-radius: 10px;
+  }
+
+  .booking-room-section,
+  .booking-service-section {
+    padding: 12px 10px;
+    border-radius: 10px;
+  }
+
+  .booking-add-btn,
+  .booking-remove-btn,
+  .booking-submit-wrap .ant-btn {
+    height: 40px;
+  }
+}
