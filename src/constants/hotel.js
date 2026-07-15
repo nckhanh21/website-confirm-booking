@@ -329,7 +329,7 @@ export const hotelList = [
     {
         id: 24,
         name: "22Land Cosmos Hotel & Apartment",
-        address: "35, ngõ 99 Xuân La, Tây Hồ, Hà Nội",
+        address: "5, ngõ 99 Xuân La, Tây Hồ, Hà Nội",
         benefit: [
             "Daily housekeeping service",
             "Free gym use service",
