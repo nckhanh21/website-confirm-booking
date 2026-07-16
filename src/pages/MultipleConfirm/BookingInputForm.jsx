@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { Form, Input, Button, DatePicker, AutoComplete, Select, Typography, Space, InputNumber, Row, Col } from 'antd';
 import dayjs from 'dayjs';
-import { hotelList, roomTypeList } from '../../constants/hotel';
+import { GlobalState } from '../../context/GlobalProvider';
 import './BookingInputForm.css';
 
 const { Title } = Typography;
@@ -64,16 +64,19 @@ const calculateAmount = (room) => {
 const BookingInputForm = ({ onSubmit, initialValues }) => {
   const [form] = Form.useForm();
   const [hotelOptions, setHotelOptions] = React.useState([]);
+  const { hotels, roomTypes } = GlobalState();
 
   const normalizedInitialValues = useMemo(() => {
     if (!initialValues) {
       return {
+        template: 'classic',
         rooms: [getDefaultRoom()],
       };
     }
 
     return {
       ...initialValues,
+      template: initialValues.template || 'classic',
       deposit: initialValues.deposit ? Number(initialValues.deposit) : undefined,
       rooms: (initialValues.rooms && initialValues.rooms.length ? initialValues.rooms : [getDefaultRoom()]).map((room) => ({
         ...room,
@@ -92,7 +95,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
 
   useEffect(() => {
     loadListHotel();
-  }, []);
+  }, [hotels]);
 
   const handleFinish = (values) => {
     const payload = {
@@ -118,7 +121,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
     (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
   const loadListHotel = () => {
-    const mappedHotelOptions = hotelList.map((hotel) => ({
+    const mappedHotelOptions = hotels.map((hotel) => ({
       label: hotel.address + ' - ' + hotel.name,
       value: hotel.id,
       address: hotel.address,
@@ -130,7 +133,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
 
 
   const onChangeHotel = (value) => {
-    const hotel = hotelList.find((hotel) => hotel.id === value);
+    const hotel = hotels.find((hotel) => hotel.id === value);
     if (!hotel) {
       return;
     }
@@ -247,7 +250,22 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
             </Form.Item>
           </Col>
 
-          <Col xs={24} md={16}>
+          <Col xs={24} md={8}>
+            <Form.Item
+              label="Mẫu xác nhận"
+              name="template"
+              rules={[{ required: true, message: 'Vui lòng chọn mẫu xác nhận!' }]}
+            >
+              <Select
+                options={[
+                  { label: 'Classic · Truyền thống', value: 'classic' },
+                  { label: 'Contemporary · Hiện đại', value: 'modern' },
+                ]}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} md={10}>
             <Form.Item
               label="Địa chỉ khách sạn"
               name="hotelAddress"
@@ -256,7 +274,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
             </Form.Item>
           </Col>
 
-          <Col xs={24} md={8}>
+          <Col xs={24} md={6}>
             <Form.Item
               name={'deposit'}
               fieldKey={'deposit'}
@@ -319,7 +337,7 @@ const BookingInputForm = ({ onSubmit, initialValues }) => {
                         rules={[{ required: false, message: 'Loại phòng là bắt buộc!' }]}
                       >
                         <AutoComplete
-                          options={roomTypeList}
+                          options={roomTypes}
                           style={styles.input}
                           placeholder="Nhập loại phòng"
                         >

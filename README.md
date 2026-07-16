@@ -25,6 +25,26 @@ npm run preview
 
 Artifact production nằm trong thư mục `dist`.
 
+## Quản lý dữ liệu khách sạn
+
+Ứng dụng chính tại `/` sử dụng `MultipleConfirm`. Dữ liệu mặc định nằm trong
+[`src/data/hotels.json`](src/data/hotels.json), sau đó được ghi đè bằng dữ liệu
+trong `localStorage` của trình duyệt.
+
+Form `MultipleConfirm` hỗ trợ hai mẫu xác nhận: `Classic` và `Contemporary`.
+Mẫu có thể được chọn ngay khi nhập booking và vẫn được giữ khi quay lại chỉnh sửa.
+
+Mở `/admin/hotels` để:
+
+- thêm, sửa và xóa khách sạn;
+- export dữ liệu thành `hotels-backup.json`;
+- import lại file JSON trên máy khác;
+- khôi phục dữ liệu mặc định.
+
+Các màn hình xác nhận cũ vẫn được giữ dưới `/legacy/...`. Dữ liệu localStorage
+chỉ dùng chung trong cùng một trình duyệt/profile, không tự đồng bộ giữa các
+thiết bị.
+
 ## Deploy Vercel
 
 `vercel.json` đã cấu hình:

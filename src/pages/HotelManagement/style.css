@@ -1,0 +1,23 @@
+.hotel-management-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.hotel-management-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .hotel-management-page {
+    padding: 12px;
+  }
+
+  .hotel-management-header {
+    display: block;
+  }
+}

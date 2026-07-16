@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import BookingInputForm from './BookingInputForm';
-import BookingConfirmation from './ConfirmMultiple';
+import ClassicConfirmation from './ConfirmMultiple';
+
+const ModernConfirmation = lazy(() => import('./ConfirmModern'));
 
 const BookingManager = () => {
   const [bookingDetails, setBookingDetails] = useState(null);
@@ -20,7 +22,13 @@ const BookingManager = () => {
       {!bookingDetails || isEditing ? (
         <BookingInputForm onSubmit={handleFormSubmit} initialValues={bookingDetails} />
       ) : (
-        <BookingConfirmation details={bookingDetails} onEdit={handleEditBooking} />
+        bookingDetails.template === 'modern' ? (
+          <Suspense fallback={<div>Đang tải mẫu xác nhận...</div>}>
+            <ModernConfirmation details={bookingDetails} onEdit={handleEditBooking} />
+          </Suspense>
+        ) : (
+          <ClassicConfirmation details={bookingDetails} onEdit={handleEditBooking} />
+        )
       )}
     </div>
   );

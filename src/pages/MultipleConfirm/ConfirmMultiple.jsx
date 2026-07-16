@@ -1,11 +1,9 @@
-import { Button, Divider } from 'antd';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import { Button, Divider, message } from 'antd';
 import React from 'react';
-import corner from '../../assets/corner.png';
 import logoimg from '../../assets/logo.webp';
 import logo22land from '../../assets/22land.png';
 import signature from '../../assets/signature.png';
+import { exportConfirmationToPDF, exportConfirmationToPNG } from './exportConfirmation';
 const BookingConfirmation = ({ details, onEdit }) => {
     const { rooms, hotelName, hotelAddress, benefit, logo, deposit, bookerName, additionalServices = [] } = details;
 
@@ -13,6 +11,7 @@ const BookingConfirmation = ({ details, onEdit }) => {
     const [totalDeposit, setTotalDeposit] = React.useState(0);
     const [totalRemaining, setTotalRemaining] = React.useState(0);
     const [totalAdditionalServices, setTotalAdditionalServices] = React.useState(0);
+    const [exporting, setExporting] = React.useState('');
 
     React.useEffect(() => {
         let total = 0;
@@ -46,24 +45,19 @@ const BookingConfirmation = ({ details, onEdit }) => {
         setTotalAdditionalServices(formattedAdditionalServices);
     }, [rooms, additionalServices, deposit]);
 
-    const exportToPNG = () => {
-        const element = document.getElementById('booking-content');
-        html2canvas(element, { quality: 0.95 }).then((canvas) => {
-            const link = document.createElement('a');
-            link.download = 'booking-confirmation.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        });
-    };
-
-    const exportToPDF = () => {
-        const element = document.getElementById('booking-content');
-        html2canvas(element).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'pt', 'a4');
-            pdf.addImage(imgData, 'PNG', 0, 0, 595.28, 841.89);
-            pdf.save('booking-confirmation.pdf');
-        });
+    const handleExport = async (type) => {
+        setExporting(type);
+        try {
+            if (type === 'png') {
+                await exportConfirmationToPNG('booking-content', 'booking-confirmation.png');
+            } else {
+                await exportConfirmationToPDF('booking-content', 'booking-confirmation.pdf');
+            }
+        } catch (error) {
+            message.error(error.message || 'Không thể export booking.');
+        } finally {
+            setExporting('');
+        }
     };
 
     return (
@@ -274,10 +268,10 @@ const BookingConfirmation = ({ details, onEdit }) => {
                 <Button type="primary" onClick={onEdit} style={styles.editButton}>
                     Edit Booking
                 </Button>
-                <Button type="default" onClick={exportToPNG} style={styles.exportButton}>
+                <Button type="default" loading={exporting === 'png'} onClick={() => handleExport('png')} style={styles.exportButton}>
                     Export to PNG
                 </Button>
-                <Button type="default" onClick={exportToPDF} style={styles.exportButton}>
+                <Button type="default" loading={exporting === 'pdf'} onClick={() => handleExport('pdf')} style={styles.exportButton}>
                     Export to PDF
                 </Button>
             </div>

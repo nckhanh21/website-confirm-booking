@@ -1,0 +1,94 @@
+.modern-confirmation-page {
+  min-width: 820px;
+  padding: 18px 0 36px;
+  overflow-x: auto;
+  background: #f3f4f5;
+}
+
+.modern-confirmation {
+  width: 794px;
+  min-height: 1123px;
+  margin: 0 auto;
+  padding: 32px 48px 28px;
+  box-sizing: border-box;
+  border: 1px solid #d9d9d9;
+  color: #29313d;
+  background: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.modern-document-header { text-align: center; }
+.modern-main-logo { width: 164px; height: 112px; object-fit: contain; }
+.modern-main-logo.housing { width: 156px; }
+.modern-gold-rule { position: relative; height: 10px; margin: 4px auto; border-top: 1px solid #d6a04a; }
+.modern-gold-rule span { position: absolute; top: -8px; left: 50%; padding: 0 7px; transform: translateX(-50%); color: #d6921e; background: #fff; font-size: 11px; line-height: 1; }
+.modern-address { margin: 9px 0 11px; color: #303b4a; font-size: 12px; }
+.modern-address svg, .modern-contact-row svg { margin-right: 6px; color: #132d50; }
+.modern-contact-row { display: flex; align-items: center; justify-content: center; gap: 12px; white-space: nowrap; color: #3a414a; font-size: 10px; }
+.modern-contact-row i { height: 16px; border-left: 1px solid #c5a974; }
+
+.modern-title-rule { display: flex; align-items: center; gap: 12px; margin: 26px 0 24px; }
+.modern-title-rule span { flex: 1; height: 1px; background: #d69b39; }
+.modern-title-rule span::after { display: block; width: 7px; height: 7px; margin-top: -3px; border: 1px solid #d69b39; background: #fff; content: ''; transform: rotate(45deg); }
+.modern-title-rule span:last-child::after { float: right; }
+.modern-title-rule h1 { margin: 0; color: #122d4d; font-family: Georgia, 'Times New Roman', serif; font-size: 31px; font-weight: 500; letter-spacing: 1px; white-space: nowrap; }
+
+.modern-greeting { margin-bottom: 22px; font-size: 13px; }
+.modern-greeting strong { display: block; margin-bottom: 6px; }
+.modern-greeting p { margin: 0; }
+.modern-greeting b { color: #122d4d; }
+.modern-document-section { margin-bottom: 20px; }
+.modern-document-section h2, .modern-policy-section h2 { display: flex; align-items: center; gap: 9px; width: max-content; margin: 0; color: #173455; font-family: Georgia, 'Times New Roman', serif; font-size: 16px; font-weight: 600; }
+.modern-document-section h2 svg, .modern-policy-section h2 svg { color: #d79429; font-size: 21px; }
+.modern-heading-line { width: 170px; height: 1px; margin: 4px 0 9px 34px; background: #dbac60; }
+
+.modern-room-table { width: 100%; border-collapse: collapse; table-layout: fixed; text-align: center; }
+.modern-room-table th { padding: 11px 5px; border: 1px solid #ded9d0; color: #fff; background: #102f51; font-size: 11px; font-weight: 700; }
+.modern-room-table td { padding: 12px 5px; border: 1px solid #ded9d0; font-size: 11px; }
+.modern-room-table th:nth-child(1) { width: 17%; }
+.modern-room-table th:nth-child(2) { width: 15%; }
+.modern-room-table th:nth-child(3), .modern-room-table th:nth-child(4) { width: 19%; }
+.modern-room-table th:nth-child(5), .modern-room-table th:nth-child(6) { width: 15%; }
+
+.modern-benefits-section { margin-top: 21px; }
+.modern-benefits-list { margin: 0; padding: 1px 0 0; list-style: none; }
+.modern-benefits-list li { margin: 6px 0; font-size: 12px; }
+.modern-benefits-list svg { margin-right: 5px; color: #d7952c; font-size: 15px; vertical-align: -2px; }
+
+.modern-payment-box { display: grid; grid-template-columns: 1.05fr .95fr 1fr; min-height: 148px; margin: 25px 0 14px; padding: 13px 15px; border: 1px solid #d9b16a; border-radius: 6px; }
+.modern-payment-column { padding: 5px 17px; }
+.modern-payment-column + .modern-payment-column { border-left: 1px solid #d9b16a; }
+.modern-payment-column h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 7px; color: #173455; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; }
+.modern-payment-column h3 svg { color: #d79429; font-size: 21px; }
+.modern-total-column > strong { display: block; color: #173455; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 1.35; }
+.modern-total-column .modern-secondary-total { margin-top: -2px; }
+.modern-total-column > div { display: flex; gap: 17px; margin-top: 8px; font-size: 11px; }
+.modern-total-column > div span { color: #414953; }
+.modern-signature-column { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.modern-signature-column img { width: 93px; height: 48px; object-fit: contain; }
+.modern-signature-column .modern-gold-rule { width: 110px; margin: 4px 0 6px; }
+.modern-signature-column strong { color: #173455; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; }
+.modern-payable-column p { margin: 0; font-size: 12px; line-height: 1.55; }
+
+.modern-contact-note, .modern-acknowledgement { display: flex; align-items: center; gap: 9px; margin: 11px 0; padding: 9px 0; border-bottom: 1px solid #dedede; font-size: 12px; }
+.modern-contact-note svg, .modern-acknowledgement svg { color: #d79429; font-size: 19px; }
+.modern-acknowledgement { color: #173455; border-bottom: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 14px; }
+.modern-policy-section { margin-top: 9px; }
+.modern-policy-section ol { margin: 5px 0 0; padding-left: 19px; font-size: 11px; }
+.modern-policy-section ol > li { padding-left: 5px; margin-bottom: 3px; }
+.modern-policy-section ul { margin: 3px 0 0; padding-left: 17px; }
+.modern-policy-section ul li { margin-bottom: 2px; }
+.modern-policy-section ul li::marker { color: #d79429; }
+.modern-document-footer { margin-top: 14px; padding-top: 10px; color: #173455; text-align: right; font-family: Georgia, 'Times New Roman', serif; }
+.modern-document-footer strong, .modern-document-footer b { display: block; font-size: 13px; }
+.modern-document-footer b { color: #c6851f; }
+.modern-document-footer .modern-gold-rule { width: 144px; margin: 3px 0 0 auto; }
+
+.modern-actions { display: flex; justify-content: center; margin: 18px auto 0; }
+
+@media print {
+  .modern-confirmation-page { min-width: 0; padding: 0; background: #fff; }
+  .modern-actions { display: none; }
+}
